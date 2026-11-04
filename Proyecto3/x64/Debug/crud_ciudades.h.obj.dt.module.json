@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Proyecto3\\x64\\Debug\\crud_ciudades.obj",
+            "outputs": [
+                "Proyecto3\\x64\\Debug\\crud_ciudades.h.obj.dt.module.json",
+                "Proyecto3\\x64\\Debug\\crud_ciudades.h.obj.dt.d.json",
+                "Proyecto3\\x64\\Debug\\Proyecto3.pch"
+            ],
+            "requires": []
+        }
+    ]
+}

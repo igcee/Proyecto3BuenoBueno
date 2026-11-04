@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Proyecto3\\x64\\Debug\\Form1.obj",
+            "outputs": [
+                "Proyecto3\\x64\\Debug\\Form1.cpp.obj.dt.module.json",
+                "Proyecto3\\x64\\Debug\\Form1.cpp.obj.dt.d.json",
+                "Proyecto3\\x64\\Debug\\Proyecto3.pch"
+            ],
+            "requires": []
+        }
+    ]
+}

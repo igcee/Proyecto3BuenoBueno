@@ -1,0 +1,29 @@
+﻿IdTratamiento;Nombre;Descripcion;Costo
+1;Antibioticoterapia;Tratamiento con antibióticos por vía oral o intravenosa;35000
+2;Fisioterapia;Sesiones de rehabilitación física;20000
+3;Hidratación IV;Administración de líquidos intravenosos;15000
+4;Cirugía menor;Procedimiento quirúrgico ambulatorio;250000
+5;Quimioterapia;Ciclo de tratamiento oncológico;800000
+6;Oxigenoterapia;Suministro de oxígeno suplementario;45000
+7;Analgesia;Control del dolor con medicamentos;12000
+8;Terapia respiratoria;Ejercicios y nebulizaciones;28000
+9;Radioterapia;Tratamiento oncológico con radiación;450000
+10;Hemodiálisis;Filtrado de la sangre por insuficiencia renal;90000
+11;Sutura de heridas;Cierre quirúrgico de heridas con puntos;18000
+12;Inmovilización con yeso;Colocación de yeso o férula en fracturas;30000
+13;Vacunación;Aplicación de vacunas preventivas;8000
+14;Nebulización;Medicamento inhalado para vías respiratorias;10000
+15;Fototerapia;Tratamiento con luz para afecciones de la piel;55000
+16;Rehabilitación cardíaca;Programa supervisado de ejercicio para el corazón;60000
+17;Transfusión sanguínea;Administración de sangre o sus componentes;120000
+18;Terapia ocupacional;Recuperación de actividades de la vida diaria;22000
+19;Curación de heridas;Limpieza y cuidado de heridas;9000
+20;Endoscopia digestiva;Exploración y tratamiento del tubo digestivo;180000
+21;Terapia psicológica;Sesiones de psicoterapia individual;25000
+22;Insulinoterapia;Control de la glucosa con insulina;15000
+23;Antiinflamatorios;Control de la inflamación con medicamentos;11000
+24;Cirugía mayor;Procedimiento quirúrgico con hospitalización;1200000
+25;Terapia del lenguaje;Rehabilitación de la comunicación y el habla;21000
+26;Drenaje de absceso;Procedimiento para drenar acumulaciones de pus;65000
+27;Nutrición clínica;Plan de alimentación guiado por especialista;18000
+28;Terapia antihipertensiva;Control de la presión arterial con medicamentos;14000

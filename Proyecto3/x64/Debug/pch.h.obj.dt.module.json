@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Proyecto3\\x64\\Debug\\pch.obj",
+            "outputs": [
+                "Proyecto3\\x64\\Debug\\pch.h.obj.dt.module.json",
+                "Proyecto3\\x64\\Debug\\pch.h.obj.dt.d.json",
+                "Proyecto3\\x64\\Debug\\Proyecto3.pch"
+            ],
+            "requires": []
+        }
+    ]
+}

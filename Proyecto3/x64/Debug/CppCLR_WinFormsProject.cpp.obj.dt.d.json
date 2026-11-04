@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\pc\\source\\repos\\tec\\proyecto3\\cppclr_winformsproject.cpp",
+        "ProvidedModule": "",
+        "Includes": [
+            "c:\\users\\pc\\source\\repos\\tec\\proyecto3\\pch.h",
+            "c:\\users\\pc\\source\\repos\\tec\\proyecto3\\form1.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

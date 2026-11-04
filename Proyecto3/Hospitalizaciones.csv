@@ -1,0 +1,33 @@
+﻿IdHospitalizacion;IdPaciente;IdHabitacion;IdMedico;Fechaingreso;Fechasalida;Motivo
+1;1001;205;105;27/9/2026;0;Deshidratación severa
+2;1038;402;110;27/9/2026;0;Observación postoperatoria
+3;1010;204;108;28/9/2026;0;Observación postoperatoria
+4;1022;304;109;12/9/2026;0;Crisis hipertensiva
+5;1021;401;114;15/9/2026;0;Infarto agudo
+6;1016;203;110;23/9/2026;0;Crisis hipertensiva
+7;1050;104;107;8/9/2026;0;Neumonía
+8;1048;305;108;11/9/2026;0;Crisis hipertensiva
+9;1003;105;103;20/7/2026;29/7/2026;Cirugía programada
+10;1034;305;115;13/6/2026;16/6/2026;Observación postoperatoria
+11;1042;105;103;2/6/2026;10/6/2026;Apendicitis
+12;1040;204;112;31/7/2026;7/8/2026;Crisis hipertensiva
+13;1015;404;101;1/10/2026;0;Neumonía
+14;1045;302;114;9/10/2026;0;Cirugía programada
+15;1009;407;121;19/10/2026;0;Observación postoperatoria
+16;1012;406;118;2/10/2026;0;Gastroenteritis aguda
+17;1049;206;127;9/10/2026;0;Cirugía programada
+18;1026;408;102;22/10/2026;0;Dengue con signos de alarma
+19;1001;108;121;2/9/2026;7/9/2026;Gastroenteritis aguda
+20;1049;105;128;23/9/2026;30/9/2026;Infección urinaria complicada
+21;1015;404;118;11/8/2026;16/8/2026;Cirugía programada
+22;1030;305;115;18/9/2026;2/10/2026;Fractura de fémur
+23;1003;106;121;10/6/2026;17/6/2026;Diabetes descompensada
+24;1017;307;105;1/6/2026;11/6/2026;Infarto agudo
+25;1050;305;126;17/7/2026;20/7/2026;Observación postoperatoria
+26;1010;205;124;18/8/2026;24/8/2026;Neumonía
+27;1003;303;124;6/7/2026;12/7/2026;Neumonía
+28;1001;304;128;14/9/2026;21/9/2026;Infección urinaria complicada
+29;1011;301;124;6/6/2026;13/6/2026;Diabetes descompensada
+30;1010;101;106;17/6/2026;29/6/2026;Gastroenteritis aguda
+31;1001;204;127;12/6/2026;18/6/2026;Infarto agudo
+32;1010;304;120;5/7/2026;8/7/2026;Cirugía programada

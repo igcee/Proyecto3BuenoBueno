@@ -1,0 +1,12 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\pc\\source\\repos\\tec\\proyecto3\\pch.cpp",
+        "ProvidedModule": "",
+        "Includes": [
+            "c:\\users\\pc\\source\\repos\\tec\\proyecto3\\pch.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
