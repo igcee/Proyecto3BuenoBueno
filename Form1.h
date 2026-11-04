@@ -51,8 +51,10 @@ namespace CppCLRWinFormsProject {
 			btnGuardar->Location = System::Drawing::Point(90, 160);
 			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarPais::Guardar_Click); // chunche evento
 
-			this->Controls->Add(lblCod); this->Controls->Add(txtCodPais);
-			this->Controls->Add(lblNom); this->Controls->Add(txtNombre);
+			this->Controls->Add(lblCod); 
+			this->Controls->Add(txtCodPais);
+			this->Controls->Add(lblNom); 
+			this->Controls->Add(txtNombre);
 			this->Controls->Add(btnGuardar);
 		}
 
@@ -68,10 +70,19 @@ namespace CppCLRWinFormsProject {
 			string codPaisstr = msclr::interop::marshal_as<string>(txtCodPais->Text);
 			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
 			int codPaisint = stoi(codPaisstr);
-			arbolPaises->InsertarPais(codPaisint, nombrestr);
+			//arbolPaises->InsertarPais(codPaisint, nombrestr);
+			bool guardado = arbolPaises->InsertaNodo(codPaisint, nombrestr);
+			
 
-			MessageBox::Show(L"País guardado", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			this->Close(); // Cierra la ventana tras guardar
+			if (guardado == true) {
+				// exito y cierra ventana si bien guardado
+				MessageBox::Show(L"País guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				// sino no, y no cierra ventana para q se pueda corregir x usuario
+				MessageBox::Show(L"Error: Ya existe un pais registrado con ese codigo.", L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 		}
 	};
 	public ref class FormInsertar : public System::Windows::Forms::Form
@@ -89,17 +100,47 @@ namespace CppCLRWinFormsProject {
 
 
 			// lo meti en dos columnas diferentes por ahora, pq por alguna razon me estaba dando problemillas al tenerlo todo en una sola listilla vertical (se me estaba saliendo de la ventana de la compu y no me dejaba moverla para arriba, creo que es cosa de mi laptop, no del codigo, pq me ha estado dando problemas para chunches de otros cursos, asi q por ahora lo dejo asi)
-			Button^ btnPaises = gcnew Button(); btnPaises->Text = L"1. Países"; btnPaises->Location = System::Drawing::Point(30, 30); btnPaises->Size = System::Drawing::Size(150, 40);
-			Button^ btnCiudades = gcnew Button(); btnCiudades->Text = L"2. Ciudades"; btnCiudades->Location = System::Drawing::Point(30, 90); btnCiudades->Size = System::Drawing::Size(150, 40);
-			Button^ btnPacientes = gcnew Button(); btnPacientes->Text = L"3. Pacientes"; btnPacientes->Location = System::Drawing::Point(30, 150); btnPacientes->Size = System::Drawing::Size(150, 40);
-			Button^ btnMedicos = gcnew Button(); btnMedicos->Text = L"4. Médicos"; btnMedicos->Location = System::Drawing::Point(30, 210); btnMedicos->Size = System::Drawing::Size(150, 40);
-			Button^ btnEspecialidades = gcnew Button(); btnEspecialidades->Text = L"5. Especialidades"; btnEspecialidades->Location = System::Drawing::Point(30, 270); btnEspecialidades->Size = System::Drawing::Size(150, 40);
+			Button^ btnPaises = gcnew Button(); 
+			btnPaises->Text = L"1. Países"; 
+			btnPaises->Location = System::Drawing::Point(30, 30); 
+			btnPaises->Size = System::Drawing::Size(150, 40);
+			Button^ btnCiudades = gcnew Button(); 
+			btnCiudades->Text = L"2. Ciudades"; 
+			btnCiudades->Location = System::Drawing::Point(30, 90); 
+			btnCiudades->Size = System::Drawing::Size(150, 40);
+			Button^ btnPacientes = gcnew Button(); 
+			btnPacientes->Text = L"3. Pacientes"; 
+			btnPacientes->Location = System::Drawing::Point(30, 150); 
+			btnPacientes->Size = System::Drawing::Size(150, 40);
+			Button^ btnMedicos = gcnew Button(); 
+			btnMedicos->Text = L"4. Médicos"; 
+			btnMedicos->Location = System::Drawing::Point(30, 210); 
+			btnMedicos->Size = System::Drawing::Size(150, 40);
+			Button^ btnEspecialidades = gcnew Button(); 
+			btnEspecialidades->Text = L"5. Especialidades"; 
+			btnEspecialidades->Location = System::Drawing::Point(30, 270); 
+			btnEspecialidades->Size = System::Drawing::Size(150, 40);
 
-			Button^ btnCitas = gcnew Button(); btnCitas->Text = L"6. Citas"; btnCitas->Location = System::Drawing::Point(200, 30); btnCitas->Size = System::Drawing::Size(150, 40);
-			Button^ btnHabitaciones = gcnew Button(); btnHabitaciones->Text = L"7. Habitaciones"; btnHabitaciones->Location = System::Drawing::Point(200, 90); btnHabitaciones->Size = System::Drawing::Size(150, 40);
-			Button^ btnHospitalizaciones = gcnew Button(); btnHospitalizaciones->Text = L"8. Hospitalizaciones"; btnHospitalizaciones->Location = System::Drawing::Point(200, 150); btnHospitalizaciones->Size = System::Drawing::Size(150, 40);
-			Button^ btnDiagnosticos = gcnew Button(); btnDiagnosticos->Text = L"9. Diagnósticos"; btnDiagnosticos->Location = System::Drawing::Point(200, 210); btnDiagnosticos->Size = System::Drawing::Size(150, 40);
-			Button^ btnTratamientos = gcnew Button(); btnTratamientos->Text = L"10. Tratamientos"; btnTratamientos->Location = System::Drawing::Point(200, 270); btnTratamientos->Size = System::Drawing::Size(150, 40);
+			Button^ btnCitas = gcnew Button(); 
+			btnCitas->Text = L"6. Citas"; 
+			btnCitas->Location = System::Drawing::Point(200, 30); 
+			btnCitas->Size = System::Drawing::Size(150, 40);
+			Button^ btnHabitaciones = gcnew Button(); 
+			btnHabitaciones->Text = L"7. Habitaciones"; 
+			btnHabitaciones->Location = System::Drawing::Point(200, 90); 
+			btnHabitaciones->Size = System::Drawing::Size(150, 40);
+			Button^ btnHospitalizaciones = gcnew Button(); 
+			btnHospitalizaciones->Text = L"8. Hospitalizaciones"; 
+			btnHospitalizaciones->Location = System::Drawing::Point(200, 150); 
+			btnHospitalizaciones->Size = System::Drawing::Size(150, 40);
+			Button^ btnDiagnosticos = gcnew Button(); 
+			btnDiagnosticos->Text = L"9. Diagnósticos"; 
+			btnDiagnosticos->Location = System::Drawing::Point(200, 210); 
+			btnDiagnosticos->Size = System::Drawing::Size(150, 40);
+			Button^ btnTratamientos = gcnew Button(); 
+			btnTratamientos->Text = L"10. Tratamientos"; 
+			btnTratamientos->Location = System::Drawing::Point(200, 270); 
+			btnTratamientos->Size = System::Drawing::Size(150, 40);
 
 			btnPaises->Click += gcnew System::EventHandler(this, &FormInsertar::Paises_Click);
 
