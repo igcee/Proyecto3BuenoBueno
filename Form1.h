@@ -1,29 +1,66 @@
 #pragma once
-
+#include "Proyecto3/crud_paises.h" // con solo include crud_paises.h no lo encuentra (por alguna puta razon)
 namespace CppCLRWinFormsProject {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
 	/// <summary>
 	/// Summary for Form1
 	/// </summary>
+	public ref class FormMantenimiento : public System::Windows::Forms::Form
+	{
+	public:
+		FormMantenimiento() {
+			
+			this->Text = L"Mantenimiento de Base de Datos";
+			this->Size = System::Drawing::Size(300, 350);
+			this->StartPosition = FormStartPosition::CenterParent; // sale en centro
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;// ni me acuerdo, pero salia en tutoria y me da pereza revisarlo again
+			this->MaximizeBox = false;
+
+
+			Button^ btnInsertar = gcnew Button();
+			btnInsertar->Text = L"1. Insertar";
+			btnInsertar->Location = System::Drawing::Point(50, 30);
+			btnInsertar->Size = System::Drawing::Size(180, 40);
+
+			Button^ btnBuscar = gcnew Button();
+			btnBuscar->Text = L"2. Buscar";
+			btnBuscar->Location = System::Drawing::Point(50, 90);
+			btnBuscar->Size = System::Drawing::Size(180, 40);
+
+			Button^ btnModificar = gcnew Button();
+			btnModificar->Text = L"3. Modificar";
+			btnModificar->Location = System::Drawing::Point(50, 150);
+			btnModificar->Size = System::Drawing::Size(180, 40);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"4. Eliminar";
+			btnEliminar->Location = System::Drawing::Point(50, 210);
+			btnEliminar->Size = System::Drawing::Size(180, 40);
+
+			// Agregar botoness
+			this->Controls->Add(btnInsertar);
+			this->Controls->Add(btnBuscar);
+			this->Controls->Add(btnModificar);
+			this->Controls->Add(btnEliminar);
+		}
+	};
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
 		Form1(void)
 		{
 			InitializeComponent();
-			ConstruirInterfaz();
+			arbolPaises = new ArbolPais();
+			ConstruirInterfaz(); // temp? veo dsps
 			//
 			//TODO: Add the constructor code here
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -35,13 +72,19 @@ namespace CppCLRWinFormsProject {
 				delete components;
 			}
 		}
-
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container^ components;
-		MenuStrip^ menuPrincipal;
+		Panel^ barraSuperior;
+		Button^ btnMantenimiento;
+		Button^ btnReportes;
+		Button^ btnAcercaDe;
+
+		// arboles 
+		ArbolPais* arbolPaises;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -50,65 +93,84 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->SuspendLayout();
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font; // chunches de escalado para otros monitores y yo q se
-			this->ClientSize = System::Drawing::Size(1280, 720);// resu en X / Y
-			this->Name = L"Form1"; // nombre variable, no de nombre de ventana
+			this->Size = System::Drawing::Size(1280, 720);// resu en X / Y
 			this->Text = L"Sistema de Gestion Hospitalaria - Hospital San Rafael"; // este si nombre de ventana
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
-			this->ResumeLayout(false);
 			this->BackColor = System::Drawing::Color::FromArgb(0, 69, 153); // color fondo
+
+
 
 		}
 #pragma endregion
 
-
-
-
-		void ConstruirMenu() {
-			menuPrincipal = gcnew MenuStrip();
-			array<String^>^ acciones = gcnew array<String^>{L"Insercion", L"Eliminacion", L"Modificacion", L"Consultas (Busquedas)" };
-			array<String^>^ entidades = gcnew array<String^>{L"Paises", L"Ciudades", L"Pacientes", L"Medicos", L"Especialidades", L"Citas", L"Habitaciones", L"Hospitalizaciones", L"Diagnosticos", L"Tratamientos" };
-			ToolStripMenuItem^ mMantenimiento = gcnew ToolStripMenuItem(L"Mantenimiento");
-
-			for (int i = 0; i < acciones->Length; i++) {
-				// insertar / modificar / eliminar / buscar
-				ToolStripMenuItem^ mAccion = gcnew ToolStripMenuItem(acciones[i]);
-
-				for (int j = 0; j < entidades->Length; j++) {
-					// paises / ciudades / pacientes / ...
-					ToolStripMenuItem^ mEntidad = gcnew ToolStripMenuItem(entidades[j]);
-					mEntidad->Tag = acciones[i] + L" - " + entidades[j];   // para saber cual se toco
-					mEntidad->Click += gcnew EventHandler(this, &Form1::Opcion_Click);
-					mAccion->DropDownItems->Add(mEntidad);
-				}
-
-				mMantenimiento->DropDownItems->Add(mAccion);
-			}
-
-			menuPrincipal->Items->Add(mMantenimiento);
-
-			this->MainMenuStrip = menuPrincipal;
-			this->Controls->Add(menuPrincipal);
-		}
-
-		System::Void Opcion_Click(System::Object^ sender, System::EventArgs^ e) {
-			// esto es solo temporal, pq luego no me acuerdo q servia y q no :P
-			ToolStripMenuItem^ item = safe_cast<ToolStripMenuItem^>(sender);
-			MessageBox::Show(item->Tag->ToString() + L": aun no implementado.", L"Informacion",
-				MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
-
-		void ConstruirInterfaz() {
-			ConstruirMenu();
-		}
-
-		System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-		}
-	};
+// x cualquier cosa, esto seguro lo quito dsps y lo dejo limpio
+void ConstruirInterfaz() {
+	ConstruirBarraSuperior();
 }
 
+Button^ CrearBotonBarra(String^ texto, int x) {
+	// esto crea un boton, con un texto y posicion x
+	// no se ocupa posicion y, ya que como es solo para los de la barra (lo q era antes menu strip), todos van en la misma cord y
+	Button^ b = gcnew Button();
+	b->Text = texto;
+	b->Size = System::Drawing::Size(140, 32);
+	b->Location = System::Drawing::Point(x, 6);
+	b->FlatStyle = FlatStyle::Flat;
+	b->BackColor = Color::White;
+	return b;
+	}
+
+void ConstruirBarraSuperior() {
+	// panel pegado de arriba q hace de "barra de menu"
+	barraSuperior = gcnew Panel();
+	barraSuperior->Dock = DockStyle::Top; // DockStyle top pega el panel a la parte de arriba, y se estira automaticamente dependiendo del ancho
+	barraSuperior->Height = 44;
+	barraSuperior->BackColor = Color::FromArgb(221, 235, 247);
+
+
+	// aca se hacen dentro de este panel 3 botones, con nombre y cord X, ademas les mete el chunche de eventhandler para q sirvan
+	btnMantenimiento = CrearBotonBarra(L"Mantenimiento", 10);
+	btnMantenimiento->Click += gcnew EventHandler(this, &Form1::Mantenimiento_Click);
+
+	btnReportes = CrearBotonBarra(L"Reportes", 160);
+	btnReportes->Click += gcnew EventHandler(this, &Form1::Reportes_Click);
+
+	btnAcercaDe = CrearBotonBarra(L"Acerca de", 310);
+	btnAcercaDe->Click += gcnew EventHandler(this, &Form1::AcercaDe_Click);
+
+	barraSuperior->Controls->Add(btnMantenimiento);
+	barraSuperior->Controls->Add(btnReportes);
+	barraSuperior->Controls->Add(btnAcercaDe);
+
+	this->Controls->Add(barraSuperior);
+}
+
+
+
+// chunches eventos
+
+System::Void Mantenimiento_Click(System::Object^ sender, System::EventArgs^ e) {
+	FormMantenimiento^ ventana = gcnew FormMantenimiento();
+	ventana->ShowDialog(); // espera q cierre
+}
+
+System::Void Reportes_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show(L"Reportes: no hay aun :P", L"Informacion", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+System::Void AcercaDe_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show(L"Las consecuencias de la inclusion de la salsa lizano a los tamales", L"Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+
+
+
+
+// esto viene de default con el winforms, y se lo toco se jode todo.
+// aka mejor dejarlo ahi tranquilo
+	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
+}
