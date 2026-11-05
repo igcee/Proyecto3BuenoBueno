@@ -18,7 +18,7 @@ namespace CppCLRWinFormsProject {
 	
 
 	// estos chunches deberian de ir en archivos aparte (pq sino se ocuparian como CUARENTA clases para todo, lo hago asi por mientras )
-	
+	// ^ ya los corri
 
 	public ref class Form1 : public System::Windows::Forms::Form
 	{

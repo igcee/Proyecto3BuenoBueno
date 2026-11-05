@@ -439,6 +439,143 @@ namespace CppCLRWinFormsProject {
 	};
 
 
+
+// PACIENTE -------------------------------------------------------------------------------------------------------------
+	public ref class FormInsertarPaciente : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdPac;
+		TextBox^ txtNombre;
+		TextBox^ txtFecha;
+		TextBox^ txtTel;
+		TextBox^ txtCodPais;
+		TextBox^ txtCodCiudad;
+		TextBox^ txtCorreo;
+		ArbolPais* arbolPaises;
+		ArbolCiudad* arbolCiudades;
+		ArbolPacientes* arbolPacientes;
+
+	public:
+		FormInsertarPaciente(ArbolPais* arbolP, ArbolCiudad* arbolC, ArbolPacientes* arbolPac) {
+			arbolPaises = arbolP;
+			arbolCiudades = arbolC;
+			arbolPacientes = arbolPac;
+
+			this->Text = L"Insertar Paciente";
+			this->Size = System::Drawing::Size(340, 500);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// id
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id de Paciente:";
+			lblId->Location = System::Drawing::Point(30, 20);
+			txtIdPac = gcnew TextBox();
+			txtIdPac->Location = System::Drawing::Point(30, 40);
+
+			// nombre
+			Label^ lblNom = gcnew Label();
+			lblNom->Text = L"Nombre:";
+			lblNom->Location = System::Drawing::Point(30, 70);
+			txtNombre = gcnew TextBox();
+			txtNombre->Location = System::Drawing::Point(30, 90);
+
+			// fecha
+			Label^ lblFecha = gcnew Label();
+			lblFecha->Text = L"Fecha de Nac. (ej. 15-05-1990):";
+			lblFecha->Location = System::Drawing::Point(30, 120);
+			txtFecha = gcnew TextBox();
+			txtFecha->Location = System::Drawing::Point(30, 140);
+
+			// telefono
+			Label^ lblTel = gcnew Label();
+			lblTel->Text = L"Telefono:";
+			lblTel->Location = System::Drawing::Point(30, 170);
+			txtTel = gcnew TextBox();
+			txtTel->Location = System::Drawing::Point(30, 190);
+
+			// codpais
+			Label^ lblCodPais = gcnew Label();
+			lblCodPais->Text = L"Codigo de Pais:";
+			lblCodPais->Location = System::Drawing::Point(30, 220);
+			txtCodPais = gcnew TextBox();
+			txtCodPais->Location = System::Drawing::Point(30, 240);
+
+			// codciudad
+			Label^ lblCodCiudad = gcnew Label();
+			lblCodCiudad->Text = L"Codigo de Ciudad:";
+			lblCodCiudad->Location = System::Drawing::Point(30, 270);
+			txtCodCiudad = gcnew TextBox();
+			txtCodCiudad->Location = System::Drawing::Point(30, 290);
+
+			// correo
+			Label^ lblCorreo = gcnew Label();
+			lblCorreo->Text = L"Correo Electronico:";
+			lblCorreo->Location = System::Drawing::Point(30, 320);
+			txtCorreo = gcnew TextBox();
+			txtCorreo->Location = System::Drawing::Point(30, 340);
+
+			// salir
+			Button^ btnGuardar = gcnew Button();
+			btnGuardar->Text = L"Guardar insercion";
+			btnGuardar->Location = System::Drawing::Point(100, 390);
+			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarPaciente::Guardar_Click);
+
+			this->Controls->Add(lblId); 
+			this->Controls->Add(txtIdPac);
+			this->Controls->Add(lblNom); 
+			this->Controls->Add(txtNombre);
+			this->Controls->Add(lblFecha); 
+			this->Controls->Add(txtFecha);
+			this->Controls->Add(lblTel); 
+			this->Controls->Add(txtTel);
+			this->Controls->Add(lblCodPais); 
+			this->Controls->Add(txtCodPais);
+			this->Controls->Add(lblCodCiudad); 
+			this->Controls->Add(txtCodCiudad);
+			this->Controls->Add(lblCorreo); 
+			this->Controls->Add(txtCorreo);
+			this->Controls->Add(btnGuardar);
+		}
+
+	private:
+		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
+			// vacios
+			if (txtIdPac->Text == "" or txtNombre->Text == "" or txtFecha->Text == "" or txtTel->Text == "" or txtCodPais->Text == "" or txtCodCiudad->Text == "" or txtCorreo->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idpacstr = msclr::interop::marshal_as<string>(txtIdPac->Text);
+			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
+			string fechastr = msclr::interop::marshal_as<string>(txtFecha->Text);
+			string telefonostr = msclr::interop::marshal_as<string>(txtTel->Text);
+			string codPaisstr = msclr::interop::marshal_as<string>(txtCodPais->Text);
+			string codCiudadstr = msclr::interop::marshal_as<string>(txtCodCiudad->Text);
+			string correostr = msclr::interop::marshal_as<string>(txtCorreo->Text);
+
+			int idpacint = stoi(idpacstr);
+			int codPaisint = stoi(codPaisstr);
+			int codCiudadint = stoi(codCiudadstr);
+
+
+			if (arbolCiudades->Buscarvalor(codPaisint, codCiudadint) == nullptr) {
+				MessageBox::Show(L"Error: Esa ciudad no existe en el pais del codigo indicado.", L"Ciudad no encontrada", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			bool guardado = arbolPacientes->InsertaNodo(idpacint, nombrestr, fechastr, telefonostr, codPaisint, codCiudadint, correostr);
+
+			if (guardado == true) {
+				MessageBox::Show(L"Paciente guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else { // repe
+				MessageBox::Show(L"Error: Ya existe un paciente con ese ID.", L"ID Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
+
 // ventana con los botones ----------------------------------------------------------------------------------------
 
 	public ref class FormInsertar : public System::Windows::Forms::Form
@@ -526,6 +663,7 @@ namespace CppCLRWinFormsProject {
 			btnEspecialidades->Click += gcnew System::EventHandler(this, &FormInsertar::Especialidades_Click);
 			btnTratamientos->Click += gcnew System::EventHandler(this, &FormInsertar::Tratamientos_Click);
 			btnDiagnosticos->Click += gcnew System::EventHandler(this, &FormInsertar::Diagnosticos_Click);
+			btnPacientes->Click += gcnew System::EventHandler(this, &FormInsertar::Pacientes_Click);
 
 			this->Controls->Add(btnPaises);
 			this->Controls->Add(btnCiudades);
@@ -563,6 +701,11 @@ namespace CppCLRWinFormsProject {
 		System::Void Diagnosticos_Click(System::Object^ sender, System::EventArgs^ e) {
 			FormInsertarDiagnostico^ ventanaDiagnostico = gcnew FormInsertarDiagnostico(arbolilloDiag);
 			ventanaDiagnostico->ShowDialog();
+		}
+
+		System::Void Pacientes_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormInsertarPaciente^ ventanaPaciente = gcnew FormInsertarPaciente(arbolilloPaises, arbolilloCiudades, arbolilloPac);
+			ventanaPaciente->ShowDialog();
 		}
 	};
 }
