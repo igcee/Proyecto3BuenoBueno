@@ -244,7 +244,11 @@ namespace CppCLRWinFormsProject {
 		Button^ btnMantenimiento;
 		Button^ btnReportes;
 		Button^ btnAcercaDe;
-
+		//chunches de hora
+		Label^ lblHora;
+		System::Windows::Forms::Timer^ reloj;
+		Label^ lblFecha;
+			
 		// arboles 
 		ArbolPais* arbolPaises;
 
@@ -271,6 +275,7 @@ namespace CppCLRWinFormsProject {
 // x cualquier cosa, esto seguro lo quito dsps y lo dejo limpio
 void ConstruirInterfaz() {
 	ConstruirBarraSuperior();
+	ConstruirReloj();
 }
 
 Button^ CrearBotonBarra(String^ texto, int x) {
@@ -310,7 +315,43 @@ void ConstruirBarraSuperior() {
 	this->Controls->Add(barraSuperior);
 }
 
+void ConstruirReloj() {
+	// esto es para hacer el relog
+	lblHora = gcnew Label();
+	lblHora->Dock = DockStyle::Right;
+	lblHora->Width = 160;
+	lblHora->TextAlign = ContentAlignment::MiddleCenter;
+	lblHora->Font = gcnew System::Drawing::Font(L"Segoe UI", 11.0f, FontStyle::Bold);
+	lblHora->ForeColor = Color::FromArgb(0, 40, 100);
+	barraSuperior->Controls->Add(lblHora);
 
+	// y este de hora
+	lblFecha = gcnew Label();
+	lblFecha->Dock = DockStyle::Right;
+	lblFecha->Width = 120;
+	lblFecha->TextAlign = ContentAlignment::MiddleCenter;
+	lblFecha->Font = gcnew System::Drawing::Font(L"Segoe UI", 11.0f, FontStyle::Bold);
+	lblFecha->ForeColor = Color::FromArgb(0, 40, 100);
+	barraSuperior->Controls->Add(lblFecha);
+	lblFecha->BringToFront(); // esto hace q fecha quede a izq de hora
+
+	// actualiza cada 1000 ms
+	reloj = gcnew System::Windows::Forms::Timer();
+	reloj->Interval = 1000;
+	reloj->Tick += gcnew EventHandler(this, &Form1::Reloj_Tick);
+
+	ActualizarHora();
+	reloj->Start();
+}
+
+void ActualizarHora() {
+	lblHora->Text = DateTime::Now.ToString(L"hh:mm:ss tt");
+	lblFecha->Text = DateTime::Now.ToString(L"dd'/'MM'/'yyyy");
+}
+
+System::Void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
+	ActualizarHora();
+}
 
 // chunches eventos
 
