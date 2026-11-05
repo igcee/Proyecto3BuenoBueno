@@ -575,6 +575,540 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 
+// MEDICO -------------------------------------------------------------------------------------------------------------
+	public ref class FormInsertarMedico : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdMed;
+		TextBox^ txtNombre;
+		TextBox^ txtTel;
+		TextBox^ txtCorreo;
+		TextBox^ txtIdEsp;
+		ArbolEspecialidad* arbolEspecialidades;
+		ArbolMedicos* arbolMedicos;
+
+	public:
+		FormInsertarMedico(ArbolEspecialidad* arbolEsp, ArbolMedicos* arbolMed) {
+			arbolEspecialidades = arbolEsp;
+			arbolMedicos = arbolMed;
+
+			this->Text = L"Insertar Medico";
+			this->Size = System::Drawing::Size(340, 400);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// id
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id de Medico:";
+			lblId->Location = System::Drawing::Point(30, 20);
+			txtIdMed = gcnew TextBox();
+			txtIdMed->Location = System::Drawing::Point(30, 40);
+
+			// nombre
+			Label^ lblNom = gcnew Label();
+			lblNom->Text = L"Nombre :";
+			lblNom->Location = System::Drawing::Point(30, 70);
+			txtNombre = gcnew TextBox();
+			txtNombre->Location = System::Drawing::Point(30, 90);
+
+			// telefono
+			Label^ lblTel = gcnew Label();
+			lblTel->Text = L"Telefono:";
+			lblTel->Location = System::Drawing::Point(30, 120);
+			txtTel = gcnew TextBox();
+			txtTel->Location = System::Drawing::Point(30, 140);
+
+			// correo
+			Label^ lblCorreo = gcnew Label();
+			lblCorreo->Text = L"Correo Electronico:";
+			lblCorreo->Location = System::Drawing::Point(30, 170);
+			txtCorreo = gcnew TextBox();
+			txtCorreo->Location = System::Drawing::Point(30, 190);
+
+			// idespecialidad
+			Label^ lblIdEsp = gcnew Label();
+			lblIdEsp->Text = L"Id de Especialidad:";
+			lblIdEsp->Location = System::Drawing::Point(30, 220);
+			txtIdEsp = gcnew TextBox();
+			txtIdEsp->Location = System::Drawing::Point(30, 240);
+
+			// salir
+			Button^ btnGuardar = gcnew Button();
+			btnGuardar->Text = L"Guardar insercion";
+			btnGuardar->Location = System::Drawing::Point(100, 290);
+			btnGuardar->Size = System::Drawing::Size(120, 30);
+			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarMedico::Guardar_Click);
+
+			this->Controls->Add(lblId); 
+			this->Controls->Add(txtIdMed);
+			this->Controls->Add(lblNom); 
+			this->Controls->Add(txtNombre);
+			this->Controls->Add(lblTel); 
+			this->Controls->Add(txtTel);
+			this->Controls->Add(lblCorreo); 
+			this->Controls->Add(txtCorreo);
+			this->Controls->Add(lblIdEsp); 
+			this->Controls->Add(txtIdEsp);
+			this->Controls->Add(btnGuardar);
+		}
+
+	private:
+		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
+			// vacios
+			if (txtIdMed->Text == "" or txtNombre->Text == "" or txtTel->Text == "" or txtCorreo->Text == "" or txtIdEsp->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idmedicostr = msclr::interop::marshal_as<string>(txtIdMed->Text);
+			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
+			string telefonostr = msclr::interop::marshal_as<string>(txtTel->Text);
+			string correostr = msclr::interop::marshal_as<string>(txtCorreo->Text);
+			string idespstr = msclr::interop::marshal_as<string>(txtIdEsp->Text);
+
+			int idmedicoint = stoi(idmedicostr);
+			int idespint = stoi(idespstr);
+
+			// idesp hay
+			if (arbolEspecialidades->Buscarvalor(idespint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de especialidad no existe.", L"Especialidad no encontrada", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			bool guardado = arbolMedicos->InsertaNodo(idmedicoint, nombrestr, telefonostr, correostr, idespint);
+
+			if (guardado == true) {
+				MessageBox::Show(L"Medico guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else { // repe
+				MessageBox::Show(L"Error: Ya existe un medico con ese ID.", L"ID Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
+// HABITACION -------------------------------------------------------------------------------------------------------------
+	public ref class FormInsertarHabitacion : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdHab;
+		TextBox^ txtNumero;
+		TextBox^ txtPiso;
+		TextBox^ txtTipo; // recordatorio q tipo es 1/2/3
+		TextBox^ txtEstado; // y estado 0/1
+		ArbolHabitaciones* arbolHabitaciones;
+
+	public:
+		FormInsertarHabitacion(ArbolHabitaciones* arbol) {
+			arbolHabitaciones = arbol;
+
+			this->Text = L"Insertar Habitacion";
+			this->Size = System::Drawing::Size(340, 400);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// id
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id de Habitacion:";
+			lblId->Location = System::Drawing::Point(30, 20);
+			txtIdHab = gcnew TextBox();
+			txtIdHab->Location = System::Drawing::Point(30, 40);
+
+			// numero
+			Label^ lblNum = gcnew Label();
+			lblNum->Text = L"Numero:";
+			lblNum->Location = System::Drawing::Point(30, 70);
+			txtNumero = gcnew TextBox();
+			txtNumero->Location = System::Drawing::Point(30, 90);
+
+			// piso
+			Label^ lblPiso = gcnew Label();
+			lblPiso->Text = L"Piso:";
+			lblPiso->Location = System::Drawing::Point(30, 120);
+			txtPiso = gcnew TextBox();
+			txtPiso->Location = System::Drawing::Point(30, 140);
+
+			// tipo
+			Label^ lblTipo = gcnew Label();
+			lblTipo->Text = L"Tipo (1 Indiv, 2 Comp, 3 UCI):";
+			lblTipo->Location = System::Drawing::Point(30, 170);
+			txtTipo = gcnew TextBox();
+			txtTipo->Location = System::Drawing::Point(30, 190);
+
+			// estado
+			Label^ lblEstado = gcnew Label();
+			lblEstado->Text = L"Estado (0 Disp, 1 Ocupada):";
+			lblEstado->Location = System::Drawing::Point(30, 220);
+			txtEstado = gcnew TextBox();
+			txtEstado->Location = System::Drawing::Point(30, 240);
+
+			// salir
+			Button^ btnGuardar = gcnew Button();
+			btnGuardar->Text = L"Guardar insercion";
+			btnGuardar->Location = System::Drawing::Point(100, 290);
+			btnGuardar->Size = System::Drawing::Size(120, 30);
+			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarHabitacion::Guardar_Click);
+
+			this->Controls->Add(lblId); 
+			this->Controls->Add(txtIdHab);
+			this->Controls->Add(lblNum); 
+			this->Controls->Add(txtNumero);
+			this->Controls->Add(lblPiso); 
+			this->Controls->Add(txtPiso);
+			this->Controls->Add(lblTipo); 
+			this->Controls->Add(txtTipo);
+			this->Controls->Add(lblEstado); 
+			this->Controls->Add(txtEstado);
+			this->Controls->Add(btnGuardar);
+		}
+
+	private:
+		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
+			// vacios
+			if (txtIdHab->Text == "" or txtNumero->Text == "" or txtPiso->Text == "" or txtTipo->Text == "" or txtEstado->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idhabstr = msclr::interop::marshal_as<string>(txtIdHab->Text);
+			string numstr = msclr::interop::marshal_as<string>(txtNumero->Text);
+			string pisostr = msclr::interop::marshal_as<string>(txtPiso->Text);
+			string tipostr = msclr::interop::marshal_as<string>(txtTipo->Text);
+			string estadostr = msclr::interop::marshal_as<string>(txtEstado->Text);
+
+			int idhabint = stoi(idhabstr);
+			int numint = stoi(numstr);
+			//int pisoint = stoi(pisostr);
+			int tipoint = stoi(tipostr);
+			int estadoint = stoi(estadostr);
+
+			bool guardado = arbolHabitaciones->InsertaNodo(idhabint, numint, pisostr, tipoint, estadoint);
+
+			if (guardado == true) {
+				MessageBox::Show(L"Habitacion guardada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else { // repe
+				MessageBox::Show(L"Error: Ya existe una habitacion con ese ID.", L"ID Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
+
+
+// HOSPITALIZACIONES -------------------------------------------------------------------------------------------------------------
+	public ref class FormInsertarHospitalizacion : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdHosp;
+		TextBox^ txtIdPac;
+		TextBox^ txtIdHab;
+		TextBox^ txtIdMed;
+		TextBox^ txtFechaIn;
+		TextBox^ txtFechaOut;
+		TextBox^ txtMotivo;
+		ArbolPacientes* arbolPac;
+		ArbolHabitaciones* arbolHab;
+		ArbolMedicos* arbolMed;
+		ArbolHospitalizaciones* arbolHosp;
+
+	public:
+		FormInsertarHospitalizacion(ArbolPacientes* aPac, ArbolHabitaciones* aHab, ArbolMedicos* aMed, ArbolHospitalizaciones* aHosp) {
+			arbolPac = aPac;
+			arbolHab = aHab;
+			arbolMed = aMed;
+			arbolHosp = aHosp;
+
+			this->Text = L"Insertar Hospitalizacion";
+			this->Size = System::Drawing::Size(340, 500);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// id hospitalizacion
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id de Hosp:"; // me fije q cuando el texto es muy grande, las palabras se cortan ("Id de Hospitalizacion:" se mostraba como "Id de"). Se deberia de resolver haciendo mas largo el label pero eso lo hago luego, pq habria que cambiar varias cosillas a todos los tamanos de lo de insertar y ahorita me da pereza
+			lblId->Location = System::Drawing::Point(30, 20);
+			txtIdHosp = gcnew TextBox();
+			txtIdHosp->Location = System::Drawing::Point(30, 40);
+
+			// id paciente
+			Label^ lblIdPac = gcnew Label();
+			lblIdPac->Text = L"Id del Paciente:";
+			lblIdPac->Location = System::Drawing::Point(30, 70);
+			txtIdPac = gcnew TextBox();
+			txtIdPac->Location = System::Drawing::Point(30, 90);
+
+			// id habitacion
+			Label^ lblIdHab = gcnew Label();
+			lblIdHab->Text = L"Id de la Habitacion:";
+			lblIdHab->Location = System::Drawing::Point(30, 120);
+			txtIdHab = gcnew TextBox();
+			txtIdHab->Location = System::Drawing::Point(30, 140);
+
+			// id medico
+			Label^ lblIdMed = gcnew Label();
+			lblIdMed->Text = L"Id del Medico:";
+			lblIdMed->Location = System::Drawing::Point(30, 170);
+			txtIdMed = gcnew TextBox();
+			txtIdMed->Location = System::Drawing::Point(30, 190);
+
+			// ingreso
+			Label^ lblFechaIn = gcnew Label();
+			lblFechaIn->Text = L"Fecha Ingreso (dd/mm/aa):";
+			lblFechaIn->Location = System::Drawing::Point(30, 220);
+			txtFechaIn = gcnew TextBox();
+			txtFechaIn->Location = System::Drawing::Point(30, 240);
+
+			// salida
+			Label^ lblFechaOut = gcnew Label();
+			lblFechaOut->Text = L"Fecha Salida (dd/mm/aa):";
+			lblFechaOut->Location = System::Drawing::Point(30, 270);
+			txtFechaOut = gcnew TextBox();
+			txtFechaOut->Location = System::Drawing::Point(30, 290);
+
+			// motivo
+			Label^ lblMotivo = gcnew Label();
+			lblMotivo->Text = L"Motivo:";
+			lblMotivo->Location = System::Drawing::Point(30, 320);
+			txtMotivo = gcnew TextBox();
+			txtMotivo->Location = System::Drawing::Point(30, 340);
+
+			// salir
+			Button^ btnGuardar = gcnew Button();
+			btnGuardar->Text = L"Guardar insercion";
+			btnGuardar->Location = System::Drawing::Point(100, 390);
+			btnGuardar->Size = System::Drawing::Size(120, 30);
+			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarHospitalizacion::Guardar_Click);
+
+			this->Controls->Add(lblId); 
+			this->Controls->Add(txtIdHosp);
+			this->Controls->Add(lblIdPac); 
+			this->Controls->Add(txtIdPac);
+			this->Controls->Add(lblIdHab); 
+			this->Controls->Add(txtIdHab);
+			this->Controls->Add(lblIdMed); 
+			this->Controls->Add(txtIdMed);
+			this->Controls->Add(lblFechaIn); 
+			this->Controls->Add(txtFechaIn);
+			this->Controls->Add(lblFechaOut); 
+			this->Controls->Add(txtFechaOut);
+			this->Controls->Add(lblMotivo); 
+			this->Controls->Add(txtMotivo);
+			this->Controls->Add(btnGuardar);
+		}
+
+	private:
+		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
+			// vacios
+			if (txtIdHosp->Text == "" or txtIdPac->Text == "" or txtIdHab->Text == "" or txtIdMed->Text == "" or txtFechaIn->Text == "" or txtFechaOut->Text == "" or txtMotivo->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idhospstr = msclr::interop::marshal_as<string>(txtIdHosp->Text);
+			string idpacstr = msclr::interop::marshal_as<string>(txtIdPac->Text);
+			string idhabstr = msclr::interop::marshal_as<string>(txtIdHab->Text);
+			string idmedstr = msclr::interop::marshal_as<string>(txtIdMed->Text);
+			string fechainstr = msclr::interop::marshal_as<string>(txtFechaIn->Text);
+			string fechaoutstr = msclr::interop::marshal_as<string>(txtFechaOut->Text);
+			string motivostr = msclr::interop::marshal_as<string>(txtMotivo->Text);
+
+			int idhospint = stoi(idhospstr);
+			int idpacint = stoi(idpacstr);
+			int idhabint = stoi(idhabstr);
+			int idmedint = stoi(idmedstr);
+
+			// validar paciente
+			if (arbolPac->Buscarvalor(idpacint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de paciente no existe.", L"Paciente no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			// validar habitacion
+			if (arbolHab->Buscarvalor(idhabint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de habitacion no existe.", L"Habitacion no encontrada", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			// validar medico
+			if (arbolMed->Buscarvalor(idmedint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de medico no existe.", L"Medico no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			bool guardado = arbolHosp->InsertaNodo(idhospint, idpacint, idhabint, idmedint, fechainstr, fechaoutstr, motivostr);
+
+			if (guardado == true) {
+				MessageBox::Show(L"Hospitalizacion guardada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else { // repe
+				MessageBox::Show(L"Error: Ya existe una hospitalizacion con ese ID.", L"ID Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
+
+// CITA -------------------------------------------------------------------------------------------------------------
+	public ref class FormInsertarCita : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdCita;
+		TextBox^ txtIdPac;
+		TextBox^ txtIdMed;
+		TextBox^ txtIdEsp;
+		TextBox^ txtFecha;
+		TextBox^ txtHora;
+		TextBox^ txtMotivo;
+		TextBox^ txtEstado; // recordatorio estado aca tambien es 0/1
+		ArbolPacientes* arbolPac;
+		ArbolMedicos* arbolMed;
+		ArbolEspecialidad* arbolEsp;
+		ArbolCitas* arbolCitas;
+
+	public:
+		FormInsertarCita(ArbolPacientes* aPac, ArbolMedicos* aMed, ArbolEspecialidad* aEsp, ArbolCitas* aCita) {
+			arbolPac = aPac;
+			arbolMed = aMed;
+			arbolEsp = aEsp;
+			arbolCitas = aCita;
+
+			this->Text = L"Insertar Cita";
+			this->Size = System::Drawing::Size(340, 550);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// id cita
+			Label^ lblIdCita = gcnew Label();
+			lblIdCita->Text = L"Id de Cita:";
+			lblIdCita->Location = System::Drawing::Point(30, 20);
+			txtIdCita = gcnew TextBox();
+			txtIdCita->Location = System::Drawing::Point(30, 40);
+
+			// id paciente
+			Label^ lblIdPac = gcnew Label();
+			lblIdPac->Text = L"Id de Paciente:";
+			lblIdPac->Location = System::Drawing::Point(30, 70);
+			txtIdPac = gcnew TextBox();
+			txtIdPac->Location = System::Drawing::Point(30, 90);
+
+			// id medico
+			Label^ lblIdMed = gcnew Label();
+			lblIdMed->Text = L"Id de Medico:";
+			lblIdMed->Location = System::Drawing::Point(30, 120);
+			txtIdMed = gcnew TextBox();
+			txtIdMed->Location = System::Drawing::Point(30, 140);
+
+			// id especialidad
+			Label^ lblIdEsp = gcnew Label();
+			lblIdEsp->Text = L"Id de Especialidad:";
+			lblIdEsp->Location = System::Drawing::Point(30, 170);
+			txtIdEsp = gcnew TextBox();
+			txtIdEsp->Location = System::Drawing::Point(30, 190);
+
+			// fecha
+			Label^ lblFecha = gcnew Label();
+			lblFecha->Text = L"Fecha (dd/mm/aa):";
+			lblFecha->Location = System::Drawing::Point(30, 220);
+			txtFecha = gcnew TextBox();
+			txtFecha->Location = System::Drawing::Point(30, 240);
+
+			// hora
+			Label^ lblHora = gcnew Label();
+			lblHora->Text = L"Hora (ej. 09:30):";
+			lblHora->Location = System::Drawing::Point(30, 270);
+			txtHora = gcnew TextBox();
+			txtHora->Location = System::Drawing::Point(30, 290);
+
+			// motivo
+			Label^ lblMotivo = gcnew Label();
+			lblMotivo->Text = L"Motivo:";
+			lblMotivo->Location = System::Drawing::Point(30, 320);
+			txtMotivo = gcnew TextBox();
+			txtMotivo->Location = System::Drawing::Point(30, 340);
+
+			// estado
+			Label^ lblEstado = gcnew Label();
+			lblEstado->Text = L"Estado (0 Pendiente, 1 Confirmada):";
+			lblEstado->Location = System::Drawing::Point(30, 370);
+			txtEstado = gcnew TextBox();
+			txtEstado->Location = System::Drawing::Point(30, 390);
+
+			// salir
+			Button^ btnGuardar = gcnew Button();
+			btnGuardar->Text = L"Guardar insercion";
+			btnGuardar->Location = System::Drawing::Point(100, 440);
+			btnGuardar->Size = System::Drawing::Size(120, 30);
+			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarCita::Guardar_Click);
+
+			this->Controls->Add(lblIdCita); 
+			this->Controls->Add(txtIdCita);
+			this->Controls->Add(lblIdPac); 
+			this->Controls->Add(txtIdPac);
+			this->Controls->Add(lblIdMed); 
+			this->Controls->Add(txtIdMed);
+			this->Controls->Add(lblIdEsp); 
+			this->Controls->Add(txtIdEsp);
+			this->Controls->Add(lblFecha); 
+			this->Controls->Add(txtFecha);
+			this->Controls->Add(lblHora); 
+			this->Controls->Add(txtHora);
+			this->Controls->Add(lblMotivo); 
+			this->Controls->Add(txtMotivo);
+			this->Controls->Add(lblEstado); 
+			this->Controls->Add(txtEstado);
+			this->Controls->Add(btnGuardar);
+		}
+
+	private:
+		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
+			// vacios
+			if (txtIdCita->Text == "" or txtIdPac->Text == "" or txtIdMed->Text == "" or txtIdEsp->Text == "" or txtFecha->Text == "" or txtHora->Text == "" or txtMotivo->Text == "" or txtEstado->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idcitastr = msclr::interop::marshal_as<string>(txtIdCita->Text);
+			string idpacstr = msclr::interop::marshal_as<string>(txtIdPac->Text);
+			string idmedstr = msclr::interop::marshal_as<string>(txtIdMed->Text);
+			string idespstr = msclr::interop::marshal_as<string>(txtIdEsp->Text);
+			string fechastr = msclr::interop::marshal_as<string>(txtFecha->Text);
+			string horastr = msclr::interop::marshal_as<string>(txtHora->Text);
+			string motivostr = msclr::interop::marshal_as<string>(txtMotivo->Text);
+			string estadostr = msclr::interop::marshal_as<string>(txtEstado->Text);
+
+			int idcitaint = stoi(idcitastr);
+			int idpacint = stoi(idpacstr);
+			int idmedint = stoi(idmedstr);
+			int idespint = stoi(idespstr);
+			int estadoint = stoi(estadostr);
+
+			// validar paciente
+			if (arbolPac->Buscarvalor(idpacint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de paciente no existe.", L"Paciente no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			// validar medico
+			if (arbolMed->Buscarvalor(idmedint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de medico no existe.", L"Medico no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			// validar especialidad
+			if (arbolEsp->Buscarvalor(idespint) == nullptr) {
+				MessageBox::Show(L"Error: Ese ID de especialidad no existe.", L"Especialidad no encontrada", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			bool guardado = arbolCitas->InsertaNodo(idcitaint, idpacint, idmedint, idespint, fechastr, horastr, motivostr, estadoint);
+
+			if (guardado == true) {
+				MessageBox::Show(L"Cita guardada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else { // repe
+				MessageBox::Show(L"Error: Ya existe una cita con ese ID.", L"ID Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
 
 // ventana con los botones ----------------------------------------------------------------------------------------
 
@@ -664,6 +1198,10 @@ namespace CppCLRWinFormsProject {
 			btnTratamientos->Click += gcnew System::EventHandler(this, &FormInsertar::Tratamientos_Click);
 			btnDiagnosticos->Click += gcnew System::EventHandler(this, &FormInsertar::Diagnosticos_Click);
 			btnPacientes->Click += gcnew System::EventHandler(this, &FormInsertar::Pacientes_Click);
+			btnMedicos->Click += gcnew System::EventHandler(this, &FormInsertar::Medicos_Click);
+			btnHabitaciones->Click += gcnew System::EventHandler(this, &FormInsertar::Habitaciones_Click);
+			btnHospitalizaciones->Click += gcnew System::EventHandler(this, &FormInsertar::Hospitalizaciones_Click);
+			btnCitas->Click += gcnew System::EventHandler(this, &FormInsertar::Citas_Click);
 
 			this->Controls->Add(btnPaises);
 			this->Controls->Add(btnCiudades);
@@ -706,6 +1244,26 @@ namespace CppCLRWinFormsProject {
 		System::Void Pacientes_Click(System::Object^ sender, System::EventArgs^ e) {
 			FormInsertarPaciente^ ventanaPaciente = gcnew FormInsertarPaciente(arbolilloPaises, arbolilloCiudades, arbolilloPac);
 			ventanaPaciente->ShowDialog();
+		}
+
+		System::Void Medicos_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormInsertarMedico^ ventanaMedico = gcnew FormInsertarMedico(arbolilloEsp, arbolilloMed);
+			ventanaMedico->ShowDialog();
+		}
+
+		System::Void Habitaciones_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormInsertarHabitacion^ ventanaHabitacion = gcnew FormInsertarHabitacion(arbolilloHab);
+			ventanaHabitacion->ShowDialog();
+		}
+
+		System::Void Hospitalizaciones_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormInsertarHospitalizacion^ ventanaHosp = gcnew FormInsertarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloMed, arbolilloHosp);
+			ventanaHosp->ShowDialog();
+		}
+
+		System::Void Citas_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormInsertarCita^ ventanaCita = gcnew FormInsertarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCitas);
+			ventanaCita->ShowDialog();
 		}
 	};
 }
