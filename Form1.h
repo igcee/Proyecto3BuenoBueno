@@ -36,6 +36,19 @@ namespace CppCLRWinFormsProject {
 			arbolilloDiag = new ArbolDiagnostico();
 			arbolilloPac = new ArbolPacientes();
 			arbolilloMed = new ArbolMedicos();
+
+			// archivos
+			arbolilloPais->leerArchivo("Proyecto3/Paises.csv");
+			arbolilloCiudad->leerArchivo("Proyecto3/Ciudades.csv", *arbolilloPais);
+			arbolilloPac->leerArchivo("Proyecto3/Pacientes.csv", *arbolilloCiudad);
+			arbolilloEsp->leerArchivo("Proyecto3/Especialidades.csv");
+			arbolilloMed->leerArchivo("Proyecto3/Medicos.csv", *arbolilloEsp);
+			arbolilloHab->leerArchivo("Proyecto3/Habitaciones.csv");
+			arbolilloCita->leerArchivo("Proyecto3/Citas.csv", *arbolilloPac, *arbolilloMed);
+			arbolilloHosp->leerArchivo("Proyecto3/Hospitalizaciones.csv", *arbolilloPac, *arbolilloHab, *arbolilloMed);
+			arbolilloDiag->leerArchivo("Proyecto3/Diagnostico.csv");
+			arbolilloTrata->leerArchivo("Proyecto3/Tratamiento.csv");
+
 			ConstruirInterfaz(); // temp? veo dsps
 			//
 			//TODO: Add the constructor code here
