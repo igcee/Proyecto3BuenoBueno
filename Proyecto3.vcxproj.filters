@@ -62,6 +62,12 @@
     <ClInclude Include="Proyecto3\crud_habitaciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="mantenimiento.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="insertar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">

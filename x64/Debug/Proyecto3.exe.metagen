@@ -17,14 +17,30 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 Class CppCLRWinFormsProject.FormInsertarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormInsertarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolPais*, ArbolCiudad*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormInsertarEspecialidad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolEspecialidad*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormInsertarTratamiento: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolTratamiento*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormInsertarDiagnostico: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolDiagnostico*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormInsertar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolPais*, ArbolCiudad*, ArbolEspecialidad*, ArbolCitas*, ArbolHabitaciones*, ArbolHospitalizaciones*, ArbolMedicos*, ArbolPacientes*, ArbolTratamiento*, ArbolDiagnostico*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     Paises_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    Ciudades_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    Especialidades_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    Tratamientos_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    Diagnosticos_Click(Object, EventArgs): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.FormMantenimiento: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolPais*, ArbolCiudad*, ArbolHabitaciones*, ArbolHospitalizaciones*, ArbolPacientes*, ArbolMedicos*, ArbolTratamiento*, ArbolDiagnostico*, ArbolEspecialidad*, ArbolCitas*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     Insertar_Click(Object, EventArgs): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

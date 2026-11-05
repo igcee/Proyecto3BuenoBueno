@@ -1,7 +1,9 @@
+#define _HAS_STD_BYTE 0
+// ^ esto es para el error de C2872
 #pragma once
 #include <string>
-#include <msclr/marshal_cppstd.h> // esto se ocupa para convertir texto de lo q sea q lo deja el winforms a string normalito
-#include "Proyecto3/crud_paises.h" // con solo include crud_paises.h no lo encuentra (por alguna puta razon)
+#include "Proyecto3/crud_paises.h" 
+#include "mantenimiento.h"
 
 namespace CppCLRWinFormsProject {
 	using namespace System;
@@ -16,209 +18,24 @@ namespace CppCLRWinFormsProject {
 	
 
 	// estos chunches deberian de ir en archivos aparte (pq sino se ocuparian como CUARENTA clases para todo, lo hago asi por mientras )
-	public ref class FormInsertarPais : public System::Windows::Forms::Form {
-	private:
-		TextBox^ txtCodPais;
-		TextBox^ txtNombre; // guardar input de la ventana
-		ArbolPais* arbolPaises;
+	
 
-	public:
-		FormInsertarPais(ArbolPais* arbol) {
-			arbolPaises = arbol;
-
-			this->Text = L"Insertar País";
-			this->Size = System::Drawing::Size(300, 250);
-			this->StartPosition = FormStartPosition::CenterParent;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-
-			// cosas y cajita para input de codpais
-			Label^ lblCod = gcnew Label(); 
-			lblCod->Text = L"Código: "; 
-			lblCod->Location = System::Drawing::Point(30, 30); 
-			txtCodPais = gcnew TextBox(); 
-			txtCodPais->Location = System::Drawing::Point(30, 50);
-
-			// mismo para nombre
-			Label^ lblNom = gcnew Label(); 
-			lblNom->Text = L"Nombre del País:"; 
-			lblNom->Location = System::Drawing::Point(30, 90); 
-			txtNombre = gcnew TextBox(); 
-			txtNombre->Location = System::Drawing::Point(30, 110); txtNombre->Width = 200;
-
-			// salri
-			Button^ btnGuardar = gcnew Button(); 
-			btnGuardar->Text = L"Guardar insercion"; 
-			btnGuardar->Location = System::Drawing::Point(90, 160);
-			btnGuardar->Click += gcnew System::EventHandler(this, &FormInsertarPais::Guardar_Click); // chunche evento
-
-			this->Controls->Add(lblCod); 
-			this->Controls->Add(txtCodPais);
-			this->Controls->Add(lblNom); 
-			this->Controls->Add(txtNombre);
-			this->Controls->Add(btnGuardar);
-		}
-
-	private:
-		System::Void Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
-			// manda error x si vacios
-			if (txtCodPais->Text == "" or txtNombre->Text == "") {
-				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				return;
-			}
-
-			// convierte lo de input de ventana a str
-			string codPaisstr = msclr::interop::marshal_as<string>(txtCodPais->Text);
-			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
-			int codPaisint = stoi(codPaisstr);
-			//arbolPaises->InsertarPais(codPaisint, nombrestr);
-			bool guardado = arbolPaises->InsertaNodo(codPaisint, nombrestr);
-			
-
-			if (guardado == true) {
-				// exito y cierra ventana si bien guardado
-				MessageBox::Show(L"País guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				this->Close();
-			}
-			else {
-				// sino no, y no cierra ventana para q se pueda corregir x usuario
-				MessageBox::Show(L"Error: Ya existe un pais registrado con ese codigo.", L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}
-		}
-	};
-	public ref class FormInsertar : public System::Windows::Forms::Form
-	{
-	private:
-		ArbolPais* arbol;
-	public:
-		FormInsertar(ArbolPais* arbolRecibido) {
-			arbol = arbolRecibido;
-			this->Text = L"Insertar Registro";
-			this->Size = System::Drawing::Size(400, 400);
-			this->StartPosition = FormStartPosition::CenterParent;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			this->MaximizeBox = false;
-
-
-			// lo meti en dos columnas diferentes por ahora, pq por alguna razon me estaba dando problemillas al tenerlo todo en una sola listilla vertical (se me estaba saliendo de la ventana de la compu y no me dejaba moverla para arriba, creo que es cosa de mi laptop, no del codigo, pq me ha estado dando problemas para chunches de otros cursos, asi q por ahora lo dejo asi)
-			Button^ btnPaises = gcnew Button(); 
-			btnPaises->Text = L"1. Países"; 
-			btnPaises->Location = System::Drawing::Point(30, 30); 
-			btnPaises->Size = System::Drawing::Size(150, 40);
-			Button^ btnCiudades = gcnew Button(); 
-			btnCiudades->Text = L"2. Ciudades"; 
-			btnCiudades->Location = System::Drawing::Point(30, 90); 
-			btnCiudades->Size = System::Drawing::Size(150, 40);
-			Button^ btnPacientes = gcnew Button(); 
-			btnPacientes->Text = L"3. Pacientes"; 
-			btnPacientes->Location = System::Drawing::Point(30, 150); 
-			btnPacientes->Size = System::Drawing::Size(150, 40);
-			Button^ btnMedicos = gcnew Button(); 
-			btnMedicos->Text = L"4. Médicos"; 
-			btnMedicos->Location = System::Drawing::Point(30, 210); 
-			btnMedicos->Size = System::Drawing::Size(150, 40);
-			Button^ btnEspecialidades = gcnew Button(); 
-			btnEspecialidades->Text = L"5. Especialidades"; 
-			btnEspecialidades->Location = System::Drawing::Point(30, 270); 
-			btnEspecialidades->Size = System::Drawing::Size(150, 40);
-
-			Button^ btnCitas = gcnew Button(); 
-			btnCitas->Text = L"6. Citas"; 
-			btnCitas->Location = System::Drawing::Point(200, 30); 
-			btnCitas->Size = System::Drawing::Size(150, 40);
-			Button^ btnHabitaciones = gcnew Button(); 
-			btnHabitaciones->Text = L"7. Habitaciones"; 
-			btnHabitaciones->Location = System::Drawing::Point(200, 90); 
-			btnHabitaciones->Size = System::Drawing::Size(150, 40);
-			Button^ btnHospitalizaciones = gcnew Button(); 
-			btnHospitalizaciones->Text = L"8. Hospitalizaciones"; 
-			btnHospitalizaciones->Location = System::Drawing::Point(200, 150); 
-			btnHospitalizaciones->Size = System::Drawing::Size(150, 40);
-			Button^ btnDiagnosticos = gcnew Button(); 
-			btnDiagnosticos->Text = L"9. Diagnósticos"; 
-			btnDiagnosticos->Location = System::Drawing::Point(200, 210); 
-			btnDiagnosticos->Size = System::Drawing::Size(150, 40);
-			Button^ btnTratamientos = gcnew Button(); 
-			btnTratamientos->Text = L"10. Tratamientos"; 
-			btnTratamientos->Location = System::Drawing::Point(200, 270); 
-			btnTratamientos->Size = System::Drawing::Size(150, 40);
-
-			btnPaises->Click += gcnew System::EventHandler(this, &FormInsertar::Paises_Click);
-
-			this->Controls->Add(btnPaises); 
-			this->Controls->Add(btnCiudades); 
-			this->Controls->Add(btnPacientes);
-			this->Controls->Add(btnMedicos); 
-			this->Controls->Add(btnEspecialidades); 
-			this->Controls->Add(btnCitas);
-			this->Controls->Add(btnHabitaciones); 
-			this->Controls->Add(btnHospitalizaciones); 
-			this->Controls->Add(btnDiagnosticos);
-			this->Controls->Add(btnTratamientos);
-		}
-		System::Void Paises_Click(System::Object^ sender, System::EventArgs^ e) {
-			FormInsertarPais^ ventanaPais = gcnew FormInsertarPais(arbol);
-			ventanaPais->ShowDialog();
-		}
-	};
-
-	public ref class FormMantenimiento : public System::Windows::Forms::Form
-	{
-	private:
-		ArbolPais* arbol;
-	public:
-		FormMantenimiento(ArbolPais* arbolRecibido) {
-			arbol = arbolRecibido;
-			this->Text = L"Mantenimiento de Base de Datos";
-			this->Size = System::Drawing::Size(300, 350);
-			this->StartPosition = FormStartPosition::CenterParent; // sale en centro
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;// ni me acuerdo, pero salia en tutoria y me da pereza revisarlo again
-			this->MaximizeBox = false;
-
-
-			Button^ btnInsertar = gcnew Button();
-			btnInsertar->Text = L"1. Insertar";
-			btnInsertar->Location = System::Drawing::Point(50, 30);
-			btnInsertar->Size = System::Drawing::Size(180, 40);
-			btnInsertar->Click += gcnew System::EventHandler(this, &FormMantenimiento::Insertar_Click); // para q sirva x ahora
-
-			Button^ btnBuscar = gcnew Button();
-			btnBuscar->Text = L"2. Buscar";
-			btnBuscar->Location = System::Drawing::Point(50, 90);
-			btnBuscar->Size = System::Drawing::Size(180, 40);
-
-			Button^ btnModificar = gcnew Button();
-			btnModificar->Text = L"3. Modificar";
-			btnModificar->Location = System::Drawing::Point(50, 150);
-			btnModificar->Size = System::Drawing::Size(180, 40);
-
-			Button^ btnEliminar = gcnew Button();
-			btnEliminar->Text = L"4. Eliminar";
-			btnEliminar->Location = System::Drawing::Point(50, 210);
-			btnEliminar->Size = System::Drawing::Size(180, 40);
-
-			// Agregar botoness
-			this->Controls->Add(btnInsertar);
-			this->Controls->Add(btnBuscar);
-			this->Controls->Add(btnModificar);
-			this->Controls->Add(btnEliminar);
-		}
-
-		// cosas acciones
-		// testear insertar para tneer de base x ahora
-		System::Void Insertar_Click(System::Object^ sender, System::EventArgs^ e) {
-			FormInsertar^ ventanaInsertar = gcnew FormInsertar(arbol);
-			ventanaInsertar->ShowDialog();
-		}
-
-
-	};
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
 		Form1(void)
 		{
 			InitializeComponent();
-			arbolPaises = new ArbolPais();
+			arbolilloPais = new ArbolPais();
+			arbolilloCiudad = new ArbolCiudad();
+			arbolilloEsp = new ArbolEspecialidad();
+			arbolilloHab = new ArbolHabitaciones();
+			arbolilloHosp = new ArbolHospitalizaciones();
+			arbolilloCita = new ArbolCitas();
+			arbolilloTrata = new ArbolTratamiento();
+			arbolilloDiag = new ArbolDiagnostico();
+			arbolilloPac = new ArbolPacientes();
+			arbolilloMed = new ArbolMedicos();
 			ConstruirInterfaz(); // temp? veo dsps
 			//
 			//TODO: Add the constructor code here
@@ -241,6 +58,8 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		System::ComponentModel::Container^ components;
 		Panel^ barraSuperior;
+		Panel^ barraInferior;
+		Label^ lblEstado;
 		Button^ btnMantenimiento;
 		Button^ btnReportes;
 		Button^ btnAcercaDe;
@@ -250,7 +69,16 @@ namespace CppCLRWinFormsProject {
 		Label^ lblFecha;
 			
 		// arboles 
-		ArbolPais* arbolPaises;
+		ArbolPais* arbolilloPais;
+		ArbolCiudad* arbolilloCiudad;
+		ArbolEspecialidad* arbolilloEsp;
+		ArbolCitas* arbolilloCita;
+		ArbolHabitaciones* arbolilloHab;
+		ArbolHospitalizaciones* arbolilloHosp;
+		ArbolMedicos* arbolilloMed;
+		ArbolPacientes* arbolilloPac;
+		ArbolTratamiento* arbolilloTrata;
+		ArbolDiagnostico* arbolilloDiag;
 
 
 #pragma region Windows Form Designer generated code
@@ -276,6 +104,7 @@ namespace CppCLRWinFormsProject {
 void ConstruirInterfaz() {
 	ConstruirBarraSuperior();
 	ConstruirReloj();
+	ConstruirBarraInferior();
 }
 
 Button^ CrearBotonBarra(String^ texto, int x) {
@@ -315,6 +144,22 @@ void ConstruirBarraSuperior() {
 	this->Controls->Add(barraSuperior);
 }
 
+void ConstruirBarraInferior() {
+	barraInferior = gcnew Panel();
+	barraInferior->Dock = DockStyle::Bottom;
+	barraInferior->Height = 30;
+	barraInferior->BackColor = Color::FromArgb(221, 235, 247);
+
+	lblEstado = gcnew Label();
+	lblEstado->Dock = DockStyle::Fill;
+	lblEstado->TextAlign = ContentAlignment::MiddleLeft;
+	lblEstado->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
+	lblEstado->ForeColor = Color::FromArgb(0, 40, 100);
+	lblEstado->Text = L"Usuario: Administrador   |   Sistema de Gestion Hospitalaria";
+
+	barraInferior->Controls->Add(lblEstado);
+	this->Controls->Add(barraInferior);
+}
 void ConstruirReloj() {
 	// esto es para hacer el relog
 	lblHora = gcnew Label();
@@ -356,7 +201,7 @@ System::Void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
 // chunches eventos
 
 System::Void Mantenimiento_Click(System::Object^ sender, System::EventArgs^ e) {
-	FormMantenimiento^ ventana = gcnew FormMantenimiento(arbolPaises);
+	FormMantenimiento^ ventana = gcnew FormMantenimiento(arbolilloPais, arbolilloCiudad, arbolilloHab, arbolilloHosp, arbolilloPac, arbolilloMed, arbolilloTrata, arbolilloDiag, arbolilloEsp, arbolilloCita);
 	ventana->ShowDialog(); // espera q cierre
 }
 
