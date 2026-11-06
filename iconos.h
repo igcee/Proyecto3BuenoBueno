@@ -31,7 +31,7 @@ namespace CppCLRWinFormsProject {
 
 	private:
 		System::Void Icono_Click(System::Object^ sender, System::EventArgs^ e) {
-			MessageBox::Show("Como la revolucion industrial inspiro a la obra Cuentos de mi tia Panchita", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show(L"Como la revolucion industrial inspiro a la obra Cuentos de mi tia Panchita", L"Informacion",MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	};
 }
