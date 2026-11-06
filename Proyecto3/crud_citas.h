@@ -11,6 +11,7 @@ using namespace std;
 
 
 class NodoCita {
+public:
     int idCita;
     int idPaciente;
     int idMedico;
@@ -23,7 +24,7 @@ class NodoCita {
     NodoCita* Hizq;
     NodoCita* Hder;
 
-public:
+
     NodoCita(int idc, int idp, int idm, int idesp, string fch, string hra, string mtivo, int est) {
         idCita = idc;
         idPaciente = idp;

@@ -213,8 +213,9 @@ System::Void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
 	ActualizarHora();
 }
 
+
 void ConstruirIconos() {
-	Color fondo = Color::FromArgb(214, 236, 252); //temporal, luego lo cambio para meterle una imagen
+	Color fondo = Color::FromArgb(200, 200, 200); //temporal, luego lo cambio para meterle una imagen
 
 
 	// lo de las posiciones tambien es temporal, luego veo como acomodarlos bien bonito

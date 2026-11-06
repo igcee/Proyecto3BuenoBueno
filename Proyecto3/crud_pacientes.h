@@ -14,6 +14,7 @@ const int MAXPAC = 4;
 const int MINPAC = 2;
 
 class NodoPaciente { //es el dato (la clave) q se guarda dentro de las paginas
+public:
     int idPaciente;
     string nombre;
     string fechaNacimiento;
@@ -22,7 +23,7 @@ class NodoPaciente { //es el dato (la clave) q se guarda dentro de las paginas
     int codCiudad;
     string correo;
 
-public:
+
     NodoPaciente() {
         idPaciente = 0;
         codPais = 0;

@@ -153,7 +153,7 @@ namespace CppCLRWinFormsProject {
 		}
 
 		// lista desplegable (solo deja escoger, no escribir)
-		ComboBox^ AgregarLista(String^ etiqueta, array<String^>^ opciones) {
+		ComboBox^ AgregarLista(String^ etiqueta, cli::array<String^>^ opciones) {
 			PonerEtiqueta(etiqueta);
 			ComboBox^ cmb = gcnew ComboBox();
 			cmb->DropDownStyle = ComboBoxStyle::DropDownList;

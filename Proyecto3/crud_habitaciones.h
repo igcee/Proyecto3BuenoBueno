@@ -8,6 +8,7 @@ using namespace std;
 #include "reportes.h"
 
 class NodoHab{
+public:
 	int idHabitacion;
 	int numero;
 	string piso;
@@ -17,7 +18,7 @@ class NodoHab{
 	NodoHab* Hizq;
     NodoHab* Hder;
 
-public:
+
     NodoHab(int idhab, int num, string p, int t, int est) {
         idHabitacion = idhab;
         numero = num;

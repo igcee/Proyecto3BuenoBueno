@@ -13,13 +13,14 @@ const int MAXMED = 4;
 const int MINMED = 2;
 
 class NodoMedico { //es el dato (la clave) q se guarda dentro de las paginas
+public:
     int idMedico;
     string nombre;
     string telefono;
     string correo;
     int idEspecialidad;
 
-public:
+
     NodoMedico() {
         idMedico = 0;
         idEspecialidad = 0;

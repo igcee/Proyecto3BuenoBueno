@@ -12,6 +12,7 @@ using namespace std;
 #include "reportes.h"
 
 class NodoHosp {
+public:
     int idHospitalizacion;
     int idPaciente;
     int idHabitacion;
@@ -24,7 +25,7 @@ class NodoHosp {
     NodoHosp* Hizq;
     NodoHosp* Hder;
 
-public:
+
     NodoHosp(int idHosp, int idPac, int idHab, int idMed, string fIngreso, string fSalida, string mot) {
         idHospitalizacion = idHosp;
         idPaciente = idPac;

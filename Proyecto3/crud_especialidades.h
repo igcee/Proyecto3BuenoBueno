@@ -11,6 +11,7 @@ using namespace std;
 //nodo nuevo nace con nivel 1, y el balanceo se hace con operaciones Skew y Split
 
 class NodoEsp {
+public:
     int idEspecialidad;
     string nombre;
     string descripcion;
@@ -18,7 +19,7 @@ class NodoEsp {
     NodoEsp* Hizq;
     NodoEsp* Hder;
 
-public:
+
     NodoEsp(int id, string nom, string desc) {
         idEspecialidad = id;
         nombre = nom;

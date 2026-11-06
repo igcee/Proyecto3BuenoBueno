@@ -12,13 +12,14 @@ using namespace std;
 #include "reportes.h"
 
 class NodoPais {
+public:
 	int codPais;
 	string nombre;
 	NodoPais* Hizq;
 	NodoPais* Hder;
 
 
-public:
+
 	NodoPais(int cod, string nom) {
 		codPais = cod;
 		nombre = nom;

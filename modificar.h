@@ -1,8 +1,6 @@
 #define _HAS_STD_BYTE 0
 // ^ esto es para el error de C2872
 #pragma once
-
-
 #include <string>
 #include "utilGUI.h"
 #include "Proyecto3/crud_paises.h"
@@ -226,7 +224,7 @@ namespace CppCLRWinFormsProject {
 			txtIdMed = AgregarTexto(L"Id de Medico de la cita:");
 			txtIdCita = AgregarTexto(L"Id de Cita:");
 			txtMotivo = AgregarTexto(L"Nuevo motivo:");
-			cmbEstado = AgregarLista(L"Nuevo estado:", gcnew array<String^>{ L"0 - Pendiente", L"1 - Confirmada" });
+			cmbEstado = AgregarLista(L"Nuevo estado:", gcnew cli::array<String^>{ L"0 - Pendiente", L"1 - Confirmada" });
 			AgregarBoton(L"Guardar modificacion", gcnew System::EventHandler(this, &FormModificarCita::Guardar_Click));
 		}
 
@@ -262,7 +260,7 @@ namespace CppCLRWinFormsProject {
 			arbolHab = arbol;
 
 			txtId = AgregarTexto(L"Id de Habitacion:");
-			cmbEstado = AgregarLista(L"Nuevo estado:", gcnew array<String^>{ L"0 - Disponible", L"1 - Ocupada" });
+			cmbEstado = AgregarLista(L"Nuevo estado:", gcnew cli::array<String^>{ L"0 - Disponible", L"1 - Ocupada" });
 			AgregarBoton(L"Guardar modificacion", gcnew System::EventHandler(this, &FormModificarHabitacion::Guardar_Click));
 		}
 
@@ -436,9 +434,7 @@ namespace CppCLRWinFormsProject {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 
-			array<String^>^ nombres = gcnew array<String^>{
-				L"1. Paises", L"2. Ciudades", L"3. Pacientes", L"4. Medicos", L"5. Especialidades",
-					L"6. Citas", L"7. Habitaciones", L"8. Hospitalizaciones", L"9. Diagnosticos", L"10. Tratamientos" };
+			cli::array<String^>^ nombres = gcnew cli::array<String^>{L"1. Paises", L"2. Ciudades", L"3. Pacientes", L"4. Medicos", L"5. Especialidades",L"6. Citas", L"7. Habitaciones", L"8. Hospitalizaciones", L"9. Diagnosticos", L"10. Tratamientos" };
 
 			// 10 botones en dos columnas. Todos usan el mismo evento y se distinguen por el Tag (1 a 10)
 			for (int i = 0; i < 10; i++) {

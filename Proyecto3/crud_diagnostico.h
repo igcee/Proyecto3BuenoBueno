@@ -10,6 +10,7 @@ using namespace std;
 //arbol AA, arbol binario de busqueda balanceado
 
 class NodoDiag {
+public:
     string idDiagnostico;
     string nombre;
     string descripcion;
@@ -17,7 +18,7 @@ class NodoDiag {
     NodoDiag* Hizq;
     NodoDiag* Hder;
 
-public:
+
     NodoDiag(string id, string nom, string desc) {
         idDiagnostico = id;
         nombre = nom;

@@ -10,6 +10,7 @@ using namespace std;
 //arbol Rojo-Negro  arbol binario de busqueda balanceado donde cada nodo tiene un color
 
 class NodoTrata {
+public:
     int idTratamiento;
     string nombre;
     string descripcion;
@@ -19,7 +20,7 @@ class NodoTrata {
     NodoTrata* Hizq;
     NodoTrata* Hder;
 
-public:
+
     NodoTrata(int id, string nom, string desc, double cost) {
         idTratamiento = id;
         nombre = nom;

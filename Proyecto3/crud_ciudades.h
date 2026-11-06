@@ -8,6 +8,7 @@ using namespace std;
 #include "crud_paises.h" // para validar q pais exista
 
 class NodoCiudad {
+public:
     int codCiudad;
     int codPais;
     string nombre;
@@ -15,7 +16,7 @@ class NodoCiudad {
     NodoCiudad* Hder;
 
 
-public:
+
     NodoCiudad(int codp, int codc,string nom) {
         codPais = codp;
         codCiudad = codc;
