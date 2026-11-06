@@ -118,6 +118,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblCodPais = gcnew Label();
 			lblCodPais->Text = L"Codigo del Pais:";
 			lblCodPais->Location = System::Drawing::Point(30, 30);
+			lblCodPais->AutoSize = true;
 			txtCodPais = gcnew TextBox();
 			txtCodPais->Location = System::Drawing::Point(30, 50);
 
@@ -125,6 +126,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblCodCiudad = gcnew Label();
 			lblCodCiudad->Text = L"Codigo de la Ciudad:";
 			lblCodCiudad->Location = System::Drawing::Point(30, 90);
+			lblCodCiudad->AutoSize = true;
 			txtCodCiudad = gcnew TextBox();
 			txtCodCiudad->Location = System::Drawing::Point(30, 110);
 
@@ -132,6 +134,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblNom = gcnew Label();
 			lblNom->Text = L"Nombre de la Ciudad:";
 			lblNom->Location = System::Drawing::Point(30, 150);
+			lblNom->AutoSize = true;
 			txtNombre = gcnew TextBox();
 			txtNombre->Location = System::Drawing::Point(30, 170);
 
@@ -210,6 +213,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Especialidad:";
 			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
 			txtIdEsp = gcnew TextBox();
 			txtIdEsp->Location = System::Drawing::Point(30, 50);
 
@@ -289,6 +293,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Tratamiento:";
 			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
 			txtIdTrata = gcnew TextBox();
 			txtIdTrata->Location = System::Drawing::Point(30, 50);
 
@@ -296,6 +301,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblNom = gcnew Label();
 			lblNom->Text = L"Nombre Tratamiento:";
 			lblNom->Location = System::Drawing::Point(30, 90);
+			lblNom->AutoSize = true;
 			txtNombre = gcnew TextBox();
 			txtNombre->Location = System::Drawing::Point(30, 110);
 
@@ -381,6 +387,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Diagnostico:";
 			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
 			txtIdDiag = gcnew TextBox();
 			txtIdDiag->Location = System::Drawing::Point(30, 50);
 
@@ -469,6 +476,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Paciente:";
 			lblId->Location = System::Drawing::Point(30, 20);
+			lblId->AutoSize = true;
 			txtIdPac = gcnew TextBox();
 			txtIdPac->Location = System::Drawing::Point(30, 40);
 
@@ -483,6 +491,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblFecha = gcnew Label();
 			lblFecha->Text = L"Fecha de Nac. (ej. 15-05-1990):";
 			lblFecha->Location = System::Drawing::Point(30, 120);
+			lblFecha->AutoSize = true;
 			txtFecha = gcnew TextBox();
 			txtFecha->Location = System::Drawing::Point(30, 140);
 
@@ -490,6 +499,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblTel = gcnew Label();
 			lblTel->Text = L"Telefono:";
 			lblTel->Location = System::Drawing::Point(30, 170);
+			lblTel->AutoSize = true;
 			txtTel = gcnew TextBox();
 			txtTel->Location = System::Drawing::Point(30, 190);
 
@@ -600,6 +610,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Medico:";
 			lblId->Location = System::Drawing::Point(30, 20);
+			lblId->AutoSize = true;
 			txtIdMed = gcnew TextBox();
 			txtIdMed->Location = System::Drawing::Point(30, 40);
 
@@ -621,6 +632,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblCorreo = gcnew Label();
 			lblCorreo->Text = L"Correo Electronico:";
 			lblCorreo->Location = System::Drawing::Point(30, 170);
+			lblCorreo->AutoSize = true;
 			txtCorreo = gcnew TextBox();
 			txtCorreo->Location = System::Drawing::Point(30, 190);
 
@@ -628,6 +640,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblIdEsp = gcnew Label();
 			lblIdEsp->Text = L"Id de Especialidad:";
 			lblIdEsp->Location = System::Drawing::Point(30, 220);
+			lblIdEsp->AutoSize = true;
 			txtIdEsp = gcnew TextBox();
 			txtIdEsp->Location = System::Drawing::Point(30, 240);
 
@@ -709,6 +722,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblId = gcnew Label();
 			lblId->Text = L"Id de Habitacion:";
 			lblId->Location = System::Drawing::Point(30, 20);
+			lblId->AutoSize = true;
 			txtIdHab = gcnew TextBox();
 			txtIdHab->Location = System::Drawing::Point(30, 40);
 
@@ -730,6 +744,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblTipo = gcnew Label();
 			lblTipo->Text = L"Tipo (1 Indiv, 2 Comp, 3 UCI):";
 			lblTipo->Location = System::Drawing::Point(30, 170);
+			lblTipo->AutoSize = true;
 			txtTipo = gcnew TextBox();
 			txtTipo->Location = System::Drawing::Point(30, 190);
 
@@ -737,6 +752,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblEstado = gcnew Label();
 			lblEstado->Text = L"Estado (0 Disp, 1 Ocupada):";
 			lblEstado->Location = System::Drawing::Point(30, 220);
+			lblEstado->AutoSize = true;
 			txtEstado = gcnew TextBox();
 			txtEstado->Location = System::Drawing::Point(30, 240);
 
@@ -853,6 +869,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblFechaIn = gcnew Label();
 			lblFechaIn->Text = L"Fecha Ingreso (dd/mm/aa):";
 			lblFechaIn->Location = System::Drawing::Point(30, 220);
+			lblFechaIn->AutoSize = true;
 			txtFechaIn = gcnew TextBox();
 			txtFechaIn->Location = System::Drawing::Point(30, 240);
 
@@ -860,6 +877,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblFechaOut = gcnew Label();
 			lblFechaOut->Text = L"Fecha Salida (dd/mm/aa, 0000 para no indicar):";
 			lblFechaOut->Location = System::Drawing::Point(30, 270);
+			lblFechaOut->AutoSize = true;
 			txtFechaOut = gcnew TextBox();
 			txtFechaOut->Location = System::Drawing::Point(30, 290);
 
@@ -1006,6 +1024,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblFecha = gcnew Label();
 			lblFecha->Text = L"Fecha (dd/mm/aa):";
 			lblFecha->Location = System::Drawing::Point(30, 220);
+			lblFecha->AutoSize = true;
 			txtFecha = gcnew TextBox();
 			txtFecha->Location = System::Drawing::Point(30, 240);
 
@@ -1013,6 +1032,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblHora = gcnew Label();
 			lblHora->Text = L"Hora (ej. 09:30, lapsos de 15min):";
 			lblHora->Location = System::Drawing::Point(30, 270);
+			lblHora->AutoSize = true;
 			txtHora = gcnew TextBox();
 			txtHora->Location = System::Drawing::Point(30, 290);
 
@@ -1027,6 +1047,7 @@ namespace CppCLRWinFormsProject {
 			Label^ lblEstado = gcnew Label();
 			lblEstado->Text = L"Estado (0 Pendiente, 1 Confirmada):";
 			lblEstado->Location = System::Drawing::Point(30, 370);
+			lblEstado->AutoSize = true;
 			txtEstado = gcnew TextBox();
 			txtEstado->Location = System::Drawing::Point(30, 390);
 
