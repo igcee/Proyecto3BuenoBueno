@@ -63,6 +63,9 @@ Class CppCLRWinFormsProject.FormMantenimiento: AutoLayout, AnsiClass, Class, Pub
     Void .ctor(ArbolPais*, ArbolCiudad*, ArbolHabitaciones*, ArbolHospitalizaciones*, ArbolPacientes*, ArbolMedicos*, ArbolTratamiento*, ArbolDiagnostico*, ArbolEspecialidad*, ArbolCitas*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     Insertar_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+Class CppCLRWinFormsProject.BotonIcono: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Button
+    Void .ctor(System.String, Int32, Int32, System.Drawing.Color): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

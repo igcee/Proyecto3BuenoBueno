@@ -858,7 +858,7 @@ namespace CppCLRWinFormsProject {
 
 			// salida
 			Label^ lblFechaOut = gcnew Label();
-			lblFechaOut->Text = L"Fecha Salida (dd/mm/aa):";
+			lblFechaOut->Text = L"Fecha Salida (dd/mm/aa, 0000 para no indicar):";
 			lblFechaOut->Location = System::Drawing::Point(30, 270);
 			txtFechaOut = gcnew TextBox();
 			txtFechaOut->Location = System::Drawing::Point(30, 290);
@@ -1011,7 +1011,7 @@ namespace CppCLRWinFormsProject {
 
 			// hora
 			Label^ lblHora = gcnew Label();
-			lblHora->Text = L"Hora (ej. 09:30):";
+			lblHora->Text = L"Hora (ej. 09:30, lapsos de 15min):";
 			lblHora->Location = System::Drawing::Point(30, 270);
 			txtHora = gcnew TextBox();
 			txtHora->Location = System::Drawing::Point(30, 290);

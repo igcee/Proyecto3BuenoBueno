@@ -4,6 +4,7 @@
 #include <string>
 #include "Proyecto3/crud_paises.h" 
 #include "mantenimiento.h"
+#include "iconos.h"
 
 namespace CppCLRWinFormsProject {
 	using namespace System;
@@ -118,6 +119,7 @@ void ConstruirInterfaz() {
 	ConstruirBarraSuperior();
 	ConstruirReloj();
 	ConstruirBarraInferior();
+	ConstruirIconos();
 }
 
 Button^ CrearBotonBarra(String^ texto, int x) {
@@ -210,6 +212,33 @@ void ActualizarHora() {
 System::Void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
 	ActualizarHora();
 }
+
+void ConstruirIconos() {
+	Color fondo = Color::FromArgb(214, 236, 252); //temporal, luego lo cambio para meterle una imagen
+
+
+	// lo de las posiciones tambien es temporal, luego veo como acomodarlos bien bonito
+
+	// fila 1
+	this->Controls->Add(gcnew BotonIcono(L"Paises", 20, 70, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Ciudades", 180, 70, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Pacientes", 340, 70, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Medicos", 500, 70, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Especialidades", 660, 70, fondo));
+
+	// fila 2 
+	this->Controls->Add(gcnew BotonIcono(L"Citas", 20, 200, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Habitaciones", 180, 200, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Hospitalizaciones", 340, 200, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Diagnosticos", 500, 200, fondo));
+	this->Controls->Add(gcnew BotonIcono(L"Tratamientos", 660, 200, fondo));
+}
+
+
+
+
+
+
 
 // chunches eventos
 

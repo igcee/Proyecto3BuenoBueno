@@ -1,3 +1,24 @@
 ﻿  CppCLR_WinFormsProject.cpp
-  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  Proyecto3.vcxproj -> C:\Users\PC\source\repos\tec\Proyecto3Bueno\x64\Debug\Proyecto3.exe
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,16): error C2665: 'System::Windows::Forms::MessageBox::Show': no overloaded function could convert all the argument types
+  (compiling source file '/CppCLR_WinFormsProject.cpp')
+      C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,4):
+      could be 'System::Windows::Forms::DialogResult System::Windows::Forms::MessageBox::Show(System::Windows::Forms::IWin32Window ^,System::String ^,System::String ^)'
+          C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,16):
+          'System::Windows::Forms::DialogResult System::Windows::Forms::MessageBox::Show(System::Windows::Forms::IWin32Window ^,System::String ^,System::String ^)': cannot convert argument 1 from 'const char [75]' to 'System::Windows::Forms::IWin32Window ^'
+              C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,21):
+              Reason: cannot convert from 'const char *' to 'System::Windows::Forms::IWin32Window ^'
+              C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,21):
+              No conversion function available, or
+              C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,21):
+              Cannot convert a native type to a managed type
+      C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,4):
+      or       'System::Windows::Forms::DialogResult System::Windows::Forms::MessageBox::Show(System::String ^,System::String ^,System::Windows::Forms::MessageBoxButtons)'
+          C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,16):
+          'System::Windows::Forms::DialogResult System::Windows::Forms::MessageBox::Show(System::String ^,System::String ^,System::Windows::Forms::MessageBoxButtons)': cannot convert argument 2 from 'System::Windows::Forms::MessageBoxButtons' to 'System::String ^'
+              C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,118):
+              No conversion function available, or
+              C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,118):
+              No standard conversion exists from the boxed form of the arithmetic type to the target type
+      C:\Users\PC\source\repos\tec\Proyecto3Bueno\iconos.h(34,16):
+      while trying to match the argument list '(const char [75], System::Windows::Forms::MessageBoxButtons, System::Windows::Forms::MessageBoxIcon)'
+  
