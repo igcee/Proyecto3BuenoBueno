@@ -13,7 +13,7 @@
 #include "Proyecto3/crud_pacientes.h"
 #include "Proyecto3/crud_tratamientos.h"
 #include "insertar.h"
-//#include "modificar.h"
+#include "modificar.h"
 //#include "buscar.h"
 //#include "eliminar.h"
 
@@ -56,38 +56,30 @@ namespace CppCLRWinFormsProject {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 
-
-			// crear los 4 botones
+			// crear los 2 botones
 			Button^ btnInsertar = gcnew Button();
 			btnInsertar->Text = L"1. Insertar";
 			btnInsertar->Location = System::Drawing::Point(50, 30);
 			btnInsertar->Size = System::Drawing::Size(180, 40);
 			btnInsertar->Click += gcnew System::EventHandler(this, &FormMantenimiento::Insertar_Click);
 
-			Button^ btnBuscar = gcnew Button();
-			btnBuscar->Text = L"2. Buscar";
-			btnBuscar->Location = System::Drawing::Point(50, 90);
-			btnBuscar->Size = System::Drawing::Size(180, 40);
-
 			Button^ btnModificar = gcnew Button();
-			btnModificar->Text = L"3. Modificar";
-			btnModificar->Location = System::Drawing::Point(50, 150);
+			btnModificar->Text = L"2. Modificar";
+			btnModificar->Location = System::Drawing::Point(50, 90);
 			btnModificar->Size = System::Drawing::Size(180, 40);
-
-			Button^ btnEliminar = gcnew Button();
-			btnEliminar->Text = L"4. Eliminar";
-			btnEliminar->Location = System::Drawing::Point(50, 210);
-			btnEliminar->Size = System::Drawing::Size(180, 40);
+			btnModificar->Click += gcnew System::EventHandler(this, &FormMantenimiento::Modificar_Click);
 
 			this->Controls->Add(btnInsertar);
-			this->Controls->Add(btnBuscar);
 			this->Controls->Add(btnModificar);
-			this->Controls->Add(btnEliminar);
 		}
 
 		System::Void Insertar_Click(System::Object^ sender, System::EventArgs^ e) {
 			FormInsertar^ ventanaInsertar = gcnew FormInsertar(arbolilloPais, arbolilloCiudad, arbolilloEsp, arbolilloCitas, arbolilloHab, arbolilloHosp, arbolilloMed, arbolilloPac, arbolilloTrata, arbolilloDiag);
 			ventanaInsertar->ShowDialog();
+		}
+		System::Void Modificar_Click(System::Object^ sender, System::EventArgs^ e) {
+			FormModificar^ ventanaModificar = gcnew FormModificar(arbolilloPais, arbolilloCiudad, arbolilloEsp, arbolilloCitas, arbolilloHab, arbolilloHosp, arbolilloMed, arbolilloPac, arbolilloTrata, arbolilloDiag);
+			ventanaModificar->ShowDialog();
 		}
 	};
 }

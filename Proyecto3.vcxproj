@@ -137,6 +137,7 @@
     <ClInclude Include="iconos.h" />
     <ClInclude Include="insertar.h" />
     <ClInclude Include="mantenimiento.h" />
+    <ClInclude Include="modificar.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Proyecto3\crud_citas.h" />
     <ClInclude Include="Proyecto3\crud_ciudades.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Proyecto3\crud_tratamientos.h" />
     <ClInclude Include="Proyecto3\reportes.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="utilGUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />

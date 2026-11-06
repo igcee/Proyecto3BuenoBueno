@@ -71,6 +71,12 @@
     <ClInclude Include="iconos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="utilGUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="modificar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
