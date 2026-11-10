@@ -132,12 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buscar.h" />
+    <ClInclude Include="consolabuenobueno.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="iconos.h" />
     <ClInclude Include="insertar.h" />
-    <ClInclude Include="mantenimiento.h" />
     <ClInclude Include="modificar.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Proyecto3\crud_citas.h" />

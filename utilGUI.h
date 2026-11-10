@@ -25,6 +25,7 @@ public:
 		if (activa) {
 			std::cout.rdbuf(anterior);
 			activa = false;
+			std::cout << buffer.str();
 		}
 		return buffer.str();
 	}

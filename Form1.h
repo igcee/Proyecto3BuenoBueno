@@ -3,8 +3,12 @@
 #pragma once
 #include <string>
 #include "Proyecto3/crud_paises.h" 
-#include "mantenimiento.h"
+//#include "mantenimiento.h"
+#include "insertar.h"
+#include "buscar.h"
+#include "modificar.h"
 #include "iconos.h"
+//#include "consolabuenobueno.h"
 
 namespace CppCLRWinFormsProject {
 	using namespace System;
@@ -39,6 +43,10 @@ namespace CppCLRWinFormsProject {
 			arbolilloMed = new ArbolMedicos();
 
 			// archivos
+
+
+			ConstruirInterfaz(); // temp? veo dsps
+			CapturaSalida cap;
 			arbolilloPais->leerArchivo("Proyecto3/Paises.csv");
 			arbolilloCiudad->leerArchivo("Proyecto3/Ciudades.csv", *arbolilloPais);
 			arbolilloPac->leerArchivo("Proyecto3/Pacientes.csv", *arbolilloCiudad);
@@ -49,8 +57,7 @@ namespace CppCLRWinFormsProject {
 			arbolilloHosp->leerArchivo("Proyecto3/Hospitalizaciones.csv", *arbolilloPac, *arbolilloHab, *arbolilloMed);
 			arbolilloDiag->leerArchivo("Proyecto3/Diagnostico.csv");
 			arbolilloTrata->leerArchivo("Proyecto3/Tratamiento.csv");
-
-			ConstruirInterfaz(); // temp? veo dsps
+			//Consola::Escribir(aNet(cap.Terminar()));
 			//
 			//TODO: Add the constructor code here
 			//
@@ -71,16 +78,24 @@ namespace CppCLRWinFormsProject {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container^ components;
-		Panel^ barraSuperior;
+		//Panel^ barraSuperior;
 		Panel^ barraInferior;
 		Label^ lblEstado;
-		Button^ btnMantenimiento;
-		Button^ btnReportes;
-		Button^ btnAcercaDe;
+		//Button^ btnMantenimiento;
+		//Button^ btnReportes;
+		//Button^ btnAcercaDe;
 		//chunches de hora
-		Label^ lblHora;
+		//Label^ lblHora;
 		System::Windows::Forms::Timer^ reloj;
-		Label^ lblFecha;
+		RichTextBox^ consola;
+
+		//Label^ lblFecha;
+
+		MenuStrip^ menuBarraTest;
+		ToolStripLabel^ lblFechaHora;
+		//RichTextBox^ consola;
+		//ConsolaBuf* bufConsola;
+		//std::streambuf* coutOriginal;
 			
 		// arboles 
 		ArbolPais* arbolilloPais;
@@ -116,48 +131,16 @@ namespace CppCLRWinFormsProject {
 
 // x cualquier cosa, esto seguro lo quito dsps y lo dejo limpio
 void ConstruirInterfaz() {
-	ConstruirBarraSuperior();
+	ConstruirMenu();
 	ConstruirReloj();
+	//ConstruirConsola();
 	ConstruirBarraInferior();
 	ConstruirIconos();
 }
 
-Button^ CrearBotonBarra(String^ texto, int x) {
-	// esto crea un boton, con un texto y posicion x
-	// no se ocupa posicion y, ya que como es solo para los de la barra (lo q era antes menu strip), todos van en la misma cord y
-	Button^ b = gcnew Button();
-	b->Text = texto;
-	b->Size = System::Drawing::Size(140, 32);
-	b->Location = System::Drawing::Point(x, 6);
-	b->FlatStyle = FlatStyle::Flat;
-	b->BackColor = Color::White;
-	return b;
-	}
-
-void ConstruirBarraSuperior() {
-	// panel pegado de arriba q hace de "barra de menu"
-	barraSuperior = gcnew Panel();
-	barraSuperior->Dock = DockStyle::Top; // DockStyle top pega el panel a la parte de arriba, y se estira automaticamente dependiendo del ancho
-	barraSuperior->Height = 44;
-	barraSuperior->BackColor = Color::FromArgb(221, 235, 247);
 
 
-	// aca se hacen dentro de este panel 3 botones, con nombre y cord X, ademas les mete el chunche de eventhandler para q sirvan
-	btnMantenimiento = CrearBotonBarra(L"Mantenimiento", 10);
-	btnMantenimiento->Click += gcnew EventHandler(this, &Form1::Mantenimiento_Click);
 
-	btnReportes = CrearBotonBarra(L"Reportes", 160);
-	btnReportes->Click += gcnew EventHandler(this, &Form1::Reportes_Click);
-
-	btnAcercaDe = CrearBotonBarra(L"Acerca de", 310);
-	btnAcercaDe->Click += gcnew EventHandler(this, &Form1::AcercaDe_Click);
-
-	barraSuperior->Controls->Add(btnMantenimiento);
-	barraSuperior->Controls->Add(btnReportes);
-	barraSuperior->Controls->Add(btnAcercaDe);
-
-	this->Controls->Add(barraSuperior);
-}
 
 void ConstruirBarraInferior() {
 	barraInferior = gcnew Panel();
@@ -175,6 +158,255 @@ void ConstruirBarraInferior() {
 	barraInferior->Controls->Add(lblEstado);
 	this->Controls->Add(barraInferior);
 }
+
+
+// crea un elemento de menu de txt y evento
+// lo hice asi para no tener q andar repitiendo tanto codigo para 
+// cada uno de los 10 modulos pq me daba MUCHISIMA pereza escribir tanto
+ToolStripMenuItem^ CrearItem(String^ texto, EventHandler^ evento) {
+	ToolStripMenuItem^ item = gcnew ToolStripMenuItem(texto);
+	item->Click += evento;
+	return item;
+}
+
+// los botones de los 10 modulos para el menu de barra
+// lo q hace menuAccion->DropDownItems->Add es agregar nuevo elemento a la lista esa q se despliega del menu de barra
+// para es el menu, osea para estos seria el de mantenimiento 
+// y el evento, osea el click
+void AgregarEntidades(ToolStripMenuItem^ menuAccion, EventHandler^ evento) {
+	menuAccion->DropDownItems->Add(CrearItem(L"Paises", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Ciudades", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Pacientes", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Medicos", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Especialidades", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Citas", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Habitaciones", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Hospitalizaciones", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Diagnosticos", evento));
+	menuAccion->DropDownItems->Add(CrearItem(L"Tratamientos", evento));
+}
+
+// crea lo de los reportes en el menu
+// en realidad me di cuenta de q no ocupaba hacer esto en funcion aparte
+// pq igual el codigo de hacer los botones de los reportes se ocupa solo 1 vez
+// no como los botones de las 10 entidades q si se repiten como 4 veces
+// pero lo dejo asi pq ya para que si ya lo hice
+void AgregarReportes(ToolStripMenuItem^ menuReportes) {
+	EventHandler^ evento = gcnew EventHandler(this, &Form1::Reporte_Click);
+	menuReportes->DropDownItems->Add(CrearItem(L"Paises", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Ciudades de un pais", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Pacientes", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Especialidades", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Habitaciones disponibles (Estado=0)", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Habitaciones ocupadas (Estado=1)", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Hospitalizaciones", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Hospitalizacion de un medico", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Medicos", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Medicos de una especialidad", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Citas por fecha", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Citas por especialidad", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Citas de un medico", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Pacientes de un pais", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Pacientes de una ciudad", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Citas de un paciente", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Diagnosticos", evento));
+	menuReportes->DropDownItems->Add(CrearItem(L"Tratamientos", evento));
+}
+
+void ConstruirMenu() {
+	menuBarraTest = gcnew MenuStrip();
+	menuBarraTest->BackColor = Color::FromArgb(221, 235, 247);
+
+	// mete en la pestana de mantenimiento los botones de crud
+	ToolStripMenuItem^ menuMantenimiento = gcnew ToolStripMenuItem(L"Mantenimiento");
+
+	ToolStripMenuItem^ menuInsertar = gcnew ToolStripMenuItem(L"Insertar");
+	AgregarEntidades(menuInsertar, gcnew EventHandler(this, &Form1::Insertar_Click));
+
+	ToolStripMenuItem^ menuModificar = gcnew ToolStripMenuItem(L"Modificar");
+	AgregarEntidades(menuModificar, gcnew EventHandler(this, &Form1::Modificar_Click));
+
+	ToolStripMenuItem^ menuBuscar = gcnew ToolStripMenuItem(L"Buscar");
+	AgregarEntidades(menuBuscar, gcnew EventHandler(this, &Form1::Buscar_Click));
+
+	ToolStripMenuItem^ menuEliminar = gcnew ToolStripMenuItem(L"Eliminar");
+	AgregarEntidades(menuEliminar, gcnew EventHandler(this, &Form1::Eliminar_Click));
+
+	menuMantenimiento->DropDownItems->Add(menuInsertar);
+	menuMantenimiento->DropDownItems->Add(menuModificar);
+	menuMantenimiento->DropDownItems->Add(menuBuscar);
+	menuMantenimiento->DropDownItems->Add(menuEliminar);
+
+	// y aca lo mismo pero con los reportes
+	ToolStripMenuItem^ menuReportes = gcnew ToolStripMenuItem(L"Reportes");
+	AgregarReportes(menuReportes);
+
+	// Acerca de
+	ToolStripMenuItem^ menuAcercaDe = gcnew ToolStripMenuItem(L"Acerca de");
+	menuAcercaDe->Click += gcnew EventHandler(this, &Form1::AcercaDe_Click);
+
+	menuBarraTest->Items->Add(menuMantenimiento);
+	menuBarraTest->Items->Add(menuReportes);
+	menuBarraTest->Items->Add(menuAcercaDe);
+
+	this->MainMenuStrip = menuBarraTest;
+	this->Controls->Add(menuBarraTest);
+}
+
+void Insertar_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
+	String^ entidad = item->Text; //txt del menu (osea paises/ciudad...etc)
+
+	if (entidad == L"Paises") {
+		FormInsertarPais^ ventana = gcnew FormInsertarPais(arbolilloPais);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Ciudades") {
+		FormInsertarCiudad^ ventana = gcnew FormInsertarCiudad(arbolilloPais, arbolilloCiudad);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Pacientes") {
+		FormInsertarPaciente^ ventana = gcnew FormInsertarPaciente(arbolilloPais, arbolilloCiudad, arbolilloPac);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Medicos") {
+		FormInsertarMedico^ ventana = gcnew FormInsertarMedico(arbolilloEsp, arbolilloMed);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Especialidades") {
+		FormInsertarEspecialidad^ ventana = gcnew FormInsertarEspecialidad(arbolilloEsp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Citas") {
+		FormInsertarCita^ ventana = gcnew FormInsertarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Habitaciones") {
+		FormInsertarHabitacion^ ventana = gcnew FormInsertarHabitacion(arbolilloHab);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Hospitalizaciones") {
+		FormInsertarHospitalizacion^ ventana = gcnew FormInsertarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloMed, arbolilloHosp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Diagnosticos") {
+		FormInsertarDiagnostico^ ventana = gcnew FormInsertarDiagnostico(arbolilloDiag);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Tratamientos") {
+		FormInsertarTratamiento^ ventana = gcnew FormInsertarTratamiento(arbolilloTrata);
+		ventana->ShowDialog();
+	}
+	else { // no deberia de pasar, pero lo dejo por cualquier cosa a futuro
+		MessageBox::Show(L"camaronDormido", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+
+// los de modificar, busca y eliminar los hice iguales q al de aca arriba de insertar, solo q le cambie la llamada (obviamente)
+void Modificar_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
+	String^ entidad = item->Text;
+
+	if (entidad == L"Paises") {
+		FormModificarPais^ ventana = gcnew FormModificarPais(arbolilloPais);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Ciudades") {
+		FormModificarCiudad^ ventana = gcnew FormModificarCiudad(arbolilloPais, arbolilloCiudad);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Pacientes") {
+		FormModificarPaciente^ ventana = gcnew FormModificarPaciente(arbolilloCiudad, arbolilloPac);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Medicos") {
+		FormModificarMedico^ ventana = gcnew FormModificarMedico(arbolilloEsp, arbolilloMed);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Especialidades") {
+		FormModificarEspecialidad^ ventana = gcnew FormModificarEspecialidad(arbolilloEsp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Citas") {
+		FormModificarCita^ ventana = gcnew FormModificarCita(arbolilloPac, arbolilloMed, arbolilloCita);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Habitaciones") {
+		FormModificarHabitacion^ ventana = gcnew FormModificarHabitacion(arbolilloHab);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Hospitalizaciones") {
+		FormModificarHospitalizacion^ ventana = gcnew FormModificarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloHosp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Diagnosticos") {
+		FormModificarDiagnostico^ ventana = gcnew FormModificarDiagnostico(arbolilloDiag);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Tratamientos") {
+		FormModificarTratamiento^ ventana = gcnew FormModificarTratamiento(arbolilloTrata);
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show(L"madrugadorAlQueDiosNoAyudo", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+
+void Buscar_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
+	String^ entidad = item->Text;
+
+	if (entidad == L"Paises") {
+		FormBuscarPais^ ventana = gcnew FormBuscarPais(arbolilloPais);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Ciudades") {
+		FormBuscarCiudad^ ventana = gcnew FormBuscarCiudad(arbolilloPais, arbolilloCiudad);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Pacientes") {
+		FormBuscarPaciente^ ventana = gcnew FormBuscarPaciente(arbolilloPais, arbolilloCiudad, arbolilloPac);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Medicos") {
+		FormBuscarMedico^ ventana = gcnew FormBuscarMedico(arbolilloEsp, arbolilloMed);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Especialidades") {
+		FormBuscarEspecialidad^ ventana = gcnew FormBuscarEspecialidad(arbolilloEsp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Citas") {
+		FormBuscarCita^ ventana = gcnew FormBuscarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Habitaciones") {
+		FormBuscarHabitacion^ ventana = gcnew FormBuscarHabitacion(arbolilloHab);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Hospitalizaciones") {
+		FormBuscarHospitalizacion^ ventana = gcnew FormBuscarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloMed, arbolilloHosp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Diagnosticos") {
+		FormBuscarDiagnostico^ ventana = gcnew FormBuscarDiagnostico(arbolilloDiag);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Tratamientos") {
+		FormBuscarTratamiento^ ventana = gcnew FormBuscarTratamiento(arbolilloTrata);
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show(L"kashdashjda", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+
+// terminarlo mas tarde cuando este hecho lo de eliminar
+void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
+	MessageBox::Show(L"terminar dsps", L"Informacion", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+/*
 void ConstruirReloj() {
 	// esto es para hacer el relog
 	lblHora = gcnew Label();
@@ -203,13 +435,32 @@ void ConstruirReloj() {
 	ActualizarHora();
 	reloj->Start();
 }
+*/
 
-void ActualizarHora() {
-	lblHora->Text = DateTime::Now.ToString(L"hh:mm:ss tt");
-	lblFecha->Text = DateTime::Now.ToString(L"dd'/'MM'/'yyyy");
+void ConstruirReloj() {
+	// fecha y hora a la derecha del menu
+	lblFechaHora = gcnew ToolStripLabel();
+	lblFechaHora->Alignment = ToolStripItemAlignment::Right;
+	lblFechaHora->Font = gcnew System::Drawing::Font(L"Segoe UI", 11.0f, FontStyle::Bold);
+	lblFechaHora->ForeColor = Color::FromArgb(0, 40, 100);
+	menuBarraTest->Items->Add(lblFechaHora);
+
+	// actualiza cada 1000 ms
+	reloj = gcnew System::Windows::Forms::Timer();
+	reloj->Interval = 1000;
+	reloj->Tick += gcnew EventHandler(this, &Form1::Reloj_Tick);
+
+	ActualizarHora();
+	reloj->Start();
 }
 
-System::Void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+void ActualizarHora() {
+	DateTime ahora = DateTime::Now;
+	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
+}
+
+void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
 	ActualizarHora();
 }
 
@@ -238,11 +489,39 @@ void ConstruirIconos() {
 
 
 
+// estas cosas son temporales de la consola, q me gustaria pulir mejor
+
+/*
+void ConstruirConsola() {
+	consola = Consola::Crear();
+	this->Controls->Add(consola);
+
+	// para q  al abrirse la ventana, la consola baje hasta lo ultimo escrito
+	this->Shown += gcnew EventHandler(this, &Form1::Form1_Shown);
+}
+
+void Form1_Shown(System::Object^ sender, System::EventArgs^ e) {
+	Consola::IrAlFinal();
+}
 
 
+void ConstruirConsola() {
+	consola = Consola::Crear();
+	this->Controls->Add(consola);
+
+	bufConsola = new ConsolaBuf();
+	coutOriginal = std::cout.rdbuf(bufConsola);
+
+	this->Shown += gcnew EventHandler(this, &Form1::Form1_Shown);
+}
+
+void Form1_Shown(System::Object^ sender, System::EventArgs^ e) {
+	Consola::IrAlFinal(); 
+}
+*/
 
 // chunches eventos
-
+/*
 System::Void Mantenimiento_Click(System::Object^ sender, System::EventArgs^ e) {
 	FormMantenimiento^ ventana = gcnew FormMantenimiento(arbolilloPais, arbolilloCiudad, arbolilloHab, arbolilloHosp, arbolilloPac, arbolilloMed, arbolilloTrata, arbolilloDiag, arbolilloEsp, arbolilloCita);
 	ventana->ShowDialog(); // espera q cierre
@@ -251,12 +530,16 @@ System::Void Mantenimiento_Click(System::Object^ sender, System::EventArgs^ e) {
 System::Void Reportes_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show(L"Reportes: no hay aun :P", L"Informacion", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
+*/
 
-System::Void AcercaDe_Click(System::Object^ sender, System::EventArgs^ e) {
+void AcercaDe_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show(L"Las consecuencias de la inclusion de la salsa lizano a los tamales", L"Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
-
+void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)(sender);
+	MessageBox::Show(L"Generando reporte de: " + item->Text, L"Reportes", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
 
 
 

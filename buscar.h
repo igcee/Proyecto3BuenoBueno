@@ -930,7 +930,7 @@ namespace CppCLRWinFormsProject {
 
 	private:
 		// chunches click
-		System::Void Paises_Click(System::Object^ sender, System::EventArgs^ e) {
+		Void Paises_Click(Object^ sender, EventArgs^ e) {
 			FormBuscarPais^ ventanaPais = gcnew FormBuscarPais(arbolilloPaises);
 			ventanaPais->ShowDialog();
 		}

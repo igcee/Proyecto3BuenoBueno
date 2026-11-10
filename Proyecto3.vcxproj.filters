@@ -62,9 +62,6 @@
     <ClInclude Include="Proyecto3\crud_habitaciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mantenimiento.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="insertar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,6 +72,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="modificar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buscar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="consolabuenobueno.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
