@@ -28,7 +28,7 @@ namespace CppCLRWinFormsProject {
 			this->FlatAppearance->BorderColor = Color::FromArgb(0, 0, 0);
 
 			//imagen del icono que busca iconos/<nombreminuscula>.png o .jpg
-			Image^ img = CargarImagen(nombre->ToLower(), 64);
+			System::Drawing::Image^ img = CargarImagen(nombre->ToLower(), 64);
 			if (img != nullptr) {
 				this->Image = img;
 				this->ImageAlign = ContentAlignment::TopCenter;
@@ -40,26 +40,28 @@ namespace CppCLRWinFormsProject {
 		}
 
 	private:
-
 		//si no encuentra la imagen devuelve nullptr y el boton se queda solo con texto (no se cae el chunche)
-		static Image^ CargarImagen(String^ archivo, int lado) {
-			array<String^>^ extensiones = gcnew array<String^>{ L".png", L".jpg", L".jpeg", L".bmp" };
-			for each(String ^ ext in extensiones) {
-				String^ ruta = Path::Combine(L"iconos", archivo + ext);
-				if (File::Exists(ruta)) {
-					try {
-						//se lee a memoria pq Image::FromFile deja el archivo bloqueado
-						MemoryStream^ ms = gcnew MemoryStream(File::ReadAllBytes(ruta));
-						Image^ original = Image::FromStream(ms);
-						return gcnew Bitmap(original, System::Drawing::Size(lado, lado));
-					}
-					catch (Exception^) {
-						return nullptr;
-					}
-				}
+		static System::Drawing::Image^ CargarImagen(String^ archivo, int lado) {
+			String^ ruta = Path::Combine(L"iconos", archivo + L".png");
+			if (!File::Exists(ruta)) {
+				ruta = Path::Combine(L"iconos", archivo + L".jpg"); // si no hay png prueba jpg
 			}
-			return nullptr;
+			if (!File::Exists(ruta)) {
+				return nullptr;
+			}
+
+			try {
+				//se lee a memoria pq Image::FromFile deja el archivo bloqueado
+				MemoryStream^ ms = gcnew MemoryStream(File::ReadAllBytes(ruta));
+				System::Drawing::Image^ original = System::Drawing::Image::FromStream(ms);
+				return gcnew Bitmap(original, System::Drawing::Size(lado, lado));
+			}
+			catch (Exception^) {
+				return nullptr;
+			}
 		}
+
+		
 
 		System::Void Icono_Click(System::Object^ sender, System::EventArgs^ e) {
 			MessageBox::Show(L"Como la revolucion industrial inspiro a la obra Cuentos de mi tia Panchita", L"Informacion",MessageBoxButtons::OK, MessageBoxIcon::Information);
