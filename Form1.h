@@ -484,6 +484,59 @@ void ConstruirIconos() {
 	this->Controls->Add(gcnew BotonIcono(L"Hospitalizaciones", 340, 200, fondo));
 	this->Controls->Add(gcnew BotonIcono(L"Diagnosticos", 500, 200, fondo));
 	this->Controls->Add(gcnew BotonIcono(L"Tratamientos", 660, 200, fondo));
+
+	//a cada icono le pone el evento de clic (la cosa recorre los controles de la ventana y agarra solo los BotonIcono)
+	for each(Control ^ c in this->Controls) {
+		BotonIcono^ icono = dynamic_cast<BotonIcono^>(c);
+		if (icono != nullptr) {
+			icono->Click += gcnew EventHandler(this, &Form1::Icono_Click);
+		}
+	}
+}
+
+//al darle clic a un icono sale un menuito con las 4 acciones de esa entidad
+void Icono_Click(System::Object^ sender, System::EventArgs^ e) {
+	Button^ icono = (Button^)sender;
+	String^ entidad = icono->Text; //"Pacientes", "Medicos", etc
+
+	ContextMenuStrip^ menuIcono = gcnew ContextMenuStrip();
+	EventHandler^ evento = gcnew EventHandler(this, &Form1::AccionIcono_Click);
+	//CrearItem es el mismo q usa el menu de arriba.en el Tag se guarda de q entidad es
+	ToolStripMenuItem^ opInsertar = CrearItem(L"Insertar", evento);
+	opInsertar->Tag = entidad;
+	ToolStripMenuItem^ opBuscar = CrearItem(L"Buscar", evento);
+	opBuscar->Tag = entidad;
+	ToolStripMenuItem^ opModificar = CrearItem(L"Modificar", evento);
+	opModificar->Tag = entidad;
+	ToolStripMenuItem^ opEliminar = CrearItem(L"Eliminar", evento);
+	opEliminar->Tag = entidad;
+
+	menuIcono->Items->Add(opInsertar);
+	menuIcono->Items->Add(opBuscar);
+	menuIcono->Items->Add(opModificar);
+	menuIcono->Items->Add(opEliminar);
+
+	menuIcono->Show(icono, System::Drawing::Point(0, icono->Height)); // sale justo debajo del icono
+}
+
+//reutiliza los mismos eventos del menu de arriba. Esos eventos leen el Text del item para saber
+//la entidad, entonces se crea un item con el nombre de la entidad y se les pasa
+void AccionIcono_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ opcion = (ToolStripMenuItem^)sender;
+	ToolStripMenuItem^ itemEntidad = gcnew ToolStripMenuItem((String^)opcion->Tag);
+
+	if (opcion->Text == L"Insertar") {
+		Insertar_Click(itemEntidad, e);
+	}
+	else if (opcion->Text == L"Buscar") {
+		Buscar_Click(itemEntidad, e);
+	}
+	else if (opcion->Text == L"Modificar") {
+		Modificar_Click(itemEntidad, e);
+	}
+	else if (opcion->Text == L"Eliminar") {
+		Eliminar_Click(itemEntidad, e);
+	}
 }
 
 

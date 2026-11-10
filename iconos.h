@@ -36,7 +36,7 @@ namespace CppCLRWinFormsProject {
 				this->Padding = System::Windows::Forms::Padding(0, 6, 0, 4);
 			}
 
-			this->Click += gcnew EventHandler(this, &BotonIcono::Icono_Click);
+			//el clic ahora lo pone Form1 en ConstruirIconospq ahi estan los arboles
 		}
 
 	private:
