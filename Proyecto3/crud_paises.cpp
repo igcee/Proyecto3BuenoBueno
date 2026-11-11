@@ -32,6 +32,8 @@ pPais ArbolPais::Buscarvalor(int cod)
     return Buscarvalor(raiz, cod);
 }
 
+
+
 // Metodos privados
 
 pPais ArbolPais::InsertaBinario(pPais raiz, int cod, string nom, bool &insertado)
@@ -140,4 +142,81 @@ void ArbolPais::InordenReportesPais(pPais raiz, reportes& rep, int anchos[]) {
         InordenReportesPais(raiz->Hder, rep, anchos);
     }
 
+}
+
+// chunches eliminar ---------------------------------------------------------------------------------------------------------------
+
+pPais ArbolPais::encontrarMin(pPais raiz)
+{
+    while (raiz->Hizq != nullptr)
+    {
+        raiz = raiz->Hizq;
+    }
+    return raiz;
+}
+
+bool ArbolPais::EliminaNodo(int cod)
+{
+    bool eliminado = false;
+    raiz = EliminarBinario(raiz, cod, eliminado);
+    return eliminado;
+}
+
+pPais ArbolPais::EliminarBinario(pPais raiz, int cod, bool& eliminado)
+{
+    if (raiz == nullptr) {
+        //cout << "Valor no encontrado: " << valor << endl;
+        return nullptr;
+    }
+
+    if (cod < raiz->codPais)
+    {
+        raiz->Hizq = EliminarBinario(raiz->Hizq, cod, eliminado);
+    }
+    else
+        if (cod > raiz->codPais)
+        {
+            raiz->Hder = EliminarBinario(raiz->Hder, cod, eliminado);
+        }
+        else
+        {
+            eliminado = true; // ESTA HIJUEPUTA LINEA SE ME HABIA OLVIDADO CUANDO ESTABA ADAPTANDO EL CODIGO DE ARBOL BINARIO Y ESTUVE 3 SANTISIMOS HORAS BUSCANDO QUE PUTAS ERA
+            // Nodo encontrado
+            if (raiz->Hizq == nullptr and raiz->Hder == nullptr)
+            {   
+                delete raiz;
+                return nullptr;
+            }
+            else
+                if (raiz->Hizq == nullptr)
+                {
+                    pPais temp = raiz->Hder;
+                    delete raiz;
+                    return temp;
+                }
+                else
+                    if (raiz->Hder == nullptr)
+                    {
+                        pPais temp = raiz->Hizq;
+                        delete raiz;
+                        return temp;
+                    }
+                    else
+                    {
+                        pPais sucesor = encontrarMin(raiz->Hder);
+                        raiz->codPais = sucesor->codPais;
+                        raiz->nombre = sucesor->nombre; // esta se ocupa para q no se pierda el nombre, sino en sucesor lo de nombre queda mal
+                        raiz->Hder = EliminarBinario(raiz->Hder, sucesor->codPais, eliminado);
+                    }
+        }
+
+    return raiz;
+}
+
+void ArbolPais::EliminarPais(int cod) {
+    if (EliminaNodo(cod))
+        cout << "Pais de codigo: " << cod << " eliminado correctamente" << endl;
+    else {
+        cout << "No se pudo eliminar el pais de codigo: " << cod << " porque no existe" << endl;
+    }
 }

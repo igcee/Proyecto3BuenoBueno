@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="buscar.h" />
     <ClInclude Include="consolabuenobueno.h" />
+    <ClInclude Include="eliminar.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>

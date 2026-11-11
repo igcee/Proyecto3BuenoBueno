@@ -8,7 +8,8 @@
 #include "buscar.h"
 #include "modificar.h"
 #include "iconos.h"
-//#include "consolabuenobueno.h"
+#include "consolabuenobueno.h"
+#include "eliminar.h"
 
 namespace CppCLRWinFormsProject {
 	using namespace System;
@@ -44,7 +45,7 @@ namespace CppCLRWinFormsProject {
 
 			// archivos
 
-
+			consolabuena = gcnew Consola();
 			ConstruirInterfaz(); // temp? veo dsps
 			CapturaSalida cap;
 			arbolilloPais->leerArchivo("Proyecto3/Paises.csv");
@@ -57,7 +58,7 @@ namespace CppCLRWinFormsProject {
 			arbolilloHosp->leerArchivo("Proyecto3/Hospitalizaciones.csv", *arbolilloPac, *arbolilloHab, *arbolilloMed);
 			arbolilloDiag->leerArchivo("Proyecto3/Diagnostico.csv");
 			arbolilloTrata->leerArchivo("Proyecto3/Tratamiento.csv");
-			//Consola::Escribir(aNet(cap.Terminar()));
+			consolabuena->Escribir(aNet(cap.Terminar()));
 			//
 			//TODO: Add the constructor code here
 			//
@@ -88,6 +89,7 @@ namespace CppCLRWinFormsProject {
 		//Label^ lblHora;
 		System::Windows::Forms::Timer^ reloj;
 		RichTextBox^ consola;
+		Consola^ consolabuena;
 
 		//Label^ lblFecha;
 
@@ -133,7 +135,7 @@ namespace CppCLRWinFormsProject {
 void ConstruirInterfaz() {
 	ConstruirMenu();
 	ConstruirReloj();
-	//ConstruirConsola();
+	ConstruirConsola();
 	ConstruirBarraInferior();
 	ConstruirIconos();
 }
@@ -401,41 +403,58 @@ void Buscar_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 }
 
-// terminarlo mas tarde cuando este hecho lo de eliminar
 void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
-	MessageBox::Show(L"terminar dsps", L"Informacion", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	String^ entidad = item->Text;
+
+	if (entidad == L"Paises") {
+		FormEliminarPais^ ventana = gcnew FormEliminarPais(arbolilloPais, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Ciudades") {
+		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad);
+		ventana->ShowDialog();
+	}
+	/*
+	else if (entidad == L"Pacientes") {
+		FormEliminarPaciente^ ventana = gcnew FormEliminarPaciente(arbolilloPais, arbolilloCiudad, arbolilloPac);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Medicos") {
+		FormEliminarMedico^ ventana = gcnew FormEliminarMedico(arbolilloEsp, arbolilloMed);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Especialidades") {
+		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Citas") {
+		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Habitaciones") {
+		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Hospitalizaciones") {
+		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloMed, arbolilloHosp);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Diagnosticos") {
+		FormEliminarDiagnostico^ ventana = gcnew FormEliminarDiagnostico(arbolilloDiag);
+		ventana->ShowDialog();
+	}
+	else if (entidad == L"Tratamientos") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata);
+		ventana->ShowDialog();
+	}
+	*/
+	else {
+		MessageBox::Show(L"kashdasasdashjda", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
-/*
-void ConstruirReloj() {
-	// esto es para hacer el relog
-	lblHora = gcnew Label();
-	lblHora->Dock = DockStyle::Right;
-	lblHora->Width = 160;
-	lblHora->TextAlign = ContentAlignment::MiddleCenter;
-	lblHora->Font = gcnew System::Drawing::Font(L"Segoe UI", 11.0f, FontStyle::Bold);
-	lblHora->ForeColor = Color::FromArgb(0, 40, 100);
-	barraSuperior->Controls->Add(lblHora);
 
-	// y este de hora
-	lblFecha = gcnew Label();
-	lblFecha->Dock = DockStyle::Right;
-	lblFecha->Width = 120;
-	lblFecha->TextAlign = ContentAlignment::MiddleCenter;
-	lblFecha->Font = gcnew System::Drawing::Font(L"Segoe UI", 11.0f, FontStyle::Bold);
-	lblFecha->ForeColor = Color::FromArgb(0, 40, 100);
-	barraSuperior->Controls->Add(lblFecha);
-	lblFecha->BringToFront(); // esto hace q fecha quede a izq de hora
 
-	// actualiza cada 1000 ms
-	reloj = gcnew System::Windows::Forms::Timer();
-	reloj->Interval = 1000;
-	reloj->Tick += gcnew EventHandler(this, &Form1::Reloj_Tick);
-
-	ActualizarHora();
-	reloj->Start();
-}
-*/
 
 void ConstruirReloj() {
 	// fecha y hora a la derecha del menu
@@ -450,18 +469,14 @@ void ConstruirReloj() {
 	reloj->Interval = 1000;
 	reloj->Tick += gcnew EventHandler(this, &Form1::Reloj_Tick);
 
-	ActualizarHora();
+	DateTime ahora = DateTime::Now;
+	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
 	reloj->Start();
 }
 
 
-void ActualizarHora() {
-	DateTime ahora = DateTime::Now;
-	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
-}
-
 void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
-	ActualizarHora();
+	DateTime ahora = DateTime::Now;
 }
 
 
@@ -491,9 +506,9 @@ void ConstruirIconos() {
 
 // estas cosas son temporales de la consola, q me gustaria pulir mejor
 
-/*
+
 void ConstruirConsola() {
-	consola = Consola::Crear();
+	consola =consolabuena->Crear();
 	this->Controls->Add(consola);
 
 	// para q  al abrirse la ventana, la consola baje hasta lo ultimo escrito
@@ -501,24 +516,9 @@ void ConstruirConsola() {
 }
 
 void Form1_Shown(System::Object^ sender, System::EventArgs^ e) {
-	Consola::IrAlFinal();
+	consolabuena->IrAlFinal();
 }
 
-
-void ConstruirConsola() {
-	consola = Consola::Crear();
-	this->Controls->Add(consola);
-
-	bufConsola = new ConsolaBuf();
-	coutOriginal = std::cout.rdbuf(bufConsola);
-
-	this->Shown += gcnew EventHandler(this, &Form1::Form1_Shown);
-}
-
-void Form1_Shown(System::Object^ sender, System::EventArgs^ e) {
-	Consola::IrAlFinal(); 
-}
-*/
 
 // chunches eventos
 /*

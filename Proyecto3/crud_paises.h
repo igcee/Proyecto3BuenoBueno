@@ -41,6 +41,7 @@ private:
     // Metodos auxiliares privados
     pPais InsertaBinario(pPais raiz, int cod, string nom, bool& insertado);
     pPais Buscarvalor(pPais raiz, int cod);
+    pPais EliminarBinario(pPais raiz, int cod, bool& eliminado);
     void destruirArbol(pPais raiz);
 
 public:
@@ -48,6 +49,7 @@ public:
     ~ArbolPais();
 
     bool InsertaNodo(int cod, string nom);
+    bool EliminaNodo(int cod);
     pPais Buscarvalor(int cod);
 
     void InsertarPais(int cod, string nom);
@@ -55,5 +57,7 @@ public:
     void BuscarMostrar(int cod);
     void ModificarPais(int cod, string nuevoNom);
     void InordenReportesPais(pPais raiz, reportes& rep, int anchos[]);
+    void EliminarPais(int cod);
+    pPais encontrarMin(pPais raiz); // este se ocupaba para las elim
 };
 #endif

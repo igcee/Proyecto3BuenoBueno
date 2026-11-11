@@ -37,6 +37,8 @@ private:
 
     pCiudad InsertaBinario(pCiudad raiz, int codp, int codc, string nom, bool& insertado);
     pCiudad Buscarvalor(pCiudad raiz, int codp, int codc);
+    pCiudad EliminaBinario(pCiudad raiz, int codp, int codc, bool& eliminado);
+    pCiudad BuscarP(pCiudad raiz, int codp);
 
 public:
     ArbolCiudad();
@@ -52,5 +54,10 @@ public:
     // Ciudades necesita validar q codigo de pais exista antes de insertar o buscar, se pasa como parametro x referencia
     void ModificarCiudad(int codp, int codc, string nom, ArbolPais& paises);
     void InordenReportesCiudad(pCiudad r, reportes& rep, int anchos[], int codPaisFiltro);
+
+    bool EliminaNodo(int codp, int codc);
+    pCiudad BuscarDePais(int codp); // el de ciudades ocupa un chunche de buscar de pais, pq si se borra un pais se le tienen q borrar sus ciudades
+    void EliminarCiudad(int codp, int codc, ArbolPais& paises);
+    pCiudad encontrarMin(pCiudad raiz);
 };
 #endif

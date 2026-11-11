@@ -137,6 +137,19 @@ Class CppCLRWinFormsProject.FormModificar: AutoLayout, AnsiClass, Class, Public,
 Class CppCLRWinFormsProject.BotonIcono: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Button
     Void .ctor(System.String, Int32, Int32, System.Drawing.Color): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.Consola: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Crear(): PrivateScope, Public, HideBySig
+    Escribir(String): PrivateScope, Public, HideBySig
+    Linea(String): PrivateScope, Public, HideBySig
+    IrAlFinal(): PrivateScope, Public, HideBySig
+Class CppCLRWinFormsProject.FormEliminarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolPais*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolPais*, ArbolCiudad*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

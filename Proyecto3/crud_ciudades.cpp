@@ -214,3 +214,88 @@ void ArbolCiudad::InordenReportesCiudad(pCiudad r, reportes& rep, int anchos[], 
     }
     InordenReportesCiudad(r->Hder, rep, anchos, codPaisFiltro);
 }
+
+
+// chunches eliminar --------------------------------------------------------------------------------------------------------------
+bool ArbolCiudad::EliminaNodo(int codp, int codc)
+{
+    bool eliminado = false;
+    raiz = EliminaBinario(raiz, codp, codc, eliminado);
+    return eliminado;
+}
+
+pCiudad ArbolCiudad::encontrarMin(pCiudad raiz)
+{
+    while (raiz->Hizq != nullptr)
+    {
+        raiz = raiz->Hizq;
+    }
+    return raiz;
+}
+
+pCiudad ArbolCiudad::EliminaBinario(pCiudad raiz, int codp, int codc, bool& eliminado)
+{
+    if (raiz == nullptr) {
+        return nullptr;
+    }
+
+    int direccion = Comp(raiz->codPais, raiz->codCiudad, codp, codc); // -1 izq, 1 der, 0 es este
+    // ^ es por lo de q lo de ciudades se organizaba por codpais y luego x codciudad, x lo q habian codpaises repetidos
+    if (direccion < 0) {
+        raiz->Hizq = EliminaBinario(raiz->Hizq, codp, codc, eliminado);
+    }
+    else if (direccion > 0) {
+        raiz->Hder = EliminaBinario(raiz->Hder, codp, codc, eliminado);
+    }
+    else {
+        eliminado = true;
+        if (raiz->Hizq == nullptr) {
+            pCiudad aux = raiz->Hder;
+            delete raiz;
+            return aux;
+        }
+        else if (raiz->Hder == nullptr) {
+            pCiudad aux = raiz->Hizq;
+            delete raiz;
+            return aux;
+        }
+        else {
+            pCiudad sucesor = encontrarMin(raiz->Hder);
+            raiz->codCiudad = sucesor->codCiudad;
+            raiz->Hder = EliminaBinario(raiz->Hder, raiz->codPais, raiz->codCiudad, eliminado);
+        }
+    }
+    return raiz;
+}
+
+pCiudad ArbolCiudad::BuscarDePais(int codp) {
+    return BuscarP(raiz, codp);
+}
+
+pCiudad ArbolCiudad::BuscarP(pCiudad raiz, int codp) {
+    // ciudades se ordenan primero x codpais, asi q solo se compara el pais, no se ocupa ver codciudad
+    if (raiz == nullptr) {
+        return nullptr;
+    }
+    else if (codp < raiz->codPais) {
+        return BuscarP(raiz->Hizq, codp);
+    }
+    else if (codp > raiz->codPais) {
+        return BuscarP(raiz->Hder, codp);
+    }
+    else {
+        return raiz; // mismo pais
+    }
+}
+
+void ArbolCiudad::EliminarCiudad(int codp, int codc, ArbolPais& paises) {
+    if (paises.Buscarvalor(codp) == nullptr) {
+        cout << "No se pudo eliminar la ciudad ya que el pais de codigo " << codp << " no existe" << endl;
+    }
+    else if (EliminaNodo(codp, codc)) {
+        cout << "Ciudad de codigo: " << codc << " del pais de codigo: " << codp << " eliminada correctamente" << endl;
+    }
+    else {
+        cout << "No se pudo eliminar la ciudad ya que no existe una ciudad de codigo " << codc << " en el pais de codigo " << codp << endl;
+    }
+}
