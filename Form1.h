@@ -499,7 +499,7 @@ void Icono_Click(System::Object^ sender, System::EventArgs^ e) {
 	Button^ icono = (Button^)sender;
 	String^ entidad = icono->Text; //"Pacientes", "Medicos", etc
 
-	ContextMenuStrip^ menuIcono = gcnew ContextMenuStrip();
+	System::Windows::Forms::ContextMenuStrip^ menuIcono = gcnew System::Windows::Forms::ContextMenuStrip();
 	EventHandler^ evento = gcnew EventHandler(this, &Form1::AccionIcono_Click);
 	//CrearItem es el mismo q usa el menu de arriba.en el Tag se guarda de q entidad es
 	ToolStripMenuItem^ opInsertar = CrearItem(L"Insertar", evento);
