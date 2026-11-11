@@ -50,6 +50,12 @@ private:
     void MostrarNodo(pHab n);
     void LiberarMemoria(pHab r);
 
+    //eliminar AVL
+    void BorrarBalanceado(pHab& r, bool& Hh, int id);
+    void Borrar(pHab& aux1, pHab& otro1, bool& Hh);
+    void Equilibrar1(pHab& n, bool& Hh);
+    void Equilibrar2(pHab& n, bool& Hh);
+
 public:
 
     ArbolHabitaciones();
@@ -65,6 +71,9 @@ public:
     void ModificarHab(int id, int estado);
     void InordenReportesHab(pHab r, reportes& rep, int anchos[], int est);
 
+    //eliminar
+    bool EliminaNodo(int id);
+    void EliminarHab(int id);
 
 };
 

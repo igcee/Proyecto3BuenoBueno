@@ -367,3 +367,151 @@ void ArbolHabitaciones::InordenReportesHab(pHab r, reportes& rep, int anchos[], 
     }
     InordenReportesHab(r->Hder, rep, anchos, estado);
 }
+
+//ELIMINAR AVL
+// se llama cuando el subarbol IZQUIERDO de n se hizo mas bajo
+void ArbolHabitaciones::Equilibrar1(pHab& n, bool& Hh)
+{
+    pHab n1;
+    switch (n->FB)
+    {
+    case -1: //estaba cargado a la izq, ahora queda parejo (y la altura bajo)
+        n->FB = 0;
+        break;
+    case 0: //estaba parejo, ahora queda cargado a la der (la altura NO cambia)
+        n->FB = 1;
+        Hh = false;
+        break;
+    case 1: //ya estaba cargado a la der, ahora queda desbalanceado: hay q rotar
+        n1 = n->Hder;
+        if (n1->FB >= 0)
+        {
+            if (n1->FB == 0) { //en este caso despues de rotar la altura no cambia
+                Hh = false;
+            }
+            RotacionSimpleDerecha(n, n1);
+        }
+        else
+        {
+            RotacionDobleDerecha(n, n1);
+        }
+        break;
+    }
+}
+
+//se llama cuando el subarbol DERECHO de n se hizo mas bajo (es el espejo de Equilibrar1)
+void ArbolHabitaciones::Equilibrar2(pHab& n, bool& Hh)
+{
+    pHab n1;
+    switch (n->FB)
+    {
+    case 1:
+        n->FB = 0;
+        break;
+    case 0:
+        n->FB = -1;
+        Hh = false;
+        break;
+    case -1:
+        n1 = n->Hizq;
+        if (n1->FB <= 0)
+        {
+            if (n1->FB == 0) {
+                Hh = false;
+            }
+            RotacionSimpleIzquierda(n, n1);
+        }
+        else
+        {
+            RotacionDobleIzquierda(n, n1);
+        }
+        break;
+    }
+}
+
+void ArbolHabitaciones::Borrar(pHab& aux1, pHab& otro1, bool& Hh)
+{
+    if (aux1->Hder != nullptr)
+    {
+        Borrar(aux1->Hder, otro1, Hh);
+        if (Hh) {
+            Equilibrar2(aux1, Hh);
+        }
+    }
+    else
+    {
+        //se copian los datos (no los hijos ni el FB)
+        otro1->idHabitacion = aux1->idHabitacion;
+        otro1->numero = aux1->numero;
+        otro1->piso = aux1->piso;
+        otro1->tipo = aux1->tipo;
+        otro1->estado = aux1->estado;
+
+        otro1 = aux1;        //ahora el q se va a hacer delete es este nodo
+        aux1 = aux1->Hizq;   //su hijo izq sube a su lugar
+        Hh = true;
+    }
+}
+
+void ArbolHabitaciones::BorrarBalanceado(pHab& r, bool& Hh, int id)
+{
+    pHab otro;
+    if (r == nullptr) {
+        return;
+    }
+
+    if (id < r->idHabitacion)
+    {
+        BorrarBalanceado(r->Hizq, Hh, id);
+        if (Hh) {
+            Equilibrar1(r, Hh);
+        }
+    }
+    else if (id > r->idHabitacion)
+    {
+        BorrarBalanceado(r->Hder, Hh, id);
+        if (Hh) {
+            Equilibrar2(r, Hh);
+        }
+    }
+    else //lo encontro
+    {
+        otro = r;
+        if (otro->Hder == nullptr) { //solo tiene hijo izq (o ninguno)
+            r = otro->Hizq;
+            Hh = true;
+        }
+        else if (otro->Hizq == nullptr) { //solo tiene hijo der
+            r = otro->Hder;
+            Hh = true;
+        }
+        else { //tiene 2 hijos
+            Borrar(otro->Hizq, otro, Hh);
+            if (Hh) {
+                Equilibrar1(r, Hh);
+            }
+        }
+        delete otro;
+    }
+}
+
+bool ArbolHabitaciones::EliminaNodo(int id)
+{
+    if (Buscarvalor(raiz, id) == nullptr) {
+        return false;
+    }
+    bool Hh = false;
+    BorrarBalanceado(raiz, Hh, id);
+    return true;
+}
+
+// Se indica el IdHabitacion, si existe se elimina la habitacion
+void ArbolHabitaciones::EliminarHab(int id)
+{
+    if (EliminaNodo(id) == true) {
+        cout << "Habitacion de id: " << id << " eliminada correctamente" << endl;
+    }
+    else {
+        cout << "No se pudo eliminar la habitacion de id: " << id << " porque no existe" << endl;
+    }
+}

@@ -344,6 +344,153 @@ namespace CppCLRWinFormsProject {
 
 
 
+	// CITAS (AVL)
+	public ref class FormEliminarCita : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdPac;
+		TextBox^ txtIdMed;
+		TextBox^ txtIdCita;
+		ArbolPacientes* arbolPac;
+		ArbolMedicos* arbolMed;
+		ArbolCitas* arbolCita;
+		Consola^ consolaCita;
+
+	public:
+		FormEliminarCita(ArbolPacientes* pacientes, ArbolMedicos* medicos, ArbolCitas* citas, Consola^ consola) {
+			arbolPac = pacientes;
+			arbolMed = medicos;
+			arbolCita = citas;
+			consolaCita = consola;
+
+			this->Text = L"Eliminar Cita";
+			this->Size = System::Drawing::Size(320, 290);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblPac = gcnew Label();
+			lblPac->Text = L"Id del Paciente: ";
+			lblPac->Location = System::Drawing::Point(30, 20);
+			lblPac->AutoSize = true;
+			txtIdPac = gcnew TextBox();
+			txtIdPac->Location = System::Drawing::Point(30, 40);
+
+			Label^ lblMed = gcnew Label();
+			lblMed->Text = L"Id del Medico: ";
+			lblMed->Location = System::Drawing::Point(30, 75);
+			lblMed->AutoSize = true;
+			txtIdMed = gcnew TextBox();
+			txtIdMed->Location = System::Drawing::Point(30, 95);
+
+			Label^ lblCita = gcnew Label();
+			lblCita->Text = L"Id de la Cita a Eliminar: ";
+			lblCita->Location = System::Drawing::Point(30, 130);
+			lblCita->AutoSize = true;
+			txtIdCita = gcnew TextBox();
+			txtIdCita->Location = System::Drawing::Point(30, 150);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(100, 195);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarCita::Eliminar_Click);
+
+			this->Controls->Add(lblPac);
+			this->Controls->Add(txtIdPac);
+			this->Controls->Add(lblMed);
+			this->Controls->Add(txtIdMed);
+			this->Controls->Add(lblCita);
+			this->Controls->Add(txtIdCita);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			int idp, idm, idc;
+			// TryParse devuelve false si no es un numero
+			if (!Int32::TryParse(txtIdPac->Text, idp) || !Int32::TryParse(txtIdMed->Text, idm) || !Int32::TryParse(txtIdCita->Text, idc)) {
+				MessageBox::Show(L"Por favor llene todos los campos con numeros.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			bool existiaAntes = (arbolCita->Buscarvalor(idc) != nullptr);
+
+			CapturaSalida cap;
+			arbolCita->EliminarCita(idp, idm, idc, *arbolPac, *arbolMed);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaCita->Escribir(mensajeConsola);
+
+			bool existeDespues = (arbolCita->Buscarvalor(idc) != nullptr);
+
+			if (existiaAntes == true && existeDespues == false) {
+				MessageBox::Show(L"Cita eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				// el mensaje q dio el CRUD dice por que no se pudo (no existe, no hace juego)
+				MessageBox::Show(mensajeConsola, L"No se pudo eliminar", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
+	//HABITACIONES (AVL)
+	public ref class FormEliminarHabitacion : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdHab;
+		ArbolHabitaciones* arbolHab;
+		Consola^ consolaHab;
+
+	public:
+		FormEliminarHabitacion(ArbolHabitaciones* habitaciones, Consola^ consola) {
+			arbolHab = habitaciones;
+			consolaHab = consola;
+
+			this->Text = L"Eliminar Habitacion";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblCod = gcnew Label();
+			lblCod->Text = L"Id de Habitacion a Eliminar: ";
+			lblCod->Location = System::Drawing::Point(30, 30);
+			lblCod->AutoSize = true;
+
+			txtIdHab = gcnew TextBox();
+			txtIdHab->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarHabitacion::Eliminar_Click);
+
+			this->Controls->Add(lblCod);
+			this->Controls->Add(txtIdHab);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			int idh;
+			if (!Int32::TryParse(txtIdHab->Text, idh)) {
+				MessageBox::Show(L"Por favor escriba un id valido (numero).", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			bool existe = (arbolHab->Buscarvalor(idh) != nullptr);
+
+			CapturaSalida cap;
+			arbolHab->EliminarHab(idh);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaHab->Escribir(mensajeConsola);
+
+			if (existe == true) {
+				MessageBox::Show(L"Habitacion eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(L"No se encontro ninguna habitacion con el id " + idh, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
+
 /*
 	// ventana con los botones ----------------------------------------------------------------------------------------
 	public ref class FormEliminar : public System::Windows::Forms::Form
