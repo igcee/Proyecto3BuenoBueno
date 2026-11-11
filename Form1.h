@@ -432,7 +432,6 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp, consolabuena);
 		ventana->ShowDialog();
 	}
-	/*
 	else if (entidad == L"Citas") {
 		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
 		ventana->ShowDialog();
@@ -441,7 +440,6 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab);
 		ventana->ShowDialog();
 	}
-	*/
 	else if (entidad == L"Hospitalizaciones") {
 		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloHosp, arbolilloPac, arbolilloHab,   consolabuena);
 		ventana->ShowDialog();

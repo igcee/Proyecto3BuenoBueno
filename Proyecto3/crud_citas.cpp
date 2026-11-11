@@ -385,3 +385,223 @@ void ArbolCitas::InordenReportesCitasPorFecha(pCita r, reportes& rep, int anchos
     }
     InordenReportesCitasPorFecha(r->Hder, rep, anchos, fechafiltro);
 }
+
+//ELIMINAR AVL
+
+void ArbolCitas::Equilibrar1(pCita& n, bool& Hh)
+{
+    pCita n1;
+    switch (n->FB)
+    {
+    case -1: //estaba cargado a la izq, ahora queda parejo (y la altura bajo)
+        n->FB = 0;
+        break;
+    case 0: //estaba parejo, ahora queda cargado a la der (la altura NO cambia)
+        n->FB = 1;
+        Hh = false;
+        break;
+    case 1: //ya estaba cargado a la der, ahora queda desbalanceado: hay q rotar
+        n1 = n->Hder;
+        if (n1->FB >= 0)
+        {
+            if (n1->FB == 0) { //en este caso despues de rotar la altura no cambia
+                Hh = false;
+            }
+            RotacionSimpleDerecha(n, n1);
+        }
+        else
+        {
+            RotacionDobleDerecha(n, n1);
+        }
+        break;
+    }
+}
+
+void ArbolCitas::Equilibrar2(pCita& n, bool& Hh)
+{
+    pCita n1;
+    switch (n->FB)
+    {
+    case 1:
+        n->FB = 0;
+        break;
+    case 0:
+        n->FB = -1;
+        Hh = false;
+        break;
+    case -1:
+        n1 = n->Hizq;
+        if (n1->FB <= 0)
+        {
+            if (n1->FB == 0) {
+                Hh = false;
+            }
+            RotacionSimpleIzquierda(n, n1);
+        }
+        else
+        {
+            RotacionDobleIzquierda(n, n1);
+        }
+        break;
+    }
+}
+
+void ArbolCitas::Borrar(pCita& aux1, pCita& otro1, bool& Hh)
+{
+    if (aux1->Hder != nullptr)
+    {
+        Borrar(aux1->Hder, otro1, Hh);
+        if (Hh) {
+            Equilibrar2(aux1, Hh);
+        }
+    }
+    else
+    {
+        //se copian los datos (no los hijos ni el FB)
+        otro1->idCita = aux1->idCita;
+        otro1->idPaciente = aux1->idPaciente;
+        otro1->idMedico = aux1->idMedico;
+        otro1->idEspecialidad = aux1->idEspecialidad;
+        otro1->fecha = aux1->fecha;
+        otro1->hora = aux1->hora;
+        otro1->motivo = aux1->motivo;
+        otro1->estado = aux1->estado;
+
+        otro1 = aux1;        //ahora el q se va a hacer delete es este nodo
+        aux1 = aux1->Hizq;   //su hijo izq sube a su lugar
+        Hh = true;
+    }
+}
+
+void ArbolCitas::BorrarBalanceado(pCita& r, bool& Hh, int id)
+{
+    pCita otro;
+    if (r == nullptr) {
+        return;
+    }
+
+    if (id < r->idCita)
+    {
+        BorrarBalanceado(r->Hizq, Hh, id);
+        if (Hh) {
+            Equilibrar1(r, Hh);
+        }
+    }
+    else if (id > r->idCita)
+    {
+        BorrarBalanceado(r->Hder, Hh, id);
+        if (Hh) {
+            Equilibrar2(r, Hh);
+        }
+    }
+    else //lo encontro
+    {
+        otro = r;
+        if (otro->Hder == nullptr) { //solo tiene hijo izq (o ninguno)
+            r = otro->Hizq;
+            Hh = true;
+        }
+        else if (otro->Hizq == nullptr) { //solo tiene hijo der
+            r = otro->Hder;
+            Hh = true;
+        }
+        else {// tiene 2 hijos
+            Borrar(otro->Hizq, otro, Hh);
+            if (Hh) {
+                Equilibrar1(r, Hh);
+            }
+        }
+        delete otro;
+    }
+}
+
+bool ArbolCitas::EliminaNodo(int id)
+{
+    if (Buscarvalor(raiz, id) == nullptr) {
+        return false;
+    }
+    bool Hh = false;
+    BorrarBalanceado(raiz, Hh, id);
+    return true;
+}
+
+void ArbolCitas::EliminarCita(int idp, int idm, int idc, ArbolPacientes& pacientes, ArbolMedicos& medicos)
+{
+    pCita nodoesta = Buscarvalor(idc);
+
+    if (nodoesta == nullptr) {
+        cout << "No se pudo eliminar la cita porque no existe una cita de id: " << idc << endl;
+    }
+    else if (pacientes.Buscarvalor(idp) == nullptr) {
+        cout << " No existe ningun paciente de id: " << idp << endl;
+    }
+    else if (medicos.Buscarvalor(idm) == nullptr) {
+        cout << " No existe ningun medico de id: " << idm << endl;
+    }
+    else if (nodoesta->idPaciente != idp || nodoesta->idMedico != idm) {
+        cout << "No se pudo eliminar: la cita de id " << idc << " no es del paciente " << idp << " con el medico " << idm << endl;
+    }
+    else {
+        EliminaNodo(idc);
+        cout << "Cita de id: " << idc << " eliminada correctamente" << endl;
+    }
+}
+
+//recorre el arbol y devuelve la primera cita q encuentre de ese paciente
+pCita ArbolCitas::BuscarPorPaciente(pCita r, int idp)
+{
+    if (r == nullptr) {
+        return nullptr;
+    }
+    if (r->idPaciente == idp) {
+        return r;
+    }
+    pCita encontrado = BuscarPorPaciente(r->Hizq, idp);
+    if (encontrado != nullptr) {
+        return encontrado;
+    }
+    return BuscarPorPaciente(r->Hder, idp);
+}
+
+pCita ArbolCitas::BuscarPorMedico(pCita r, int idm)
+{
+    if (r == nullptr) {
+        return nullptr;
+    }
+    if (r->idMedico == idm) {
+        return r;
+    }
+    pCita encontrado = BuscarPorMedico(r->Hizq, idm);
+    if (encontrado != nullptr) {
+        return encontrado;
+    }
+    return BuscarPorMedico(r->Hder, idm);
+}
+
+int ArbolCitas::EliminarCitasDePaciente(int idp)
+{
+    int cantidad = 0;
+    pCita cita = BuscarPorPaciente(raiz, idp);
+    while (cita != nullptr) {
+        int idc = cita->idCita; //se guarda el id antes de borrar
+        EliminaNodo(idc);
+        cout << "Cita de id: " << idc << " del paciente " << idp << " eliminada" << endl;
+        cantidad++;
+        cita = BuscarPorPaciente(raiz, idp);
+    }
+    return cantidad;
+}
+
+int ArbolCitas::EliminarCitasDeMedico(int idm)
+{
+    int cantidad = 0;
+    pCita cita = BuscarPorMedico(raiz, idm);
+    while (cita != nullptr) {
+        int idc = cita->idCita;
+        EliminaNodo(idc);
+        cout << "Cita de id: " << idc << " del medico " << idm << " eliminada" << endl;
+        cantidad++;
+        cita = BuscarPorMedico(raiz, idm);
+    }
+    return cantidad;
+}

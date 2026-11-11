@@ -58,6 +58,14 @@ private:
     pCita Buscarvalor(pCita r, int id);
     void LiberarMemoria(pCita r);
 
+    //eliminar AVL
+    void BorrarBalanceado(pCita& r, bool& Hh, int id);
+    void Borrar(pCita& aux1, pCita& otro1, bool& Hh);
+    void Equilibrar1(pCita& n, bool& Hh);
+    void Equilibrar2(pCita& n, bool& Hh);
+    pCita BuscarPorPaciente(pCita r, int idp);
+    pCita BuscarPorMedico(pCita r, int idm);
+
 public:
 
     ArbolCitas();
@@ -75,6 +83,11 @@ public:
     void InordenReportesCitasPorEspecialidad(pCita r, reportes& rep, int anchos[], int idEspFiltro);
     void InordenReportesCitasPorFecha(pCita r, reportes& rep, int anchos[], string fecha);
 
+    //eliminar
+    bool EliminaNodo(int id);
+    void EliminarCita(int idp, int idm, int idc, ArbolPacientes& pacientes, ArbolMedicos& medicos);
+    int EliminarCitasDePaciente(int idp); //cuando se elimine un paciente
+    int EliminarCitasDeMedico(int idm);   //cuando se elimine un medico
 };
 
 
