@@ -43,6 +43,8 @@ private:
     pEsp Buscarvalor(pEsp r, int id);
     void destruirArbol(pEsp r);
 
+    pEsp EliminaRec(pEsp r, int id, bool& eliminado);
+
 public:
     ArbolEspecialidad();
     ~ArbolEspecialidad();
@@ -55,6 +57,8 @@ public:
     void BuscarMostrar(int id);
     void ModificarEspecialidad(int id, string nuevaDesc);
     void InordenReportesEsp(pEsp r, reportes& rep, int anchos[]);
+    bool EliminaNodo(int id);
+    void EliminarEspecialidad(int id);
 };
 
 #endif

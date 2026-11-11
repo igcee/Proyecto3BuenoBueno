@@ -126,11 +126,13 @@ namespace CppCLRWinFormsProject {
 		TextBox^ txtCodCiudad;
 		ArbolPais* arbolPaises;
 		ArbolCiudad* arbolCiudades;
+		Consola^ consolaCiudad;
 
 	public:
-		FormEliminarCiudad(ArbolPais* arbolP, ArbolCiudad* arbolC) {
+		FormEliminarCiudad(ArbolPais* arbolP, ArbolCiudad* arbolC, Consola^ consola) {
 			arbolPaises = arbolP;
 			arbolCiudades = arbolC;
+			consolaCiudad = consola;
 
 			this->Text = L"Eliminar Ciudad";
 			this->Size = System::Drawing::Size(300, 260);
@@ -183,8 +185,22 @@ namespace CppCLRWinFormsProject {
 				return;
 			}
 
-			bool eliminado = arbolCiudades->EliminaNodo(codPaisint, codCiudadint);
+			bool existe = (arbolCiudades->Buscarvalor(codPaisint, codCiudadint) != nullptr);
 
+			CapturaSalida cap;
+			arbolCiudades->EliminarCiudad(codPaisint, codCiudadint, *arbolPaises);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaCiudad->Escribir(mensajeConsola);
+
+			if (existe == true) {
+				MessageBox::Show(L"Ciudad eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(L"No se encontro ninguna ciudad con el codigo " + codCiudadint + L" en el pais " + codPaisint, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
+			/*
 			if (eliminado == true) {
 				MessageBox::Show(L"Ciudad eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->Close();
@@ -192,10 +208,71 @@ namespace CppCLRWinFormsProject {
 			else {
 				MessageBox::Show(L"No se encontro ninguna ciudad con el codigo " + codCiudadint + L" en el pais " + codPaisint, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
+			*/
 		}
 	};
 
+// ESPECIALIDADES -------------------------------------------------------------------------------------------
+	public ref class FormEliminarEspecialidad : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtCodEsp;
+		ArbolEspecialidad* arbolEsp;
+		Consola^ consolaEsp;
 
+	public:
+		FormEliminarEspecialidad(ArbolEspecialidad* arbol, Consola^ consola) {
+			arbolEsp = arbol;
+			consolaEsp = consola;
+
+			this->Text = L"Eliminar Especialidad";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblCod = gcnew Label();
+			lblCod->Text = L"Codigo de Especialidad a Eliminar: ";
+			lblCod->Location = System::Drawing::Point(30, 30);
+			lblCod->AutoSize = true;
+
+			txtCodEsp = gcnew TextBox();
+			txtCodEsp->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarEspecialidad::Eliminar_Click);
+
+			this->Controls->Add(lblCod);
+			this->Controls->Add(txtCodEsp);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (txtCodEsp->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idespstr = msclr::interop::marshal_as<string>(txtCodEsp->Text);
+			int idespint = stoi(idespstr);
+
+			bool existe = (arbolEsp->Buscarvalor(idespint) != nullptr);
+
+			CapturaSalida cap;
+			arbolEsp->EliminarEspecialidad(idespint);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaEsp->Escribir(mensajeConsola);
+
+			if (existe == true) {
+				MessageBox::Show(L"Especialidad eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(L"No se encontro ninguna especialidad con el codigo " + idespint, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+	};
 /*
 	// ventana con los botones ----------------------------------------------------------------------------------------
 	public ref class FormEliminar : public System::Windows::Forms::Form

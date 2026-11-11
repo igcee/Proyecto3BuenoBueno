@@ -214,8 +214,9 @@ pPais ArbolPais::EliminarBinario(pPais raiz, int cod, bool& eliminado)
 }
 
 void ArbolPais::EliminarPais(int cod) {
-    if (EliminaNodo(cod))
+    if (EliminaNodo(cod) == true) {
         cout << "Pais de codigo: " << cod << " eliminado correctamente" << endl;
+    }
     else {
         cout << "No se pudo eliminar el pais de codigo: " << cod << " porque no existe" << endl;
     }

@@ -293,7 +293,7 @@ namespace CppCLRWinFormsProject {
 
 
 
-// DIAGNOSTICO -------------------------------------------------------------------------------------------------------------
+// ESPECIALIDAD -------------------------------------------------------------------------------------------------------------
 	public ref class FormBuscarEspecialidad : public System::Windows::Forms::Form {
 	private:
 		TextBox^ txtIdEsp;

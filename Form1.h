@@ -119,14 +119,17 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->SuspendLayout();
 			// 
 			// Form1
 			// 
-			this->Size = System::Drawing::Size(1280, 720);// resu en X / Y
-			this->Text = L"Sistema de Gestion Hospitalaria - Hospital San Rafael"; // este si nombre de ventana
-			this->BackColor = System::Drawing::Color::FromArgb(0, 69, 153); // color fondo
-
-
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(153)));
+			this->ClientSize = System::Drawing::Size(1262, 673);
+			this->Name = L"Form1";
+			this->Text = L"Sistema de Gestion Hospitalaria - Hospital San Rafael";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load_1);
+			this->ResumeLayout(false);
 
 		}
 #pragma endregion
@@ -412,7 +415,7 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Ciudades") {
-		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad);
+		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad, consolabuena);
 		ventana->ShowDialog();
 	}
 	/*
@@ -424,10 +427,12 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormEliminarMedico^ ventana = gcnew FormEliminarMedico(arbolilloEsp, arbolilloMed);
 		ventana->ShowDialog();
 	}
+	*/
 	else if (entidad == L"Especialidades") {
-		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp);
+		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp, consolabuena);
 		ventana->ShowDialog();
 	}
+	/*
 	else if (entidad == L"Citas") {
 		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
 		ventana->ShowDialog();
@@ -514,7 +519,7 @@ void Icono_Click(System::Object^ sender, System::EventArgs^ e) {
 	Button^ icono = (Button^)sender;
 	String^ entidad = icono->Text; //"Pacientes", "Medicos", etc
 
-	ContextMenuStrip^ menuIcono = gcnew ContextMenuStrip();
+	System::Windows::Forms::ContextMenuStrip^ menuIcono = gcnew System::Windows::Forms::ContextMenuStrip();
 	EventHandler^ evento = gcnew EventHandler(this, &Form1::AccionIcono_Click);
 	//CrearItem es el mismo q usa el menu de arriba.en el Tag se guarda de q entidad es
 	ToolStripMenuItem^ opInsertar = CrearItem(L"Insertar", evento);
@@ -600,5 +605,7 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 // aka mejor dejarlo ahi tranquilo
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void Form1_Load_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
