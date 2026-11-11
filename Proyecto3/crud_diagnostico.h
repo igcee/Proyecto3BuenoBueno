@@ -42,6 +42,8 @@ private:
     pDiag Buscarvalor(pDiag r, string id);
     void destruirArbol(pDiag r);
 
+    pDiag EliminaRec(pDiag r, string id, bool& eliminado);
+
 public:
     ArbolDiagnostico();
     ~ArbolDiagnostico();
@@ -54,6 +56,9 @@ public:
     void BuscarMostrar(string id);
     void ModificarDiag(string id, string nuevaDesc);
     void InordenReportesDiag(pDiag r, reportes& rep, int anchos[]);
+
+    bool EliminaNodo(string id);
+    void EliminarDiagnostico(string id);
 };
 
 #endif

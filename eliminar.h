@@ -273,6 +273,77 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 	};
+
+// DIAGNOSTICO -------------------------------------------------------------------------------------------
+	public ref class FormEliminarDiagnostico : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtCodDiag;
+		ArbolDiagnostico* arbolDiag;
+		Consola^ consolaDiag;
+
+	public:
+		FormEliminarDiagnostico(ArbolDiagnostico* arbol, Consola^ consola) {
+			arbolDiag = arbol;
+			consolaDiag = consola;
+
+			this->Text = L"Eliminar Diagnostico";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblCod = gcnew Label();
+			lblCod->Text = L"Codigo de Diagnostico a Eliminar: ";
+			lblCod->Location = System::Drawing::Point(30, 30);
+			lblCod->AutoSize = true;
+
+			txtCodDiag = gcnew TextBox();
+			txtCodDiag->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarDiagnostico::Eliminar_Click);
+
+			this->Controls->Add(lblCod);
+			this->Controls->Add(txtCodDiag);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (txtCodDiag->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idDiagstr = msclr::interop::marshal_as<string>(txtCodDiag->Text);
+			//int idDiagint = stoi(idDiagstr);
+
+			bool existe = (arbolDiag->Buscarvalor(idDiagstr) != nullptr);
+
+			CapturaSalida cap;
+			arbolDiag->EliminarDiagnostico(idDiagstr);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaDiag->Escribir(mensajeConsola);
+
+			if (existe == true) {
+				MessageBox::Show(L"Diagnostico eliminado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(L"No se encontro ningun diagnostico con el codigo " + txtCodDiag->Text, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				//^ si lo dejaba en idDIagstr en lugar de txtCodDiag->Text me salia el error de no acceptable conversion
+				// pq si se puede manejar los txtos de cli q empiezan con L y ints, pero no con strings
+			}
+		}
+	};
+
+
+
+
+
+
+
 /*
 	// ventana con los botones ----------------------------------------------------------------------------------------
 	public ref class FormEliminar : public System::Windows::Forms::Form

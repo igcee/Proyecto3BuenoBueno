@@ -178,3 +178,100 @@ void ArbolDiagnostico::InordenReportesDiag(pDiag r, reportes& rep, int anchos[])
     rep.escribirFilaDinamica(3, textos, anchos);
     InordenReportesDiag(r->Hder, rep, anchos);
 }
+
+
+// chunches eliminar ------------------------------------------------------------------------------------
+
+bool ArbolDiagnostico::EliminaNodo(string id) {
+    bool eliminado = false;
+    raiz = EliminaRec(raiz, id, eliminado);
+    return eliminado;
+}
+
+pDiag ArbolDiagnostico::EliminaRec(pDiag r, string id, bool& eliminado) {
+    if (r == nullptr) {
+        return nullptr;
+    }
+
+    if (id < r->idDiagnostico)
+    {
+        r->Hizq = EliminaRec(r->Hizq, id, eliminado);
+    }
+    else if (id > r->idDiagnostico)
+    {
+        r->Hder = EliminaRec(r->Hder, id, eliminado);
+    }
+    else
+    {
+        eliminado = true; // si se me vuelve a olvidar el eliminado = true empezare a cometer crimenes contra la humanidad -_-
+
+        // hoja
+        if (r->Hizq == nullptr and r->Hder == nullptr) {
+            delete r;
+            return nullptr;
+        }
+
+        // 1 hijo
+        if (r->Hizq == nullptr) {
+            pDiag temp = r->Hder;
+            delete r;
+            return temp;
+        }
+
+        else if (r->Hder == nullptr)
+        {
+            pDiag temp = r->Hizq;
+            delete r;
+            return temp;
+        }
+
+        // 2 hijos
+        pDiag sucesor = r->Hder;
+        while (sucesor->Hizq != nullptr)
+            sucesor = sucesor->Hizq;
+
+        r->idDiagnostico = sucesor->idDiagnostico;
+        r->nombre = sucesor->nombre;
+        r->descripcion = sucesor->descripcion;
+        r->Hder = EliminaRec(r->Hder, sucesor->idDiagnostico, eliminado);
+
+        // ajuste
+        int nivelEsperado = 1;
+        if (r->Hizq != nullptr) {
+            nivelEsperado = r->Hizq->nivel + 1;
+        }
+        if (r->Hder != nullptr and r->Hder->nivel + 1 < nivelEsperado) {
+            nivelEsperado = r->Hder->nivel + 1;
+        }
+
+        if (nivelEsperado < r->nivel) {
+            r->nivel = nivelEsperado;
+
+            if (r->Hder != nullptr and r->Hder->nivel > nivelEsperado) {
+                r->Hder->nivel = nivelEsperado;
+            }
+        }
+
+        Skew(r);
+        Split(r);
+
+        if (r->Hder != nullptr) {
+            Split(r->Hder);
+        }
+
+        if (r->Hder != nullptr and r->Hder->Hder != nullptr) {
+            Split(r->Hder->Hder);
+        }
+
+        return r;
+    }
+}
+
+void ArbolDiagnostico::EliminarDiagnostico(string id) {
+    if (EliminaNodo(id) == true) {
+        cout << "Diagnostico de id: " << id << " eliminada correctamente" << endl;
+    }
+    else {
+        cout << "No se pudo eliminar el diagnostico de id: " << id << " porque no existe" << endl;
+    }
+}

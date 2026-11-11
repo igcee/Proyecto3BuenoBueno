@@ -269,11 +269,12 @@ pEsp ArbolEspecialidad::EliminaRec(pEsp r, int id, bool& eliminado) {
         return r;
     }
 }
-    void ArbolEspecialidad::EliminarEspecialidad(int id) {
+
+void ArbolEspecialidad::EliminarEspecialidad(int id) {
         if (EliminaNodo(id) == true) {
             cout << "Especialidad de id: " << id << " eliminada correctamente" << endl;
         }
         else {
             cout << "No se pudo eliminar la especialidad de id: " << id << " porque no existe" << endl;
         }
-    }
+}

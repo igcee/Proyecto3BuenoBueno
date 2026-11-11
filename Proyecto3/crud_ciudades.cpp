@@ -261,7 +261,9 @@ pCiudad ArbolCiudad::EliminaBinario(pCiudad raiz, int codp, int codc, bool& elim
         }
         else {
             pCiudad sucesor = encontrarMin(raiz->Hder);
+            raiz->codPais = sucesor->codPais;
             raiz->codCiudad = sucesor->codCiudad;
+            raiz->nombre = sucesor->nombre;
             raiz->Hder = EliminaBinario(raiz->Hder, raiz->codPais, raiz->codCiudad, eliminado);
         }
     }
