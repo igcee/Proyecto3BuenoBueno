@@ -56,6 +56,10 @@ private:
     void RotDerecha(pHosp x);
     pHosp Buscarvalor(pHosp r, int id);
     void LiberarMemoria(pHosp r);
+    void EliminarHosp(pHosp idhosp);
+    void Sustitucion(pHosp idhosp1, pHosp idhosp2);
+    pHosp Minimo(pHosp raiz);
+    void ArreglaEliminacion(pHosp x);
 
 public:
     ArbolHospitalizaciones();
@@ -70,6 +74,9 @@ public:
     void ModificarHosp(int idPac, int idHab, int idHosp, string nuevoMotivo, ArbolPacientes& pacientes, ArbolHabitaciones& habitaciones);
     void InordenReportesHosp(pHosp r, reportes& rep, int anchos[]);
     void InordenReportesHospDeMedico(pHosp r, reportes& rep, int anchos[], int IdMedico);
+
+    bool EliminaNodo(int id);
+    void EliminarHospitalizacion(int idPac, int idHab, int idHosp, ArbolPacientes& pacientes, ArbolHabitaciones& habitaciones);
 };
 
 #endif

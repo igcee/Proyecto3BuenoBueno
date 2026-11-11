@@ -441,11 +441,12 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab);
 		ventana->ShowDialog();
 	}
+	*/
 	else if (entidad == L"Hospitalizaciones") {
-		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloPac, arbolilloHab, arbolilloMed, arbolilloHosp);
+		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloHosp, arbolilloPac, arbolilloHab,   consolabuena);
 		ventana->ShowDialog();
 	}
-	*/
+	
 	else if (entidad == L"Diagnosticos") {
 		FormEliminarDiagnostico^ ventana = gcnew FormEliminarDiagnostico(arbolilloDiag, consolabuena);
 		ventana->ShowDialog();

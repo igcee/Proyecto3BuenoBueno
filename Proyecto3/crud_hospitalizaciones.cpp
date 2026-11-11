@@ -297,3 +297,272 @@ void ArbolHospitalizaciones::InordenReportesHospDeMedico(pHosp r, reportes& rep,
 
 }
 
+// chunches eliminar --------------------------------------------------------------------------------------
+bool ArbolHospitalizaciones::EliminaNodo(int idhosp) {
+    pHosp nodo = Buscarvalor(raiz, idhosp);
+    if (nodo == nullptr) { //no esta
+        return false;
+    }
+   
+    EliminarHosp(nodo);
+    return true;
+}
+
+
+void ArbolHospitalizaciones::EliminarHosp(pHosp idhosp)
+{
+    pHosp y = idhosp;
+    pHosp x;
+    pHosp xPadre = nullptr;
+    bool yOriginalColor = y->color;
+
+    if (idhosp->Hizq == nullptr)
+    {
+        x = idhosp->Hder;
+        xPadre = idhosp->padre;
+        Sustitucion(idhosp, idhosp->Hder);
+    }
+    else
+        if (idhosp->Hder == nullptr)
+        {
+            x = idhosp->Hizq;
+            xPadre = idhosp->padre;
+            Sustitucion(idhosp, idhosp->Hizq);
+        }
+        else
+        {
+            y = Minimo(idhosp->Hder);
+            yOriginalColor = y->color;
+            x = y->Hder;
+            xPadre = y->padre;
+
+            if (y->padre == idhosp)
+            {
+                xPadre = y;
+                if (x != nullptr)
+                    x->padre = y;
+            }
+            else
+            {
+                Sustitucion(y, y->Hder);
+                y->Hder = idhosp->Hder;
+                if (y->Hder != nullptr)
+                    y->Hder->padre = y;
+            }
+
+            Sustitucion(idhosp, y);
+            y->Hizq = idhosp->Hizq;
+            if (y->Hizq != nullptr)
+                y->Hizq->padre = y;
+            y->color = idhosp->color;
+        }
+
+    delete idhosp;
+
+    if (!yOriginalColor)
+    {
+        // Si x es nullptr, crea nodo temp
+        if (x == nullptr)
+        {
+            pHosp centinela = new NodoHosp(0, 0, 0, 0, "", "", ""); // esto lo acmbie de lo de la profe pq para el nodo sin nada no sirve con solo NodoHosp(0)\
+            // si o si tenia q contener "algo" para todos los valores q tiene el nodo para hosp, sino se jodia
+            centinela->color = false;
+            centinela->padre = xPadre;
+            centinela->Hizq = nullptr;
+            centinela->Hder = nullptr;
+
+            // Conectar el centinela al padre
+            if (xPadre != nullptr)
+            {
+                if (xPadre->Hizq == nullptr)
+                    xPadre->Hizq = centinela;
+                else
+                    xPadre->Hder = centinela;
+            }
+
+            ArreglaEliminacion(centinela);
+
+            // Desconectar y eliminar el centinela
+            if (xPadre != nullptr)
+            {
+                if (xPadre->Hizq == centinela)
+                    xPadre->Hizq = nullptr;
+                if (xPadre->Hder == centinela)
+                    xPadre->Hder = nullptr;
+            }
+
+            delete centinela;
+        }
+        else
+        {
+            ArreglaEliminacion(x);
+        }
+    }
+}
+
+
+void ArbolHospitalizaciones::Sustitucion(pHosp idhosp1, pHosp idhosp2) {
+    if (idhosp1->padre == nullptr)
+    {
+        raiz = idhosp2;
+    }
+    else
+        if (idhosp1 == idhosp1->padre->Hizq)
+        {
+            idhosp1->padre->Hizq = idhosp2;
+        }
+        else
+        {
+            idhosp1->padre->Hder = idhosp2;
+        }
+
+    if (idhosp2 != nullptr)
+    {
+        idhosp2->padre = idhosp1->padre;
+    }
+}
+
+pHosp ArbolHospitalizaciones::Minimo(pHosp nodo) {
+    while (nodo->Hizq != nullptr)
+    {
+        nodo = nodo->Hizq;
+    }
+    return nodo;
+}
+
+
+void ArbolHospitalizaciones::ArreglaEliminacion(pHosp x)
+{
+    while (x != raiz and x->color == false)
+    {
+        if (x->padre == nullptr)
+            break;
+
+        if (x == x->padre->Hizq)
+        {
+            pHosp w = x->padre->Hder;
+
+            // hermano es rojo
+            if (w != nullptr and w->color == true)
+            {
+                w->color = false;
+                x->padre->color = true;
+                RotIzquierda(x->padre);
+                w = x->padre->Hder;
+            }
+
+            if (w == nullptr)
+            {
+                x = x->padre;
+                continue;
+            }
+
+            //  hermano es negro y ambos hijos del hermano son negros
+            if ((w->Hizq == nullptr or w->Hizq->color == false) and (w->Hder == nullptr or w->Hder->color == false))
+            {
+                w->color = true;
+                x = x->padre;
+            }
+            else
+            {
+                //  hermano negro, hijo der del hermano es negro, hijo izq es rojo
+                if (w->Hder == nullptr or w->Hder->color == false)
+                {
+                    if (w->Hizq != nullptr)
+                        w->Hizq->color = false;
+                    w->color = true;
+                    RotDerecha(w);
+                    w = x->padre->Hder;
+                }
+
+                // Caso 4: hermano es negro, hijo derecho del hermano es rojo
+                if (w != nullptr)
+                {
+                    w->color = x->padre->color;
+                    x->padre->color = false;
+                    if (w->Hder != nullptr)
+                        w->Hder->color = false;
+                    RotIzquierda(x->padre);
+                }
+                x = raiz;
+            }
+        }
+        else
+        {
+            // Casos simetricos (x es hijo derecho)
+            pHosp w = x->padre->Hizq;
+
+            // Caso 1 simetrico
+            if (w != nullptr and w->color == true)
+            {
+                w->color = false;
+                x->padre->color = true;
+                RotDerecha(x->padre);
+                w = x->padre->Hizq;
+            }
+
+            if (w == nullptr)
+            {
+                x = x->padre;
+                continue;
+            }
+
+            // Caso 2 simetrico
+            if ((w->Hder == nullptr or w->Hder->color == false) and (w->Hizq == nullptr or w->Hizq->color == false))
+            {
+                w->color = true;
+                x = x->padre;
+            }
+            else {
+                // simetrico
+                if (w->Hizq == nullptr or w->Hizq->color == false)
+                {
+                    if (w->Hder != nullptr)
+                        w->Hder->color = false;
+                    w->color = true;
+                    RotIzquierda(w);
+                    w = x->padre->Hizq;
+                }
+
+                // simetrico
+                if (w != nullptr)
+                {
+                    w->color = x->padre->color;
+                    x->padre->color = false;
+                    if (w->Hizq != nullptr)
+                        w->Hizq->color = false;
+                    RotDerecha(x->padre);
+                }
+                x = raiz;
+            }
+        }
+    }
+
+    if (x != nullptr)
+        x->color = false;
+}
+
+
+
+void ArbolHospitalizaciones::EliminarHospitalizacion(int idPac, int idHab, int idHosp, ArbolPacientes& pacientes, ArbolHabitaciones& habitaciones) {
+    if (pacientes.Buscarvalor(idPac) == nullptr) {
+        cout << "Error: El paciente de id " << idPac << " no existe." << endl;
+        return;
+    }
+    if (habitaciones.Buscarvalor(idHab) == nullptr) {
+        cout << "Error: La habitacion de id " << idHab << " no existe." << endl;
+        return;
+    }
+
+    pHosp nodoesta = Buscarvalor(idHosp);
+    if (nodoesta == nullptr) {
+        cout << "No existe ninguna hospitalizacion de codigo: " << idHosp << endl;
+    }
+    else if (nodoesta->idPaciente != idPac or nodoesta->idHabitacion != idHab) {
+        cout << "La hospitalizacion " << idHosp << " existe, pero NO pertenece al paciente " << idPac << " o a la habitacion " << idHab << endl;
+    }
+    else {
+        EliminaNodo(idHosp);
+        cout << "Hospitalizacion " << idHosp << " eliminada correctamente" << endl;
+    }
+}

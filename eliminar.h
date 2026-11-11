@@ -338,6 +338,110 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 
+// Hospitalizacion -------------------------------------------------------------------------------------------
+	public ref class FormEliminarHospitalizacion : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtCodHosp;
+		TextBox^ txtCodPac;
+		TextBox^ txtCodHab;
+		ArbolHospitalizaciones* arbolHosp;
+		ArbolPacientes* arbolPac;
+		ArbolHabitaciones* arbolHab;
+		Consola^ consolaHosp;
+
+	public:
+		FormEliminarHospitalizacion(ArbolHospitalizaciones* arbol, ArbolPacientes* pacientes, ArbolHabitaciones* habitaciones, Consola^ consola) {
+			arbolHosp = arbol;
+			arbolPac = pacientes;
+			arbolHab = habitaciones;
+			consolaHosp = consola;
+
+			this->Text = L"Eliminar Hospitalizacion";
+			this->Size = System::Drawing::Size(300, 320);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// idhosp
+			Label^ lblCodHosp = gcnew Label();
+			lblCodHosp->Text = L"Codigo de Hospitalizacion a Eliminar: ";
+			lblCodHosp->Location = System::Drawing::Point(30, 20);
+			lblCodHosp->AutoSize = true;
+			txtCodHosp = gcnew TextBox();
+			txtCodHosp->Location = System::Drawing::Point(30, 40);
+			
+			// idpac
+			Label^ lblCodPac = gcnew Label();
+			lblCodPac->Text = L"Codigo de Paciente:";
+			lblCodPac->Location = System::Drawing::Point(30, 80);
+			lblCodPac->AutoSize = true;
+			txtCodPac = gcnew TextBox();
+			txtCodPac->Location = System::Drawing::Point(30, 100);
+
+			// idhab
+			Label^ lblCodHab = gcnew Label();
+			lblCodHab->Text = L"Codigo de Habitacion:";
+			lblCodHab->Location = System::Drawing::Point(30, 140);
+			lblCodHab->AutoSize = true;
+			txtCodHab = gcnew TextBox();
+			txtCodHab->Location = System::Drawing::Point(30, 160);
+
+			/*
+			txtCodHosp = gcnew TextBox();
+			txtCodHosp->Location = System::Drawing::Point(30, 50);
+			*/
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 210);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarHospitalizacion::Eliminar_Click);
+
+			this->Controls->Add(lblCodHosp);
+			this->Controls->Add(txtCodHosp);
+			this->Controls->Add(lblCodPac);
+			this->Controls->Add(txtCodPac);
+			this->Controls->Add(lblCodHab);
+			this->Controls->Add(txtCodHab);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (txtCodHosp->Text == "" or txtCodPac->Text == "" or txtCodHab->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idHospstr = msclr::interop::marshal_as<string>(txtCodHosp->Text);
+			string idPacstr = msclr::interop::marshal_as<string>(txtCodPac->Text);
+			string idHabstr = msclr::interop::marshal_as<string>(txtCodHab->Text);
+			int idHospint = stoi(idHospstr);
+			int idPacint = stoi(idPacstr);
+			int idHabint = stoi(idHabstr);
+
+			//bool existe = (arbolHosp->Buscarvalor(idHospint) != nullptr);
+			bool PizzaHut = false;
+			pHosp NovilloAlegre = arbolHosp->Buscarvalor(idHospint);
+			if (NovilloAlegre != nullptr and NovilloAlegre->idPaciente == idPacint and NovilloAlegre->idHabitacion == idHabint) {
+				PizzaHut = true;
+			}
+
+			CapturaSalida cap;
+			arbolHosp->EliminarHospitalizacion(idPacint, idHabint, idHospint, *arbolPac, *arbolHab);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaHosp->Escribir(mensajeConsola);
+
+			if (PizzaHut == true) {
+				MessageBox::Show(L"Hospitalizacion eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(mensajeConsola, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				// ^ aca puse como mensaje "mensajeConsola", pq hay un monton de mensajes que podrian terminar saliendo aca (mal pac, mal hab, mal hosp...)
+				// entonces mas facil solo puse q saque lo mismo q iba a mostrarse en la consola
+
+			}
+		}
+	};
 
 
 
