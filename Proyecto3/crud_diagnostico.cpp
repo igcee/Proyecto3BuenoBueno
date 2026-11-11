@@ -201,10 +201,10 @@ pDiag ArbolDiagnostico::EliminaRec(pDiag r, string id, bool& eliminado) {
     {
         r->Hder = EliminaRec(r->Hder, id, eliminado);
     }
-    else
-    {
+    else {
         eliminado = true; // si se me vuelve a olvidar el eliminado = true empezare a cometer crimenes contra la humanidad -_-
 
+        /*
         // hoja
         if (r->Hizq == nullptr and r->Hder == nullptr) {
             delete r;
@@ -224,7 +224,73 @@ pDiag ArbolDiagnostico::EliminaRec(pDiag r, string id, bool& eliminado) {
             delete r;
             return temp;
         }
+        */
 
+        // hoja o 1 hijo'
+        if (r->Hizq == nullptr) {
+            pDiag temp = r->Hder;
+            delete r;
+            return temp;
+        }
+        else if (r->Hder == nullptr) {
+            pDiag temp = r->Hizq;
+            delete r;
+            return temp;
+        }
+        // ^ hice aca arriba y abajo de lo de 2 hijos el mismo fix de esp, pq ambos tenian el mismo problemilla
+        else {
+            // 2 hijos
+            pDiag sucesor = r->Hder;
+            while (sucesor->Hizq != nullptr) {
+                sucesor = sucesor->Hizq;
+            }
+            r->idDiagnostico = sucesor->idDiagnostico;
+            r->nombre = sucesor->nombre;
+            r->descripcion = sucesor->descripcion;
+            r->Hder = EliminaRec(r->Hder, sucesor->idDiagnostico, eliminado);
+        }
+
+    }
+    if (r == nullptr) {
+        return nullptr;
+    }
+
+
+    int nivelEsperado = 1;
+    if (r->Hizq != nullptr) {
+        nivelEsperado = r->Hizq->nivel + 1;
+    }
+
+    if (r->Hder != nullptr and r->Hder->nivel + 1 < nivelEsperado) {
+        nivelEsperado = r->Hder->nivel + 1;
+    }
+
+    if (nivelEsperado < r->nivel) {
+        r->nivel = nivelEsperado;
+        if (r->Hder != nullptr and r->Hder->nivel > nivelEsperado) {
+            r->Hder->nivel = nivelEsperado;
+        }
+    }
+
+    Skew(r);
+    if (r->Hder != nullptr) {
+        Skew(r->Hder);
+        if (r->Hder->Hder != nullptr) {
+            Skew(r->Hder->Hder);
+        }
+    }
+
+    Split(r);
+    if (r->Hder != nullptr) {
+        Split(r->Hder);
+    }
+
+    return r;
+}
+
+
+
+        /*
         // 2 hijos
         pDiag sucesor = r->Hder;
         while (sucesor->Hizq != nullptr)
@@ -266,7 +332,7 @@ pDiag ArbolDiagnostico::EliminaRec(pDiag r, string id, bool& eliminado) {
         return r;
     }
 }
-
+*/
 void ArbolDiagnostico::EliminarDiagnostico(string id) {
     if (EliminaNodo(id) == true) {
         cout << "Diagnostico de id: " << id << " eliminada correctamente" << endl;
