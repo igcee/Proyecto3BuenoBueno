@@ -634,11 +634,13 @@ namespace CppCLRWinFormsProject {
 	private:
 		TextBox^ txtIdHab;
 		ArbolHabitaciones* arbolHab;
+		ArbolHospitalizaciones* arbolHosp; //cascada
 		Consola^ consolaHab;
 
 	public:
-		FormEliminarHabitacion(ArbolHabitaciones* habitaciones, Consola^ consola) {
+		FormEliminarHabitacion(ArbolHabitaciones* habitaciones, ArbolHospitalizaciones* hosp, Consola^ consola) {
 			arbolHab = habitaciones;
+			arbolHosp = hosp;
 			consolaHab = consola;
 
 			this->Text = L"Eliminar Habitacion";
@@ -675,6 +677,9 @@ namespace CppCLRWinFormsProject {
 			bool existe = (arbolHab->Buscarvalor(idh) != nullptr);
 
 			CapturaSalida cap;
+			if (existe == true) {
+				arbolHosp->EliminarHospDeHabitacion(idh); //cascadaprimero sus hospitalizaciones
+			}
 			arbolHab->EliminarHab(idh);
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaHab->Escribir(mensajeConsola);
@@ -684,11 +689,143 @@ namespace CppCLRWinFormsProject {
 				this->Close();
 			}
 			else {
-				MessageBox::Show(L"No se encontro ninguna habitacion con el id " + idh, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show(L"No se encontro ninguna habitacion con el id " + idh.ToString(), L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
 	};
 
+	//PACIENTES (ARBOL B)
+	public ref class FormEliminarPaciente : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdPac;
+		ArbolPacientes* arbolPac;
+		ArbolCitas* arbolCita;
+		ArbolHospitalizaciones* arbolHosp;
+		Consola^ consolaPac;
+
+	public:
+		FormEliminarPaciente(ArbolPacientes* pacientes, ArbolCitas* citas, ArbolHospitalizaciones* hosp, Consola^ consola) {
+			arbolPac = pacientes;
+			arbolCita = citas;
+			arbolHosp = hosp;
+			consolaPac = consola;
+
+			this->Text = L"Eliminar Paciente";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id del Paciente a Eliminar: ";
+			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
+
+			txtIdPac = gcnew TextBox();
+			txtIdPac->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarPaciente::Eliminar_Click);
+
+			this->Controls->Add(lblId);
+			this->Controls->Add(txtIdPac);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			int idp;
+			if (!Int32::TryParse(txtIdPac->Text, idp)) {
+				MessageBox::Show(L"Por favor escriba un id valido (numero).", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			if (arbolPac->Buscarvalor(idp) == nullptr) {
+				MessageBox::Show(L"No se encontro ningun paciente con el id " + idp.ToString(), L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			//se avisa de la cascada antes de borrar
+			System::Windows::Forms::DialogResult resp = MessageBox::Show(L"Se eliminara el paciente " + idp.ToString() + L" junto con TODAS sus citas y hospitalizaciones.\nDesea continuar?", L"Confirmar", MessageBoxButtons::YesNo, MessageBoxIcon::Warning);
+			if (resp != System::Windows::Forms::DialogResult::Yes) {
+				return;
+			}
+
+			CapturaSalida cap;
+			arbolPac->EliminarPaciente(idp, *arbolCita, *arbolHosp);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaPac->Escribir(mensajeConsola);
+
+			MessageBox::Show(L"Paciente eliminado con exito (ver detalle en la consola).", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->Close();
+		}
+	};
+
+	//MEDICOS (ARBOL B)
+	public ref class FormEliminarMedico : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdMed;
+		ArbolMedicos* arbolMed;
+		ArbolCitas* arbolCita;
+		Consola^ consolaMed;
+
+	public:
+		FormEliminarMedico(ArbolMedicos* medicos, ArbolCitas* citas, Consola^ consola) {
+			arbolMed = medicos;
+			arbolCita = citas;
+			consolaMed = consola;
+
+			this->Text = L"Eliminar Medico";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id del Medico a Eliminar: ";
+			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
+
+			txtIdMed = gcnew TextBox();
+			txtIdMed->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarMedico::Eliminar_Click);
+
+			this->Controls->Add(lblId);
+			this->Controls->Add(txtIdMed);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			int idm;
+			if (!Int32::TryParse(txtIdMed->Text, idm)) {
+				MessageBox::Show(L"Por favor escriba un id valido (numero).", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			if (arbolMed->Buscarvalor(idm) == nullptr) {
+				MessageBox::Show(L"No se encontro ningun medico con el id " + idm.ToString(), L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			System::Windows::Forms::DialogResult resp = MessageBox::Show(L"Se eliminara el medico " + idm.ToString() + L" junto con TODAS sus citas.\nDesea continuar?", L"Confirmar", MessageBoxButtons::YesNo, MessageBoxIcon::Warning);
+			if (resp != System::Windows::Forms::DialogResult::Yes) {
+				return;
+			}
+
+			CapturaSalida cap;
+			arbolMed->EliminarMedico(idm, *arbolCita);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaMed->Escribir(mensajeConsola);
+
+			MessageBox::Show(L"Medico eliminado con exito (ver detalle en la consola).", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->Close();
+		}
+	};
 /*
 	// ventana con los botones ----------------------------------------------------------------------------------------
 	public ref class FormEliminar : public System::Windows::Forms::Form

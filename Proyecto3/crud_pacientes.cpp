@@ -9,6 +9,8 @@ using namespace std;
 #include "crud_pacientes.h"
 #include "crud_ciudades.h" //validar q la ciudad existe
 #include "reportes.h"
+#include "crud_citas.h"            //para la cascada borrar citas
+#include "crud_hospitalizaciones.h" //para la cascada borrar hospitalizaciones
 
 //Constructor
 ArbolPacientes::ArbolPacientes()
@@ -310,4 +312,194 @@ void ArbolPacientes::InordenReportesPacientesPorCiudad(pPagPac r, reportes& rep,
         }
         InordenReportesPacientesPorCiudad(r->ramas[i], rep, anchos, codPaisFiltro,codCiudadFiltro);
     }
+}
+
+//ELIMINAR (ARBOL B)
+void ArbolPacientes::Quitar(pPagPac actual, int k)
+{
+    for (int j = k + 1; j <= actual->cuenta; j++) {
+        actual->claves[j - 1] = actual->claves[j];
+        actual->ramas[j - 1] = actual->ramas[j];
+    }
+    actual->cuenta--;
+}
+
+void ArbolPacientes::Sucesor(pPagPac actual, int k)
+{
+    pPagPac q = actual->ramas[k];
+    while (q->ramas[0] != nullptr) {
+        q = q->ramas[0];
+    }
+    actual->claves[k] = q->claves[1]; 
+}
+
+void ArbolPacientes::MoverDerecha(pPagPac actual, int k)
+{
+    pPagPac problema = actual->ramas[k];
+    pPagPac izquierdo = actual->ramas[k - 1];
+
+    for (int j = problema->cuenta; j >= 1; j--) {
+        problema->claves[j + 1] = problema->claves[j];
+        problema->ramas[j + 1] = problema->ramas[j];
+    }
+    problema->cuenta++;
+    problema->ramas[1] = problema->ramas[0];
+
+    problema->claves[1] = actual->claves[k];              
+    actual->claves[k] = izquierdo->claves[izquierdo->cuenta];
+    problema->ramas[0] = izquierdo->ramas[izquierdo->cuenta];
+    izquierdo->cuenta--;
+}
+
+void ArbolPacientes::MoverIzquierda(pPagPac actual, int k)
+{
+    pPagPac problema = actual->ramas[k - 1];
+    pPagPac derecho = actual->ramas[k];
+
+    problema->cuenta++;
+    problema->claves[problema->cuenta] = actual->claves[k];
+    problema->ramas[problema->cuenta] = derecho->ramas[0];
+
+    actual->claves[k] = derecho->claves[1];                 
+    derecho->ramas[0] = derecho->ramas[1];
+    derecho->cuenta--;
+
+    for (int j = 1; j <= derecho->cuenta; j++) {          
+        derecho->claves[j] = derecho->claves[j + 1];
+        derecho->ramas[j] = derecho->ramas[j + 1];
+    }
+}
+
+void ArbolPacientes::Combina(pPagPac actual, int k)
+{
+    pPagPac derecho = actual->ramas[k];
+    pPagPac izquierdo = actual->ramas[k - 1];
+
+    izquierdo->cuenta++;
+    izquierdo->claves[izquierdo->cuenta] = actual->claves[k];
+    izquierdo->ramas[izquierdo->cuenta] = derecho->ramas[0];
+
+    for (int j = 1; j <= derecho->cuenta; j++) {             
+        izquierdo->cuenta++;
+        izquierdo->claves[izquierdo->cuenta] = derecho->claves[j];
+        izquierdo->ramas[izquierdo->cuenta] = derecho->ramas[j];
+    }
+
+    for (int j = k; j <= actual->cuenta - 1; j++) {          
+        actual->claves[j] = actual->claves[j + 1];
+        actual->ramas[j] = actual->ramas[j + 1];
+    }
+    actual->cuenta--;
+
+    delete derecho;
+}
+
+void ArbolPacientes::Restablecer(pPagPac actual, int k)
+{
+    if (k > 0) { 
+        if (actual->ramas[k - 1]->cuenta > MINPAC) {
+            MoverDerecha(actual, k);
+        }
+        else {
+            Combina(actual, k);
+        }
+    }
+    else { 
+        if (actual->ramas[1]->cuenta > MINPAC) {
+            MoverIzquierda(actual, 1);
+        }
+        else {
+            Combina(actual, 1);
+        }
+    }
+}
+
+void ArbolPacientes::EliminarRegistro(pPagPac actual, int id, bool& encontrado)
+{
+    if (actual == nullptr) {
+        encontrado = false; 
+        return;
+    }
+
+    int k;
+    encontrado = BuscarNodo(actual, id, k);
+    if (encontrado) {
+        if (actual->ramas[k - 1] == nullptr) { 
+            Quitar(actual, k);
+        }
+        else {
+            Sucesor(actual, k);
+            EliminarRegistro(actual->ramas[k], actual->claves[k].idPaciente, encontrado);
+        }
+    }
+    else {
+        EliminarRegistro(actual->ramas[k], id, encontrado);
+    }
+
+    if (actual->ramas[k] != nullptr) {
+        if (actual->ramas[k]->cuenta < MINPAC) {
+            Restablecer(actual, k);
+        }
+    }
+}
+
+bool ArbolPacientes::EliminaNodo(int id)
+{
+    bool encontrado;
+    EliminarRegistro(raiz, id, encontrado);
+
+    if (encontrado && raiz->cuenta == 0) {
+        pPagPac vieja = raiz;
+        raiz = raiz->ramas[0];
+        delete vieja;
+    }
+    return encontrado;
+}
+
+//ELIMINAR EN CASCADA
+
+void ArbolPacientes::EliminarPaciente(int id, ArbolCitas& citas, ArbolHospitalizaciones& hosp)
+{
+    if (Buscarvalor(id) == nullptr) {
+        cout << "No se pudo eliminar el paciente porque no existe un paciente de id: " << id << endl;
+        return;
+    }
+
+    int cantCitas = citas.EliminarCitasDePaciente(id);
+    int cantHosp = hosp.EliminarHospDePaciente(id);
+
+    EliminaNodo(id);
+    cout << "Paciente de id: " << id << " eliminado correctamente (se eliminaron " << cantCitas << " citas y " << cantHosp << " hospitalizaciones)" << endl;
+}
+
+pPaciente ArbolPacientes::BuscarPorCiudad(pPagPac r, int codp, int codc)
+{
+    if (r == nullptr) {
+        return nullptr;
+    }
+    for (int i = 1; i <= r->cuenta; i++) {
+        if (r->claves[i].codPais == codp && r->claves[i].codCiudad == codc) {
+            return &(r->claves[i]);
+        }
+    }
+    for (int i = 0; i <= r->cuenta; i++) {
+        pPaciente encontrado = BuscarPorCiudad(r->ramas[i], codp, codc);
+        if (encontrado != nullptr) {
+            return encontrado;
+        }
+    }
+    return nullptr;
+}
+
+int ArbolPacientes::EliminarPacientesDeCiudad(int codp, int codc, ArbolCitas& citas, ArbolHospitalizaciones& hosp)
+{
+    int cantidad = 0;
+    pPaciente pac = BuscarPorCiudad(raiz, codp, codc);
+    while (pac != nullptr) {
+        int id = pac->idPaciente; 
+        EliminarPaciente(id, citas, hosp);
+        cantidad++;
+        pac = BuscarPorCiudad(raiz, codp, codc);
+    }
+    return cantidad;
 }
