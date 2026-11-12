@@ -419,11 +419,11 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Pacientes") {
-		FormEliminarPaciente^ ventana = gcnew FormEliminarPaciente(arbolilloPais, arbolilloCiudad, arbolilloPac);
+		FormEliminarPaciente^ ventana = gcnew FormEliminarPaciente(arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Medicos") {
-		FormEliminarMedico^ ventana = gcnew FormEliminarMedico(arbolilloEsp, arbolilloMed);
+		FormEliminarMedico^ ventana = gcnew FormEliminarMedico(arbolilloMed, arbolilloCita, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Especialidades") {
