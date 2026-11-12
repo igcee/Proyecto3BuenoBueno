@@ -18,4 +18,3 @@ C:\Users\PC\source\repos\tec\Proyecto3Bueno\x64\Debug\zd.dll
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.AssemblyReference.cache
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.Form1.resources
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.GenerateResource.cache
-C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.Up2Date

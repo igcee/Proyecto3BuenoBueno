@@ -712,7 +712,7 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 
-	//PACIENTES (ARBOL B)
+//PACIENTES -------------------------------------------------------------------------------------------------------------------
 	public ref class FormEliminarPaciente : public System::Windows::Forms::Form {
 	private:
 		TextBox^ txtIdPac;
@@ -775,12 +775,12 @@ namespace CppCLRWinFormsProject {
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaPac->Escribir(mensajeConsola);
 
-			MessageBox::Show(L"Paciente eliminado con exito (ver detalle en la consola).", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show(L"Paciente eliminado con exito", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->Close();
 		}
 	};
 
-	//MEDICOS (ARBOL B)
+//MEDICOS ---------------------------------------------------------------------------------------------------------------------------
 	public ref class FormEliminarMedico : public System::Windows::Forms::Form {
 	private:
 		TextBox^ txtIdMed;
@@ -840,7 +840,7 @@ namespace CppCLRWinFormsProject {
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaMed->Escribir(mensajeConsola);
 
-			MessageBox::Show(L"Medico eliminado con exito (ver detalle en la consola).", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show(L"Medico eliminado con exito", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->Close();
 		}
 	};

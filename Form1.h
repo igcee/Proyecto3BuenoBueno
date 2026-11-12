@@ -590,7 +590,7 @@ System::Void Reportes_Click(System::Object^ sender, System::EventArgs^ e) {
 */
 
 void AcercaDe_Click(System::Object^ sender, System::EventArgs^ e) {
-	MessageBox::Show(L"Las consecuencias de la inclusion de la salsa lizano a los tamales", L"Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	MessageBox::Show(L"Sistema de Gestión Hospitalaria: Ian Castro - Maria Paula", L"Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
 void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {

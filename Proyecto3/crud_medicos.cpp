@@ -7,7 +7,7 @@
 using namespace std;
 #include "crud_medicos.h"
 #include "crud_especialidades.h" //validar q la especialidad existe
-#include "crud_citas.h"            //para la cascada borrar citas
+#include "crud_citas.h"  //para la cascada borrar citas
 
 
 //Constructor

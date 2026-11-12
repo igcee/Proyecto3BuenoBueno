@@ -86,22 +86,29 @@ namespace CppCLRWinFormsProject {
 			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
 			int codPaisint = stoi(codPaisstr);
 
+			if (arbolPaises->Buscarvalor(codPaisint) != nullptr) {
+				MessageBox::Show(L"Error: Ya existe un pais con ese codigo.", L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+
+
 			//bool guardado = arbolPaises->InsertaNodo(codPaisint, nombrestr);
 			CapturaSalida cap;
 			arbolPaises->InsertarPais(codPaisint, nombrestr);
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaPais->Escribir(mensajeConsola);
-			bool guardado = (arbolPaises->Buscarvalor(codPaisint) != nullptr);
+			//bool guardado = (arbolPaises->Buscarvalor(codPaisint) != nullptr);
 
-			if (guardado == true) {
+			//if (guardado == true) {
 				// exito y cierra ventana si bien guardado
-				MessageBox::Show(L"Pais guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				this->Close();
-			}
-			else {
+			MessageBox::Show(L"Pais guardado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->Close();
+			//}
+			//else {
 				// sino no, y no cierra ventana para q se pueda corregir x usuario
-				MessageBox::Show(mensajeConsola, L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}
+				//MessageBox::Show(mensajeConsola, L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			//}
 		}
 	};
 
