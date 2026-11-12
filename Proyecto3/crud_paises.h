@@ -11,6 +11,12 @@
 using namespace std;
 #include "reportes.h"
 
+
+class ArbolCiudad;
+class ArbolPacientes;
+class ArbolCitas;
+class ArbolHospitalizaciones;
+
 class NodoPais {
 public:
 	int codPais;
@@ -57,7 +63,7 @@ public:
     void BuscarMostrar(int cod);
     void ModificarPais(int cod, string nuevoNom);
     void InordenReportesPais(pPais raiz, reportes& rep, int anchos[]);
-    void EliminarPais(int cod);
+    void EliminarPais(int cod, ArbolCiudad& ciudades, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp);
     pPais encontrarMin(pPais raiz); // este se ocupaba para las elim
 };
 #endif

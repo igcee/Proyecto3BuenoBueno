@@ -8,6 +8,9 @@
 using namespace std;
 #include "crud_ciudades.h"
 #include "crud_paises.h" // validar codigo pais existe
+#include "crud_pacientes.h" // estpos 3 de aca abajo se ocupan para la elimnacion de cascada de cuando se elimina una ciudad
+#include "crud_citas.h"
+#include "crud_hospitalizaciones.h"
 // Constructor
 
 int ArbolCiudad::Comp(int codp1, int codc1, int codp2, int codc2){
@@ -290,14 +293,33 @@ pCiudad ArbolCiudad::BuscarP(pCiudad raiz, int codp) {
     }
 }
 
-void ArbolCiudad::EliminarCiudad(int codp, int codc, ArbolPais& paises) {
-    if (paises.Buscarvalor(codp) == nullptr) {
+int ArbolCiudad::EliminarCiudadesDePais(int codp, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp) {
+    int cantidad = 0;
+    pCiudad aux = BuscarDePais(codp);
+    while (aux != nullptr) {
+        int codc = aux->codCiudad;
+        int cantPac = pacientes.EliminarPacientesDeCiudad(codp, codc, citas, hosp);
+        EliminaNodo(codp, codc);
+        cout << "Ciudad de codigo: " << codc << " del pais de codigo: " << codp << " eliminada correctamente" << endl;
+        cantidad = cantidad + 1;
+        aux = BuscarDePais(codp);
+    }
+    return cantidad;
+}
+
+
+
+void ArbolCiudad::EliminarCiudad(int codp, int codc, ArbolPais& paises, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp) {
+    if (paises.Buscarvalor(codp) == nullptr) { // codpais
         cout << "No se pudo eliminar la ciudad ya que el pais de codigo " << codp << " no existe" << endl;
     }
-    else if (EliminaNodo(codp, codc)) {
-        cout << "Ciudad de codigo: " << codc << " del pais de codigo: " << codp << " eliminada correctamente" << endl;
+    else if (Buscarvalor(codp, codc) == nullptr) { // codciudad codpais
+        cout << "No se pudo eliminar la ciudad ya que no existe una ciudad de codigo " << codc << " en el pais de codigo " << codp << endl;
     }
     else {
-        cout << "No se pudo eliminar la ciudad ya que no existe una ciudad de codigo " << codc << " en el pais de codigo " << codp << endl;
+        int cantPac = pacientes.EliminarPacientesDeCiudad(codp, codc, citas, hosp); // quita pacientes de lo de cascada
+        EliminaNodo(codp, codc);
+       //cout << "Ciudad de codigo: " << codc << " del pais de codigo: " << codp << " eliminada correctamente (se eliminaron " << cantPac << " pacientes)" << endl;
+        cout << "Ciudad de codigo: " << codc << " del pais de codigo: " << codp << " eliminada correctamente" << endl;
     }
 }

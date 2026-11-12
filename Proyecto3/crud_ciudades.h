@@ -7,6 +7,11 @@
 using namespace std;
 #include "crud_paises.h" // para validar q pais exista
 
+class ArbolPacientes;
+class ArbolCitas;
+class ArbolHospitalizaciones;
+
+
 class NodoCiudad {
 public:
     int codCiudad;
@@ -57,7 +62,8 @@ public:
 
     bool EliminaNodo(int codp, int codc);
     pCiudad BuscarDePais(int codp); // el de ciudades ocupa un chunche de buscar de pais, pq si se borra un pais se le tienen q borrar sus ciudades
-    void EliminarCiudad(int codp, int codc, ArbolPais& paises);
+    void EliminarCiudad(int codp, int codc, ArbolPais& paises, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp);
     pCiudad encontrarMin(pCiudad raiz);
+    int EliminarCiudadesDePais(int codp, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp);
 };
 #endif

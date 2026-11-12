@@ -469,7 +469,8 @@ void ArbolPacientes::EliminarPaciente(int id, ArbolCitas& citas, ArbolHospitaliz
     int cantHosp = hosp.EliminarHospDePaciente(id);
 
     EliminaNodo(id);
-    cout << "Paciente de id: " << id << " eliminado correctamente (se eliminaron " << cantCitas << " citas y " << cantHosp << " hospitalizaciones)" << endl;
+    //cout << "Paciente de id: " << id << " eliminado correctamente (se eliminaron " << cantCitas << " citas y " << cantHosp << " hospitalizaciones)" << endl;
+    cout << "Paciente de id: " << id << " eliminado correctamente" << endl;
 }
 
 pPaciente ArbolPacientes::BuscarPorCiudad(pPagPac r, int codp, int codc)

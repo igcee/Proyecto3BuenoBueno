@@ -14,9 +14,26 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class CppCLRWinFormsProject.GuiUtil: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    Vacio(TextBox): PrivateScope, Public, Static, HideBySig
+    LeerEntero(TextBox, Int32&): PrivateScope, Public, Static, HideBySig
+    LeerDecimal(TextBox, Double&): PrivateScope, Public, Static, HideBySig
+    Aviso(String): PrivateScope, Public, Static, HideBySig
+    MostrarError(String, String): PrivateScope, Public, Static, HideBySig
+    MostrarResultadoModificar(String): PrivateScope, Public, Static, HideBySig
+Class CppCLRWinFormsProject.FormCampos: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+Class CppCLRWinFormsProject.Consola: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Crear(): PrivateScope, Public, HideBySig
+    Escribir(String): PrivateScope, Public, HideBySig
+    Linea(String): PrivateScope, Public, HideBySig
+    IrAlFinal(): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.FormInsertarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolPais*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormInsertarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolPais*, ArbolCiudad*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -44,20 +61,6 @@ Class CppCLRWinFormsProject.FormInsertarHospitalizacion: AutoLayout, AnsiClass, 
 Class CppCLRWinFormsProject.FormInsertarCita: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolPacientes*, ArbolMedicos*, ArbolEspecialidad*, ArbolCitas*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class CppCLRWinFormsProject.FormInsertar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*, ArbolCiudad*, ArbolEspecialidad*, ArbolCitas*, ArbolHabitaciones*, ArbolHospitalizaciones*, ArbolMedicos*, ArbolPacientes*, ArbolTratamiento*, ArbolDiagnostico*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Paises_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Ciudades_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Especialidades_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Tratamientos_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Diagnosticos_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Pacientes_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Medicos_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Habitaciones_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Hospitalizaciones_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    Citas_Click(Object, EventArgs): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.FormBuscarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -91,16 +94,6 @@ Class CppCLRWinFormsProject.FormBuscarCita: AutoLayout, AnsiClass, Class, Public
 Class CppCLRWinFormsProject.FormBuscar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolPais*, ArbolCiudad*, ArbolEspecialidad*, ArbolCitas*, ArbolHabitaciones*, ArbolHospitalizaciones*, ArbolMedicos*, ArbolPacientes*, ArbolTratamiento*, ArbolDiagnostico*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class CppCLRWinFormsProject.GuiUtil: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
-  Methods:
-    Vacio(TextBox): PrivateScope, Public, Static, HideBySig
-    LeerEntero(TextBox, Int32&): PrivateScope, Public, Static, HideBySig
-    LeerDecimal(TextBox, Double&): PrivateScope, Public, Static, HideBySig
-    Aviso(String): PrivateScope, Public, Static, HideBySig
-    MostrarError(String, String): PrivateScope, Public, Static, HideBySig
-    MostrarResultadoModificar(String): PrivateScope, Public, Static, HideBySig
-Class CppCLRWinFormsProject.FormCampos: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
 Class CppCLRWinFormsProject.FormModificarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :CppCLRWinFormsProject.FormCampos
     Void .ctor(ArbolPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -137,19 +130,12 @@ Class CppCLRWinFormsProject.FormModificar: AutoLayout, AnsiClass, Class, Public,
 Class CppCLRWinFormsProject.BotonIcono: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Button
     Void .ctor(System.String, Int32, Int32, System.Drawing.Color): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class CppCLRWinFormsProject.Consola: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Crear(): PrivateScope, Public, HideBySig
-    Escribir(String): PrivateScope, Public, HideBySig
-    Linea(String): PrivateScope, Public, HideBySig
-    IrAlFinal(): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.FormEliminarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolPais*, ArbolCiudad*, ArbolPacientes*, ArbolCitas*, ArbolHospitalizaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormEliminarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolPais*, ArbolCiudad*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolPais*, ArbolCiudad*, ArbolPacientes*, ArbolCitas*, ArbolHospitalizaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormEliminarEspecialidad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolEspecialidad*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -167,7 +153,13 @@ Class CppCLRWinFormsProject.FormEliminarCita: AutoLayout, AnsiClass, Class, Publ
     Void .ctor(ArbolPacientes*, ArbolMedicos*, ArbolCitas*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormEliminarHabitacion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolHabitaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolHabitaciones*, ArbolHospitalizaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarPaciente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolPacientes*, ArbolCitas*, ArbolHospitalizaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarMedico: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolMedicos*, ArbolCitas*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

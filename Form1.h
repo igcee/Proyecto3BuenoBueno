@@ -411,11 +411,11 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ entidad = item->Text;
 
 	if (entidad == L"Paises") {
-		FormEliminarPais^ ventana = gcnew FormEliminarPais(arbolilloPais, consolabuena);
+		FormEliminarPais^ ventana = gcnew FormEliminarPais(arbolilloPais, arbolilloCiudad, arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Ciudades") {
-		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad, consolabuena);
+		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad, arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Pacientes") {

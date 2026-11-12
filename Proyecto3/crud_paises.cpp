@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 #include "crud_paises.h"
+#include "crud_ciudades.h"
 // Constructor
 ArbolPais::ArbolPais()
 {
@@ -213,6 +214,7 @@ pPais ArbolPais::EliminarBinario(pPais raiz, int cod, bool& eliminado)
     return raiz;
 }
 
+/*
 void ArbolPais::EliminarPais(int cod) {
     if (EliminaNodo(cod) == true) {
         cout << "Pais de codigo: " << cod << " eliminado correctamente" << endl;
@@ -220,4 +222,16 @@ void ArbolPais::EliminarPais(int cod) {
     else {
         cout << "No se pudo eliminar el pais de codigo: " << cod << " porque no existe" << endl;
     }
+}
+*/
+
+void ArbolPais::EliminarPais(int cod, ArbolCiudad& ciudades, ArbolPacientes& pacientes, ArbolCitas& citas, ArbolHospitalizaciones& hosp) {
+    if (Buscarvalor(cod) == nullptr) {
+        cout << "No se pudo eliminar el pais de codigo: " << cod << " porque no existe" << endl;
+        return;
+    }
+    int cantCiudades = ciudades.EliminarCiudadesDePais(cod, pacientes, citas, hosp); // borra primero ciudades con ese cod
+    EliminaNodo(cod); // y luego el paios
+    //cout << "Pais de codigo: " << cod << " eliminado correctamente (se eliminaron " << cantCiudades << " ciudades)" << endl;
+    cout << "Pais de codigo: " << cod << " eliminado correctamente" << endl;
 }

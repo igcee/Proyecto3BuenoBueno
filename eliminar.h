@@ -31,10 +31,18 @@ namespace CppCLRWinFormsProject {
 		TextBox^ txtCodPais;
 		ArbolPais* arbolPaises;
 		Consola^ consolaPais;
+		ArbolCiudad* arbolCiudades;
+		ArbolPacientes* arbolPac;
+		ArbolCitas* arbolCita;
+		ArbolHospitalizaciones* arbolHosp;
 
 	public:
-		FormEliminarPais(ArbolPais* arbol, Consola^ consola) {
+		FormEliminarPais(ArbolPais* arbol, ArbolCiudad* ciudades, ArbolPacientes* pacientes, ArbolCitas* citas, ArbolHospitalizaciones* hosp, Consola^ consola) {
 			arbolPaises = arbol;
+			arbolCiudades = ciudades;
+			arbolPac = pacientes;
+			arbolCita = citas;
+			arbolHosp = hosp;
 			consolaPais = consola;
 
 			this->Text = L"Eliminar Pais";
@@ -98,7 +106,10 @@ namespace CppCLRWinFormsProject {
 			bool existe = (arbolPaises->Buscarvalor(codPaisint) != nullptr); // esto es para lo de mostrar mensaje de eliminado O de codpais no existe
 			
 			CapturaSalida cap;
-			arbolPaises->EliminarPais(codPaisint); // elimina de vrdd
+			if (existe == true) {
+				arbolCiudades->EliminarCiudadesDePais(codPaisint, *arbolPac, *arbolCita, *arbolHosp);// quita ciudades
+			}
+			arbolPaises->EliminarPais(codPaisint, *arbolCiudades, *arbolPac, *arbolCita, *arbolHosp); // dsps pais
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaPais->Escribir(mensajeConsola);
 			
@@ -110,10 +121,6 @@ namespace CppCLRWinFormsProject {
 			else {
 				MessageBox::Show(L"No se encontro ningun pais con el codigo " + codPaisint, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
-
-
-
-
 
 		}
 	};
@@ -128,11 +135,18 @@ namespace CppCLRWinFormsProject {
 		ArbolCiudad* arbolCiudades;
 		Consola^ consolaCiudad;
 
+		ArbolHospitalizaciones* arbolHosp;
+		ArbolPacientes* arbolPac;
+		ArbolCitas* arbolCita;
+
 	public:
-		FormEliminarCiudad(ArbolPais* arbolP, ArbolCiudad* arbolC, Consola^ consola) {
+		FormEliminarCiudad(ArbolPais* arbolP, ArbolCiudad* arbolC, ArbolPacientes* arbolPaci, ArbolCitas* arbolCi, ArbolHospitalizaciones* arbolHo, Consola^ consola) {
 			arbolPaises = arbolP;
 			arbolCiudades = arbolC;
 			consolaCiudad = consola;
+			arbolHosp = arbolHo;
+			arbolPac = arbolPaci;
+			arbolCita = arbolCi;
 
 			this->Text = L"Eliminar Ciudad";
 			this->Size = System::Drawing::Size(300, 260);
@@ -188,7 +202,7 @@ namespace CppCLRWinFormsProject {
 			bool existe = (arbolCiudades->Buscarvalor(codPaisint, codCiudadint) != nullptr);
 
 			CapturaSalida cap;
-			arbolCiudades->EliminarCiudad(codPaisint, codCiudadint, *arbolPaises);
+			arbolCiudades->EliminarCiudad(codPaisint, codCiudadint, *arbolPaises, *arbolPac, *arbolCita, *arbolHosp);
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaCiudad->Escribir(mensajeConsola);
 

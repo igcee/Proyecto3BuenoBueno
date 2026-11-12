@@ -448,7 +448,8 @@ void ArbolMedicos::EliminarMedico(int id, ArbolCitas& citas)
     int cantCitas = citas.EliminarCitasDeMedico(id);
 
     EliminaNodo(id);
-    cout << "Medico de id: " << id << " eliminado correctamente (se eliminaron " << cantCitas << " citas)" << endl;
+    //cout << "Medico de id: " << id << " eliminado correctamente (se eliminaron " << cantCitas << " citas)" << endl;
+    cout << "Medico de id: " << id << " eliminado correctamente" << endl;
 }
 
 pMedico ArbolMedicos::BuscarPorEspecialidad(pPagMed r, int idesp)
