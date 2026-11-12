@@ -9,6 +9,8 @@
 using namespace std;
 #include "crud_especialidades.h"
 #include "reportes.h"
+#include "crud_medicos.h"
+#include "crud_citas.h"
 
 // Constructor
 ArbolEspecialidad::ArbolEspecialidad()
@@ -321,11 +323,16 @@ pEsp ArbolEspecialidad::EliminaRec(pEsp r, int id, bool& eliminado) {
     }
 }
 */
-void ArbolEspecialidad::EliminarEspecialidad(int id) {
-        if (EliminaNodo(id) == true) {
-            cout << "Especialidad de id: " << id << " eliminada correctamente" << endl;
+void ArbolEspecialidad::EliminarEspecialidad(int id, ArbolMedicos& medicos, ArbolCitas& citas) {
+        if (Buscarvalor(id) == nullptr) {
+            cout << "No se pudo eliminar la especialidad de id: " << id << " porque no existe" << endl;
+            return;
         }
         else {
-            cout << "No se pudo eliminar la especialidad de id: " << id << " porque no existe" << endl;
+            medicos.EliminarMedicosDeEspecialidad(id, citas);
+            EliminaNodo(id);
+
+            cout << "Especialidad de id: " << id << " eliminada correctamente" << endl;
         }
 }
+ // al de esp le faltaba cascada para meds

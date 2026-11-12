@@ -427,7 +427,7 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Especialidades") {
-		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp, consolabuena);
+		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp, arbolilloMed, arbolilloCita, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Citas") {

@@ -232,11 +232,15 @@ namespace CppCLRWinFormsProject {
 		TextBox^ txtCodEsp;
 		ArbolEspecialidad* arbolEsp;
 		Consola^ consolaEsp;
+		ArbolMedicos* arbolMed;
+		ArbolCitas* arbolCita;
 
 	public:
-		FormEliminarEspecialidad(ArbolEspecialidad* arbol, Consola^ consola) {
+		FormEliminarEspecialidad(ArbolEspecialidad* arbol, ArbolMedicos* medicos, ArbolCitas* citas, Consola^ consola) {
 			arbolEsp = arbol;
 			consolaEsp = consola;
+			arbolMed = medicos;
+			arbolCita = citas;
 
 			this->Text = L"Eliminar Especialidad";
 			this->Size = System::Drawing::Size(300, 200);
@@ -274,7 +278,7 @@ namespace CppCLRWinFormsProject {
 			bool existe = (arbolEsp->Buscarvalor(idespint) != nullptr);
 
 			CapturaSalida cap;
-			arbolEsp->EliminarEspecialidad(idespint);
+			arbolEsp->EliminarEspecialidad(idespint, *arbolMed, *arbolCita);
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaEsp->Escribir(mensajeConsola);
 
@@ -692,9 +696,9 @@ namespace CppCLRWinFormsProject {
 
 			CapturaSalida cap;
 			if (existe == true) {
-				arbolHosp->EliminarHospDeHabitacion(idh); //cascadaprimero sus hospitalizaciones
+				//arbolHosp->EliminarHospDeHabitacion(idh); //cascadaprimero sus hospitalizaciones
 			}
-			arbolHab->EliminarHab(idh);
+			arbolHab->EliminarHab(idh, *arbolHosp);
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaHab->Escribir(mensajeConsola);
 

@@ -58,7 +58,7 @@ public:
     void ModificarEspecialidad(int id, string nuevaDesc);
     void InordenReportesEsp(pEsp r, reportes& rep, int anchos[]);
     bool EliminaNodo(int id);
-    void EliminarEspecialidad(int id);
+    void EliminarEspecialidad(int id, ArbolMedicos& medicos, ArbolCitas& citas);
 };
 
 #endif

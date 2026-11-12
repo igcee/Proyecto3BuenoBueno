@@ -138,7 +138,7 @@ Class CppCLRWinFormsProject.FormEliminarCiudad: AutoLayout, AnsiClass, Class, Pu
     Void .ctor(ArbolPais*, ArbolCiudad*, ArbolPacientes*, ArbolCitas*, ArbolHospitalizaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormEliminarEspecialidad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(ArbolEspecialidad*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(ArbolEspecialidad*, ArbolMedicos*, ArbolCitas*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.FormEliminarDiagnostico: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolDiagnostico*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

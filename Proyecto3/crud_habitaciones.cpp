@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 #include "crud_habitaciones.h"
+#include "crud_hospitalizaciones.h"
 
 
 // Constructor
@@ -506,12 +507,16 @@ bool ArbolHabitaciones::EliminaNodo(int id)
 }
 
 // Se indica el IdHabitacion, si existe se elimina la habitacion
-void ArbolHabitaciones::EliminarHab(int id)
+void ArbolHabitaciones::EliminarHab(int id, ArbolHospitalizaciones& hosp)
 {
-    if (EliminaNodo(id) == true) {
-        cout << "Habitacion de id: " << id << " eliminada correctamente" << endl;
+    if (Buscarvalor(id) == nullptr) {
+        cout << "No se pudo eliminar la habitacion de id: " << id << " porque no existe" << endl;
+        return;
     }
     else {
-        cout << "No se pudo eliminar la habitacion de id: " << id << " porque no existe" << endl;
+        hosp.EliminarHospDeHabitacion(id);
+        //cout << "No se pudo eliminar la habitacion de id: " << id << " porque no existe" << endl;
+        EliminaNodo(id);
+        cout << "Habitacion de id: " << id << " eliminada correctamente" << endl;
     }
 }

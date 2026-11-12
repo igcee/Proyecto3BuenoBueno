@@ -74,7 +74,7 @@ public:
 
     //eliminar
     bool EliminaNodo(int id);
-    void EliminarHab(int id);
+    void EliminarHab(int id, ArbolHospitalizaciones& hosp);
 
 };
 
