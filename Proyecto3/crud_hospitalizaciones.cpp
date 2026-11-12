@@ -566,3 +566,20 @@ void ArbolHospitalizaciones::EliminarHospitalizacion(int idPac, int idHab, int i
         cout << "Hospitalizacion " << idHosp << " eliminada correctamente" << endl;
     }
 }
+
+void ArbolHospitalizaciones::EliminarHospPorHab(pHosp nodo, int idHab) {
+    // esta se ocupaba para lo de cascada, donde borrar una hab hace q se borren las hosps q tenian esa hab
+
+    if (nodo == nullptr) {
+        return;
+    }
+
+    EliminarHospPorHab(nodo->Hizq, idHab);
+    EliminarHospPorHab(nodo->Hder, idHab);
+
+    if (nodo->idHabitacion == idHab) {
+        EliminaNodo(nodo->idHospitalizacion);
+
+    }
+}
+

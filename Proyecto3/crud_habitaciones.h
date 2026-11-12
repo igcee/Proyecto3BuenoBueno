@@ -30,6 +30,7 @@ public:
         Hder = nullptr;
     }
     friend class ArbolHabitaciones;
+    friend class ArbolHospitalizaciones;
 };
 
 typedef NodoHab* pHab;

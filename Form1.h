@@ -263,7 +263,7 @@ void Insertar_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ entidad = item->Text; //txt del menu (osea paises/ciudad...etc)
 
 	if (entidad == L"Paises") {
-		FormInsertarPais^ ventana = gcnew FormInsertarPais(arbolilloPais);
+		FormInsertarPais^ ventana = gcnew FormInsertarPais(arbolilloPais, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Ciudades") {

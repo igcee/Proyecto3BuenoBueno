@@ -40,6 +40,7 @@ public:
         Hder = nullptr;
     }
     friend class ArbolHospitalizaciones;
+    friend class ArbolHabitaciones;
     //friend class ArbolMedicos
 };
 typedef NodoHosp* pHosp;
@@ -77,6 +78,9 @@ public:
 
     bool EliminaNodo(int id);
     void EliminarHospitalizacion(int idPac, int idHab, int idHosp, ArbolPacientes& pacientes, ArbolHabitaciones& habitaciones);
+
+    // ese es para cascada, de q borrar habitacion tambien borra hosp
+    void EliminarHospPorHab(pHosp nodo, int idHab);
 };
 
 #endif

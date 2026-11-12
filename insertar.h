@@ -14,6 +14,8 @@
 #include "Proyecto3/crud_medicos.h"
 #include "Proyecto3/crud_pacientes.h"
 #include "Proyecto3/crud_tratamientos.h"
+#include "utilGUI.h" // por esta estupidez no compilaba :/
+#include "consolabuenobueno.h"
 // 
 // NOTA: lo de crear la ventana con los botones va al puro final, pq sino manda error por no conocer chunches
 
@@ -32,10 +34,12 @@ namespace CppCLRWinFormsProject {
 		TextBox^ txtCodPais;
 		TextBox^ txtNombre; // guardar input de la ventana
 		ArbolPais* arbolPaises;
+		Consola^ consolaPais;
 
 	public:
-		FormInsertarPais(ArbolPais* arbol) {
+		FormInsertarPais(ArbolPais* arbol, Consola^ consola) {
 			arbolPaises = arbol;
+			consolaPais = consola; 
 
 			this->Text = L"Insertar Pais";
 			this->Size = System::Drawing::Size(300, 250);
@@ -81,7 +85,13 @@ namespace CppCLRWinFormsProject {
 			string codPaisstr = msclr::interop::marshal_as<string>(txtCodPais->Text);
 			string nombrestr = msclr::interop::marshal_as<string>(txtNombre->Text);
 			int codPaisint = stoi(codPaisstr);
-			bool guardado = arbolPaises->InsertaNodo(codPaisint, nombrestr);
+
+			//bool guardado = arbolPaises->InsertaNodo(codPaisint, nombrestr);
+			CapturaSalida cap;
+			arbolPaises->InsertarPais(codPaisint, nombrestr);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaPais->Escribir(mensajeConsola);
+			bool guardado = (arbolPaises->Buscarvalor(codPaisint) != nullptr);
 
 			if (guardado == true) {
 				// exito y cierra ventana si bien guardado
@@ -90,7 +100,7 @@ namespace CppCLRWinFormsProject {
 			}
 			else {
 				// sino no, y no cierra ventana para q se pueda corregir x usuario
-				MessageBox::Show(L"Error: Ya existe un pais registrado con ese codigo.", L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show(mensajeConsola, L"Codigo Duplicado", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
 	};
@@ -1129,8 +1139,8 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 	};
-
-
+}
+/*
 // ventana con los botones ----------------------------------------------------------------------------------------
 
 	public ref class FormInsertar : public System::Windows::Forms::Form
@@ -1288,3 +1298,4 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 }
+*/
