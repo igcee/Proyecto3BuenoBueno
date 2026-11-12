@@ -566,3 +566,47 @@ void ArbolHospitalizaciones::EliminarHospitalizacion(int idPac, int idHab, int i
         cout << "Hospitalizacion " << idHosp << " eliminada correctamente" << endl;
     }
 }
+
+//ELIMINAR EN CASCADA
+pHosp ArbolHospitalizaciones::BuscarPorPaciente(pHosp r, int idPac) {
+    if (r == nullptr) return nullptr;
+    if (r->idPaciente == idPac) return r;
+    pHosp encontrado = BuscarPorPaciente(r->Hizq, idPac);
+    if (encontrado != nullptr) return encontrado;
+    return BuscarPorPaciente(r->Hder, idPac);
+}
+
+pHosp ArbolHospitalizaciones::BuscarPorHabitacion(pHosp r, int idHab) {
+    if (r == nullptr) return nullptr;
+    if (r->idHabitacion == idHab) return r;
+    pHosp encontrado = BuscarPorHabitacion(r->Hizq, idHab);
+    if (encontrado != nullptr) return encontrado;
+    return BuscarPorHabitacion(r->Hder, idHab);
+}
+
+//borra todas las hospitalizaciones de un paciente
+int ArbolHospitalizaciones::EliminarHospDePaciente(int idPac) {
+    int cantidad = 0;
+    pHosp h = BuscarPorPaciente(raiz, idPac);
+    while (h != nullptr) {
+        int id = h->idHospitalizacion;
+        EliminaNodo(id);
+        cout << "Hospitalizacion " << id << " del paciente " << idPac << " eliminada" << endl;
+        cantidad++;
+        h = BuscarPorPaciente(raiz, idPac);
+    }
+    return cantidad;
+}
+
+int ArbolHospitalizaciones::EliminarHospDeHabitacion(int idHab) {
+    int cantidad = 0;
+    pHosp h = BuscarPorHabitacion(raiz, idHab);
+    while (h != nullptr) {
+        int id = h->idHospitalizacion;
+        EliminaNodo(id);
+        cout << "Hospitalizacion " << id << " de la habitacion " << idHab << " eliminada" << endl;
+        cantidad++;
+        h = BuscarPorHabitacion(raiz, idHab);
+    }
+    return cantidad;
+}

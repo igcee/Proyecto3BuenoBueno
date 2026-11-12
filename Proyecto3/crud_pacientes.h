@@ -58,6 +58,9 @@ public:
 };
 typedef PaginaPaciente* pPagPac;
 
+class ArbolCitas;
+class ArbolHospitalizaciones;
+
 class ArbolPacientes {
     friend class reportes;
 private:
@@ -70,6 +73,16 @@ private:
     void DividirNodo(pPagPac actual, NodoPaciente cl, pPagPac rd, int k, NodoPaciente& mediana, pPagPac& nuevo);
     pPaciente Buscarvalor(pPagPac r, int id);
     void destruirArbol(pPagPac r);
+
+    //eliminar (arbol B)
+    void EliminarRegistro(pPagPac actual, int id, bool& encontrado);
+    void Quitar(pPagPac actual, int k);
+    void Sucesor(pPagPac actual, int k);
+    void Restablecer(pPagPac actual, int k);
+    void MoverDerecha(pPagPac actual, int k);
+    void MoverIzquierda(pPagPac actual, int k);
+    void Combina(pPagPac actual, int k);
+    pPaciente BuscarPorCiudad(pPagPac r, int codp, int codc);
 
 public:
     ArbolPacientes();
@@ -86,6 +99,11 @@ public:
     void InordenReportesPacientes(pPagPac r, reportes& rep, int anchos[]);
     void InordenReportesPacientesPorPais(pPagPac r, reportes& rep, int anchos[], int codPais);
     void InordenReportesPacientesPorCiudad(pPagPac r, reportes& rep, int anchos[], int codPaisFiltro,int codCiudadFiltro);
+
+    //eliminar
+    bool EliminaNodo(int id);
+    void EliminarPaciente(int id, ArbolCitas& citas, ArbolHospitalizaciones& hosp);
+    int EliminarPacientesDeCiudad(int codp, int codc, ArbolCitas& citas, ArbolHospitalizaciones& hosp); //para cuando se elimine una ciudad
 
 };
 #endif

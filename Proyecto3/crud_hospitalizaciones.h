@@ -60,6 +60,8 @@ private:
     void Sustitucion(pHosp idhosp1, pHosp idhosp2);
     pHosp Minimo(pHosp raiz);
     void ArreglaEliminacion(pHosp x);
+    pHosp BuscarPorPaciente(pHosp r, int idPac);
+    pHosp BuscarPorHabitacion(pHosp r, int idHab);
 
 public:
     ArbolHospitalizaciones();
@@ -77,6 +79,8 @@ public:
 
     bool EliminaNodo(int id);
     void EliminarHospitalizacion(int idPac, int idHab, int idHosp, ArbolPacientes& pacientes, ArbolHabitaciones& habitaciones);
+    int EliminarHospDePaciente(int idPac);    //cascada cuando se elimina un paciente
+    int EliminarHospDeHabitacion(int idHab);  //cascada cuando se elimina una habitacion
 };
 
 #endif

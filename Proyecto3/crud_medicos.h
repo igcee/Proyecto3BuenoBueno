@@ -54,6 +54,8 @@ public:
 };
 typedef PaginaMedico* pPagMed;
 
+class ArbolCitas;
+
 class ArbolMedicos {
     friend class reportes;
 private:
@@ -66,6 +68,16 @@ private:
     void DividirNodo(pPagMed actual, NodoMedico cl, pPagMed rd, int k, NodoMedico& mediana, pPagMed& nuevo);
     pMedico Buscarvalor(pPagMed r, int id);
     void destruirArbol(pPagMed r);
+
+    //eliminar (arbol B)
+    void EliminarRegistro(pPagMed actual, int id, bool& encontrado);
+    void Quitar(pPagMed actual, int k);
+    void Sucesor(pPagMed actual, int k);
+    void Restablecer(pPagMed actual, int k);
+    void MoverDerecha(pPagMed actual, int k);
+    void MoverIzquierda(pPagMed actual, int k);
+    void Combina(pPagMed actual, int k);
+    pMedico BuscarPorEspecialidad(pPagMed r, int idesp);
 
 public:
     ArbolMedicos();
@@ -81,5 +93,10 @@ public:
     //Medicos necesita validar q la especialidad exista, se pasa como parametro x referencia
     void InordenReportesMedicos(pPagMed r, reportes& rep, int anchos[]);
     void InordenReportesMedicosPorEspecialidad(pPagMed r, reportes& rep, int anchos[], int idespfiltro);
+
+    //eliminar
+    bool EliminaNodo(int id);
+    void EliminarMedico(int id, ArbolCitas& citas);
+    int EliminarMedicosDeEspecialidad(int idesp, ArbolCitas& citas); //para cuando se elimine una especialidad
 };
 #endif
