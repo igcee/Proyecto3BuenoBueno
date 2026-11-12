@@ -433,11 +433,11 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Citas") {
-		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita);
+		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed,  arbolilloCita, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Habitaciones") {
-		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab);
+		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab, consolabuena);
 		ventana->ShowDialog();
 	}
 	else if (entidad == L"Hospitalizaciones") {
@@ -449,12 +449,12 @@ void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormEliminarDiagnostico^ ventana = gcnew FormEliminarDiagnostico(arbolilloDiag, consolabuena);
 		ventana->ShowDialog();
 	}
-	/*
+	
 	else if (entidad == L"Tratamientos") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata);
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
 		ventana->ShowDialog();
 	}
-	*/
+	
 	else {
 		MessageBox::Show(L"kashdasasdashjda", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}

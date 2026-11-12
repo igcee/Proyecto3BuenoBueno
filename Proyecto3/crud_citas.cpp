@@ -533,10 +533,10 @@ void ArbolCitas::EliminarCita(int idp, int idm, int idc, ArbolPacientes& pacient
         cout << "No se pudo eliminar la cita porque no existe una cita de id: " << idc << endl;
     }
     else if (pacientes.Buscarvalor(idp) == nullptr) {
-        cout << " No existe ningun paciente de id: " << idp << endl;
+        cout << "No existe ningun paciente de id: " << idp << endl;
     }
     else if (medicos.Buscarvalor(idm) == nullptr) {
-        cout << " No existe ningun medico de id: " << idm << endl;
+        cout << "No existe ningun medico de id: " << idm << endl;
     }
     else if (nodoesta->idPaciente != idp || nodoesta->idMedico != idm) {
         cout << "No se pudo eliminar: la cita de id " << idc << " no es del paciente " << idp << " con el medico " << idm << endl;

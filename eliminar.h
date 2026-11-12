@@ -426,7 +426,7 @@ namespace CppCLRWinFormsProject {
 			}
 
 			CapturaSalida cap;
-			arbolHosp->EliminarHospitalizacion(idPacint, idHabint, idHospint, *arbolPac, *arbolHab);
+			arbolHosp->EliminarHospitalizacion(idPacint, idHabint, idHospint, *arbolPac, *arbolHab); // ocupa ref a los arboles para lo de verificar idpac y idhab
 			String^ mensajeConsola = aNet(cap.Terminar());
 			consolaHosp->Escribir(mensajeConsola);
 
@@ -443,12 +443,106 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 
+// TRATAMIENTO -------------------------------------------------------------------------------------------
+	public ref class FormEliminarTratamiento : public System::Windows::Forms::Form {
+	private:
+		TextBox^ txtIdTratamiento;
+		ArbolTratamiento* arbolTrata;
+		Consola^ consolaTrata;
+
+	public:
+		FormEliminarTratamiento(ArbolTratamiento* arbol, Consola^ consola) {
+			arbolTrata = arbol;
+			consolaTrata = consola;
+
+			this->Text = L"Eliminar Tratamiento";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// idtrata
+			Label^ lblCod = gcnew Label();
+			lblCod->Text = L"Codigo de Tratamiento a Eliminar: ";
+			lblCod->Location = System::Drawing::Point(30, 30);
+			lblCod->AutoSize = true;
+
+			txtIdTratamiento = gcnew TextBox();
+			txtIdTratamiento->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnEliminar = gcnew Button();
+			btnEliminar->Text = L"Eliminar";
+			btnEliminar->Location = System::Drawing::Point(90, 100);
+			btnEliminar->Click += gcnew System::EventHandler(this, &FormEliminarTratamiento::Eliminar_Click);
+
+			this->Controls->Add(lblCod);
+			this->Controls->Add(txtIdTratamiento);
+			this->Controls->Add(btnEliminar);
+		}
+
+	private:
+		System::Void Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (txtIdTratamiento->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idTratastr = msclr::interop::marshal_as<string>(txtIdTratamiento->Text);
+			//string idPacstr = msclr::interop::marshal_as<string>(txtCodPac->Text);
+			//string idHabstr = msclr::interop::marshal_as<string>(txtCodHab->Text);
+			int idTrataint = stoi(idTratastr);
+			//int idPacint = stoi(idPacstr);
+			//int idHabint = stoi(idHabstr);
+
+			/*
+			//bool existe = (arbolHosp->Buscarvalor(idHospint) != nullptr);
+			bool PizzaHut = false;
+			pHosp NovilloAlegre = arbolHosp->Buscarvalor(idHospint);
+			if (NovilloAlegre != nullptr and NovilloAlegre->idPaciente == idPacint and NovilloAlegre->idHabitacion == idHabint) {
+				PizzaHut = true;
+			}
+			*/
+			bool existe = (arbolTrata->Buscarvalor(idTrataint) != nullptr);
+
+			CapturaSalida cap;
+			arbolTrata->EliminarTratamiento(idTrataint);
+			String^ mensajeConsola = aNet(cap.Terminar());
+			consolaTrata->Escribir(mensajeConsola);
+			/*
+			if (PizzaHut == true) {
+				MessageBox::Show(L"Hospitalizacion eliminada con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(mensajeConsola, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				// ^ aca puse como mensaje "mensajeConsola", pq hay un monton de mensajes que podrian terminar saliendo aca (mal pac, mal hab, mal hosp...)
+				// entonces mas facil solo puse q saque lo mismo q iba a mostrarse en la consola
+
+			}
+			*/
+
+			if (existe == true) {
+				MessageBox::Show(L"Tratamiento eliminado con exito.", L"Exito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+			else {
+				MessageBox::Show(mensajeConsola, L"No Encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				// ^ en realidad ya no ocuparia lo de mensajeConsola, pq solo hay 1 salida posible (q no encuentra idTrata)
+				// pero en realidad lo dejo asi pq es mucho mas sencillo, lastima q no se me ocurrio al principio de las elim -_-
+
+			}
+
+
+		}
+	};
 
 
 
 
 
-	// CITAS (AVL)
+
+
+
+// CITAS (AVL) -----------------------------------------------------------------------------------------------------------------------
 	public ref class FormEliminarCita : public System::Windows::Forms::Form {
 	private:
 		TextBox^ txtIdPac;
@@ -535,7 +629,7 @@ namespace CppCLRWinFormsProject {
 		}
 	};
 
-	//HABITACIONES (AVL)
+//HABITACIONES (AVL) -------------------------------------------------------------------------------------------------------------
 	public ref class FormEliminarHabitacion : public System::Windows::Forms::Form {
 	private:
 		TextBox^ txtIdHab;

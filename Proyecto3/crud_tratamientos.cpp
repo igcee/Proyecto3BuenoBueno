@@ -273,3 +273,259 @@ void ArbolTratamiento::InordenReportesTrata(pTrata r, reportes& rep, int anchos[
     rep.escribirFilaDinamica(4, textos, anchos);
     InordenReportesTrata(r->Hder, rep, anchos);
 }
+
+// chunches eliminar --------------------------------------------------------------------------------------
+bool ArbolTratamiento::EliminaNodo(int idtrata) {
+    pTrata nodo = Buscarvalor(raiz, idtrata);
+    if (nodo == nullptr) { //no esta
+        return false;
+    }
+
+    EliminarTrata(nodo);
+    return true;
+}
+
+
+void ArbolTratamiento::EliminarTrata(pTrata idtrata)
+{
+    pTrata y = idtrata;
+    pTrata x;
+    pTrata xPadre = nullptr;
+    bool yOriginalColor = y->color;
+
+    if (idtrata->Hizq == nullptr)
+    {
+        x = idtrata->Hder;
+        xPadre = idtrata->padre;
+        Sustitucion(idtrata, idtrata->Hder);
+    }
+    else
+        if (idtrata->Hder == nullptr)
+        {
+            x = idtrata->Hizq;
+            xPadre = idtrata->padre;
+            Sustitucion(idtrata, idtrata->Hizq);
+        }
+        else
+        {
+            y = Minimo(idtrata->Hder);
+            yOriginalColor = y->color;
+            x = y->Hder;
+            xPadre = y->padre;
+
+            if (y->padre == idtrata)
+            {
+                xPadre = y;
+                if (x != nullptr)
+                    x->padre = y;
+            }
+            else
+            {
+                Sustitucion(y, y->Hder);
+                y->Hder = idtrata->Hder;
+                if (y->Hder != nullptr)
+                    y->Hder->padre = y;
+            }
+
+            Sustitucion(idtrata, y);
+            y->Hizq = idtrata->Hizq;
+            if (y->Hizq != nullptr)
+                y->Hizq->padre = y;
+            y->color = idtrata->color;
+        }
+
+    delete idtrata;
+
+    if (!yOriginalColor)
+    {
+        // Si x es nullptr, crea nodo temp
+        if (x == nullptr)
+        {
+            pTrata centinela = new NodoTrata(0, "","",0.0); // esto lo acmbie de lo de la profe pq para el nodo sin nada no sirve con solo NodoHosp(0)\
+                        // si o si tenia q contener "algo" para todos los valores q tiene el nodo para hosp, sino se jodia
+                        // lo cambie aca para trata
+            centinela->color = false;
+            centinela->padre = xPadre;
+            centinela->Hizq = nullptr;
+            centinela->Hder = nullptr;
+
+            // Conectar el centinela al padre
+            if (xPadre != nullptr)
+            {
+                if (xPadre->Hizq == nullptr)
+                    xPadre->Hizq = centinela;
+                else
+                    xPadre->Hder = centinela;
+            }
+
+            ArreglaEliminacion(centinela);
+
+            // Desconectar y eliminar el centinela
+            if (xPadre != nullptr)
+            {
+                if (xPadre->Hizq == centinela)
+                    xPadre->Hizq = nullptr;
+                if (xPadre->Hder == centinela)
+                    xPadre->Hder = nullptr;
+            }
+
+            delete centinela;
+        }
+        else
+        {
+            ArreglaEliminacion(x);
+        }
+    }
+}
+
+
+void ArbolTratamiento::Sustitucion(pTrata idtrata1, pTrata idtrata2) {
+    if (idtrata1->padre == nullptr)
+    {
+        raiz = idtrata2;
+    }
+    else
+        if (idtrata1 == idtrata1->padre->Hizq)
+        {
+            idtrata1->padre->Hizq = idtrata2;
+        }
+        else
+        {
+            idtrata1->padre->Hder = idtrata2;
+        }
+
+    if (idtrata2 != nullptr)
+    {
+        idtrata2->padre = idtrata1->padre;
+    }
+}
+
+pTrata ArbolTratamiento::Minimo(pTrata nodo) {
+    while (nodo->Hizq != nullptr)
+    {
+        nodo = nodo->Hizq;
+    }
+    return nodo;
+}
+
+
+void ArbolTratamiento::ArreglaEliminacion(pTrata x)
+{
+    while (x != raiz and x->color == false)
+    {
+        if (x->padre == nullptr)
+            break;
+
+        if (x == x->padre->Hizq)
+        {
+            pTrata w = x->padre->Hder;
+
+            // hermano es rojo
+            if (w != nullptr and w->color == true)
+            {
+                w->color = false;
+                x->padre->color = true;
+                RotIzquierda(x->padre);
+                w = x->padre->Hder;
+            }
+
+            if (w == nullptr)
+            {
+                x = x->padre;
+                continue;
+            }
+
+            //  hermano es negro y ambos hijos del hermano son negros
+            if ((w->Hizq == nullptr or w->Hizq->color == false) and (w->Hder == nullptr or w->Hder->color == false))
+            {
+                w->color = true;
+                x = x->padre;
+            }
+            else
+            {
+                //  hermano negro, hijo der del hermano es negro, hijo izq es rojo
+                if (w->Hder == nullptr or w->Hder->color == false)
+                {
+                    if (w->Hizq != nullptr)
+                        w->Hizq->color = false;
+                    w->color = true;
+                    RotDerecha(w);
+                    w = x->padre->Hder;
+                }
+
+                // Caso 4: hermano es negro, hijo derecho del hermano es rojo
+                if (w != nullptr)
+                {
+                    w->color = x->padre->color;
+                    x->padre->color = false;
+                    if (w->Hder != nullptr)
+                        w->Hder->color = false;
+                    RotIzquierda(x->padre);
+                }
+                x = raiz;
+            }
+        }
+        else
+        {
+            // Casos simetricos (x es hijo derecho)
+            pTrata w = x->padre->Hizq;
+
+            // Caso 1 simetrico
+            if (w != nullptr and w->color == true)
+            {
+                w->color = false;
+                x->padre->color = true;
+                RotDerecha(x->padre);
+                w = x->padre->Hizq;
+            }
+
+            if (w == nullptr)
+            {
+                x = x->padre;
+                continue;
+            }
+
+            // Caso 2 simetrico
+            if ((w->Hder == nullptr or w->Hder->color == false) and (w->Hizq == nullptr or w->Hizq->color == false))
+            {
+                w->color = true;
+                x = x->padre;
+            }
+            else {
+                // simetrico
+                if (w->Hizq == nullptr or w->Hizq->color == false)
+                {
+                    if (w->Hder != nullptr)
+                        w->Hder->color = false;
+                    w->color = true;
+                    RotIzquierda(w);
+                    w = x->padre->Hizq;
+                }
+
+                // simetrico
+                if (w != nullptr)
+                {
+                    w->color = x->padre->color;
+                    x->padre->color = false;
+                    if (w->Hizq != nullptr)
+                        w->Hizq->color = false;
+                    RotDerecha(x->padre);
+                }
+                x = raiz;
+            }
+        }
+    }
+
+    if (x != nullptr)
+        x->color = false;
+}
+
+
+void ArbolTratamiento::EliminarTratamiento(int id) {
+    if (EliminaNodo(id) == true) {
+        cout << "Tratamiento de id: " << id << " eliminado correctamente" << endl;
+    }
+    else {
+        cout << "No se pudo eliminar el tratamiento de id: " << id << " porque no existe" << endl;
+    }
+}

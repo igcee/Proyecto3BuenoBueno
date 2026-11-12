@@ -47,6 +47,11 @@ private:
     pTrata Buscarvalor(pTrata r, int id);
     void LiberarMemoria(pTrata r);
 
+    void EliminarTrata(pTrata idtrata);
+    void Sustitucion(pTrata idtrata1, pTrata idtrata2);
+    pTrata Minimo(pTrata raiz);
+    void ArreglaEliminacion(pTrata x);
+
 public:
     ArbolTratamiento();
     ~ArbolTratamiento();
@@ -59,6 +64,9 @@ public:
     void BuscarMostrar(int id);
     void ModificarTratamiento(int id, string nuevoNombre, string nuevaDesc, double nuevoCosto);
     void InordenReportesTrata(pTrata r, reportes& rep, int anchos[]);
+
+    bool EliminaNodo(int id);
+    void EliminarTratamiento(int id);
 };
 
 #endif

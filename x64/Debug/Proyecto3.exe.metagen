@@ -159,6 +159,15 @@ Class CppCLRWinFormsProject.FormEliminarDiagnostico: AutoLayout, AnsiClass, Clas
 Class CppCLRWinFormsProject.FormEliminarHospitalizacion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(ArbolHospitalizaciones*, ArbolPacientes*, ArbolHabitaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarTratamiento: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolTratamiento*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarCita: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolPacientes*, ArbolMedicos*, ArbolCitas*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinFormsProject.FormEliminarHabitacion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolHabitaciones*, CppCLRWinFormsProject.Consola): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
