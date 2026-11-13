@@ -152,6 +152,7 @@
     <ClInclude Include="Proyecto3\crud_paises.h" />
     <ClInclude Include="Proyecto3\crud_tratamientos.h" />
     <ClInclude Include="Proyecto3\reportes.h" />
+    <ClInclude Include="reportesventana.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="utilGUI.h" />
   </ItemGroup>

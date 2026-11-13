@@ -1,1 +1,8 @@
-﻿  Proyecto3.vcxproj -> C:\Users\PC\source\repos\tec\Proyecto3Bueno\x64\Debug\Proyecto3.exe
+﻿  CppCLR_WinFormsProject.cpp
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Form1.h(479,2): error C2660: 'CppCLRWinFormsProject::Form1::Reloj_Tick': function does not take 0 arguments
+  (compiling source file '/CppCLR_WinFormsProject.cpp')
+      C:\Users\PC\source\repos\tec\Proyecto3Bueno\Form1.h(484,6):
+      see declaration of 'CppCLRWinFormsProject::Form1::Reloj_Tick'
+      C:\Users\PC\source\repos\tec\Proyecto3Bueno\Form1.h(479,2):
+      while trying to match the argument list '()'
+  

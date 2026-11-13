@@ -10,6 +10,7 @@
 #include "iconos.h"
 #include "consolabuenobueno.h"
 #include "eliminar.h"
+#include "reportesventana.h"
 
 namespace CppCLRWinFormsProject {
 	using namespace System;
@@ -128,7 +129,7 @@ namespace CppCLRWinFormsProject {
 			this->ClientSize = System::Drawing::Size(1262, 673);
 			this->Name = L"Form1";
 			this->Text = L"Sistema de Gestion Hospitalaria - Hospital San Rafael";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load_1);
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -475,6 +476,7 @@ void ConstruirReloj() {
 
 	DateTime ahora = DateTime::Now;
 	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
+	Reloj_Tick();
 	reloj->Start();
 }
 
@@ -592,11 +594,136 @@ System::Void Reportes_Click(System::Object^ sender, System::EventArgs^ e) {
 void AcercaDe_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show(L"Sistema de Gestión Hospitalaria: Ian Castro - Maria Paula", L"Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
-
+/*
 void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 	ToolStripMenuItem^ item = (ToolStripMenuItem^)(sender);
 	MessageBox::Show(L"Generando reporte de: " + item->Text, L"Reportes", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
+*/
+void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)sender;
+	String^ rep = item->Text;
+
+	if (rep == L"Paises") {
+		FormReportePais^ ventana = gcnew FormReportePais(arbolilloPais, consolabuena);
+		ventana->ShowDialog();
+	}
+	/*
+	else if (rep == L"Ciudades de un pais") {
+		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad, arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Pacientes") {
+		FormEliminarPaciente^ ventana = gcnew FormEliminarPaciente(arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Especialidades") {
+		FormEliminarMedico^ ventana = gcnew FormEliminarMedico(arbolilloMed, arbolilloCita, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Habitaciones disponibles (Estado=0)") {
+		FormEliminarEspecialidad^ ventana = gcnew FormEliminarEspecialidad(arbolilloEsp, arbolilloMed, arbolilloCita, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Habitaciones ocupadas (Estado=1)") {
+		FormEliminarCita^ ventana = gcnew FormEliminarCita(arbolilloPac, arbolilloMed, arbolilloCita, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Hospitalizaciones") {
+		FormEliminarHabitacion^ ventana = gcnew FormEliminarHabitacion(arbolilloHab, arbolilloHosp, consolabuena);
+		ventana->ShowDialog();
+	}
+	else if (rep == L"Hospitalizacion de un medico") {
+		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloHosp, arbolilloPac, arbolilloHab, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Medicos") {
+		FormEliminarDiagnostico^ ventana = gcnew FormEliminarDiagnostico(arbolilloDiag, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Medicos de una especialidad") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Citas por fecha") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Citas por especialidad") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Citas de un medico") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Pacientes de un pais") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Pacientes de una ciudad") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Citas de un paciente") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Diagnosticos") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+
+	else if (rep == L"Tratamientos") {
+		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+		ventana->ShowDialog();
+	}
+	*/
+	else {
+		MessageBox::Show(L"kashdasasdashjda", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
+	ToolStripMenuItem^ item = (ToolStripMenuItem^)(sender);
+	FormReporte^ ventana = gcnew FormReporte(item->Text, arbolilloPais, arbolilloCiudad, arbolilloPac, arbolilloEsp, arbolilloMed, arbolilloCita, arbolilloHosp, arbolilloHab, arbolilloDiag, arbolilloTrata, consolabuena);
+	ventana->Mostrar();
+}
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -604,7 +731,6 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 // aka mejor dejarlo ahi tranquilo
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void Form1_Load_1(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 };
 }
