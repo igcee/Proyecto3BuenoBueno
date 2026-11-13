@@ -1,0 +1,1150 @@
+%PDF-1.3
+%·¾­ª
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [ 4 0 R 9 0 R ]
+/Count 2
+>>
+endobj
+3 0 obj
+<<
+/Producer (Haru Free PDF Library 2.4.6)
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 5 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+/F2 8 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 6 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 1) Tj
+ET
+BT
+/F2 22 Tf
+137 810 Td
+(Sistema de Gestion Hospitalaria) Tj
+/F2 16 Tf
+-90 -29 Td
+(Listado De Todas Las Hospitalizaciones) Tj
+/F1 10 Tf
+0 -23 Td
+(Fecha de emision del reporte: Fri Nov 13 17:30:16 2026\012) Tj
+290 3 Td
+(Empleados del mes:) Tj
+0 -14 Td
+(Ian Gabriel Castro Esquivel) Tj
+0 -14 Td
+(Maria Paula Monge Naranjo) Tj
+-290 -23 Td
+(Jefe del hospital: Ivannia Cerdas Quesada) Tj
+0 -14 Td
+(Jefe asistente: Isaac Van der Bom) Tj
+ET
+40 685 520 150 re
+40 800 m
+560 800 l
+40 775 m
+560 775 l
+40 750 m
+330 750 l
+330 725 m
+330 775 l
+40 725 m
+560 725 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(Id hosp) Tj
+50 0 Td
+(Id pac) Tj
+50 0 Td
+(Id hab) Tj
+50 0 Td
+(Id med) Tj
+50 0 Td
+(Ingreso) Tj
+80 0 Td
+(Salida) Tj
+80 0 Td
+(Motivo) Tj
+ET
+40 645 520 25 re
+90 645 m
+90 670 l
+140 645 m
+140 670 l
+190 645 m
+190 670 l
+240 645 m
+240 670 l
+320 645 m
+320 670 l
+400 645 m
+400 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(1) Tj
+50 0 Td
+(1001) Tj
+50 0 Td
+(205) Tj
+50 0 Td
+(105) Tj
+50 0 Td
+(27\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Deshidrataci\303\263n severa) Tj
+ET
+40 620 520 25 re
+90 620 m
+90 645 l
+140 620 m
+140 645 l
+190 620 m
+190 645 l
+240 620 m
+240 645 l
+320 620 m
+320 645 l
+400 620 m
+400 645 l
+S
+BT
+/F1 10 Tf
+45 600 Td
+(2) Tj
+50 0 Td
+(1038) Tj
+50 0 Td
+(402) Tj
+50 0 Td
+(110) Tj
+50 0 Td
+(27\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Observaci\303\263n postoperatoria) Tj
+ET
+40 595 520 25 re
+90 595 m
+90 620 l
+140 595 m
+140 620 l
+190 595 m
+190 620 l
+240 595 m
+240 620 l
+320 595 m
+320 620 l
+400 595 m
+400 620 l
+S
+BT
+/F1 10 Tf
+45 575 Td
+(3) Tj
+50 0 Td
+(1010) Tj
+50 0 Td
+(204) Tj
+50 0 Td
+(108) Tj
+50 0 Td
+(28\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Observaci\303\263n postoperatoria) Tj
+ET
+40 570 520 25 re
+90 570 m
+90 595 l
+140 570 m
+140 595 l
+190 570 m
+190 595 l
+240 570 m
+240 595 l
+320 570 m
+320 595 l
+400 570 m
+400 595 l
+S
+BT
+/F1 10 Tf
+45 550 Td
+(4) Tj
+50 0 Td
+(1022) Tj
+50 0 Td
+(304) Tj
+50 0 Td
+(109) Tj
+50 0 Td
+(12\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Crisis hipertensiva) Tj
+ET
+40 545 520 25 re
+90 545 m
+90 570 l
+140 545 m
+140 570 l
+190 545 m
+190 570 l
+240 545 m
+240 570 l
+320 545 m
+320 570 l
+400 545 m
+400 570 l
+S
+BT
+/F1 10 Tf
+45 525 Td
+(5) Tj
+50 0 Td
+(1021) Tj
+50 0 Td
+(401) Tj
+50 0 Td
+(114) Tj
+50 0 Td
+(15\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Infarto agudo) Tj
+ET
+40 520 520 25 re
+90 520 m
+90 545 l
+140 520 m
+140 545 l
+190 520 m
+190 545 l
+240 520 m
+240 545 l
+320 520 m
+320 545 l
+400 520 m
+400 545 l
+S
+BT
+/F1 10 Tf
+45 500 Td
+(6) Tj
+50 0 Td
+(1016) Tj
+50 0 Td
+(203) Tj
+50 0 Td
+(110) Tj
+50 0 Td
+(23\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Crisis hipertensiva) Tj
+ET
+40 495 520 25 re
+90 495 m
+90 520 l
+140 495 m
+140 520 l
+190 495 m
+190 520 l
+240 495 m
+240 520 l
+320 495 m
+320 520 l
+400 495 m
+400 520 l
+S
+BT
+/F1 10 Tf
+45 475 Td
+(7) Tj
+50 0 Td
+(1050) Tj
+50 0 Td
+(104) Tj
+50 0 Td
+(107) Tj
+50 0 Td
+(8\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Neumon\303\255a) Tj
+ET
+40 470 520 25 re
+90 470 m
+90 495 l
+140 470 m
+140 495 l
+190 470 m
+190 495 l
+240 470 m
+240 495 l
+320 470 m
+320 495 l
+400 470 m
+400 495 l
+S
+BT
+/F1 10 Tf
+45 450 Td
+(8) Tj
+50 0 Td
+(1048) Tj
+50 0 Td
+(305) Tj
+50 0 Td
+(108) Tj
+50 0 Td
+(11\0579\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Crisis hipertensiva) Tj
+ET
+40 445 520 25 re
+90 445 m
+90 470 l
+140 445 m
+140 470 l
+190 445 m
+190 470 l
+240 445 m
+240 470 l
+320 445 m
+320 470 l
+400 445 m
+400 470 l
+S
+BT
+/F1 10 Tf
+45 425 Td
+(9) Tj
+50 0 Td
+(1003) Tj
+50 0 Td
+(105) Tj
+50 0 Td
+(103) Tj
+50 0 Td
+(20\0577\0572026) Tj
+80 0 Td
+(29\0577\0572026) Tj
+80 0 Td
+(Cirug\303\255a programada) Tj
+ET
+40 420 520 25 re
+90 420 m
+90 445 l
+140 420 m
+140 445 l
+190 420 m
+190 445 l
+240 420 m
+240 445 l
+320 420 m
+320 445 l
+400 420 m
+400 445 l
+S
+BT
+/F1 10 Tf
+45 400 Td
+(10) Tj
+50 0 Td
+(1034) Tj
+50 0 Td
+(305) Tj
+50 0 Td
+(115) Tj
+50 0 Td
+(13\0576\0572026) Tj
+80 0 Td
+(16\0576\0572026) Tj
+80 0 Td
+(Observaci\303\263n postoperatoria) Tj
+ET
+40 395 520 25 re
+90 395 m
+90 420 l
+140 395 m
+140 420 l
+190 395 m
+190 420 l
+240 395 m
+240 420 l
+320 395 m
+320 420 l
+400 395 m
+400 420 l
+S
+BT
+/F1 10 Tf
+45 375 Td
+(12) Tj
+50 0 Td
+(1040) Tj
+50 0 Td
+(204) Tj
+50 0 Td
+(112) Tj
+50 0 Td
+(31\0577\0572026) Tj
+80 0 Td
+(7\0578\0572026) Tj
+80 0 Td
+(Crisis hipertensiva) Tj
+ET
+40 370 520 25 re
+90 370 m
+90 395 l
+140 370 m
+140 395 l
+190 370 m
+190 395 l
+240 370 m
+240 395 l
+320 370 m
+320 395 l
+400 370 m
+400 395 l
+S
+BT
+/F1 10 Tf
+45 350 Td
+(13) Tj
+50 0 Td
+(1015) Tj
+50 0 Td
+(404) Tj
+50 0 Td
+(101) Tj
+50 0 Td
+(1\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Neumon\303\255a) Tj
+ET
+40 345 520 25 re
+90 345 m
+90 370 l
+140 345 m
+140 370 l
+190 345 m
+190 370 l
+240 345 m
+240 370 l
+320 345 m
+320 370 l
+400 345 m
+400 370 l
+S
+BT
+/F1 10 Tf
+45 325 Td
+(14) Tj
+50 0 Td
+(1045) Tj
+50 0 Td
+(302) Tj
+50 0 Td
+(114) Tj
+50 0 Td
+(9\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Cirug\303\255a programada) Tj
+ET
+40 320 520 25 re
+90 320 m
+90 345 l
+140 320 m
+140 345 l
+190 320 m
+190 345 l
+240 320 m
+240 345 l
+320 320 m
+320 345 l
+400 320 m
+400 345 l
+S
+BT
+/F1 10 Tf
+45 300 Td
+(15) Tj
+50 0 Td
+(1009) Tj
+50 0 Td
+(407) Tj
+50 0 Td
+(121) Tj
+50 0 Td
+(19\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Observaci\303\263n postoperatoria) Tj
+ET
+40 295 520 25 re
+90 295 m
+90 320 l
+140 295 m
+140 320 l
+190 295 m
+190 320 l
+240 295 m
+240 320 l
+320 295 m
+320 320 l
+400 295 m
+400 320 l
+S
+BT
+/F1 10 Tf
+45 275 Td
+(16) Tj
+50 0 Td
+(1012) Tj
+50 0 Td
+(406) Tj
+50 0 Td
+(118) Tj
+50 0 Td
+(2\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Gastroenteritis aguda) Tj
+ET
+40 270 520 25 re
+90 270 m
+90 295 l
+140 270 m
+140 295 l
+190 270 m
+190 295 l
+240 270 m
+240 295 l
+320 270 m
+320 295 l
+400 270 m
+400 295 l
+S
+BT
+/F1 10 Tf
+45 250 Td
+(17) Tj
+50 0 Td
+(1049) Tj
+50 0 Td
+(206) Tj
+50 0 Td
+(127) Tj
+50 0 Td
+(9\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Cirug\303\255a programada) Tj
+ET
+40 245 520 25 re
+90 245 m
+90 270 l
+140 245 m
+140 270 l
+190 245 m
+190 270 l
+240 245 m
+240 270 l
+320 245 m
+320 270 l
+400 245 m
+400 270 l
+S
+BT
+/F1 10 Tf
+45 225 Td
+(18) Tj
+50 0 Td
+(1026) Tj
+50 0 Td
+(408) Tj
+50 0 Td
+(102) Tj
+50 0 Td
+(22\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Dengue con signos de alarma) Tj
+ET
+40 220 520 25 re
+90 220 m
+90 245 l
+140 220 m
+140 245 l
+190 220 m
+190 245 l
+240 220 m
+240 245 l
+320 220 m
+320 245 l
+400 220 m
+400 245 l
+S
+BT
+/F1 10 Tf
+45 200 Td
+(19) Tj
+50 0 Td
+(1001) Tj
+50 0 Td
+(108) Tj
+50 0 Td
+(121) Tj
+50 0 Td
+(2\0579\0572026) Tj
+80 0 Td
+(7\0579\0572026) Tj
+80 0 Td
+(Gastroenteritis aguda) Tj
+ET
+40 195 520 25 re
+90 195 m
+90 220 l
+140 195 m
+140 220 l
+190 195 m
+190 220 l
+240 195 m
+240 220 l
+320 195 m
+320 220 l
+400 195 m
+400 220 l
+S
+BT
+/F1 10 Tf
+45 175 Td
+(20) Tj
+50 0 Td
+(1049) Tj
+50 0 Td
+(105) Tj
+50 0 Td
+(128) Tj
+50 0 Td
+(23\0579\0572026) Tj
+80 0 Td
+(30\0579\0572026) Tj
+80 0 Td
+(Infecci\303\263n urinaria complicada) Tj
+ET
+40 170 520 25 re
+90 170 m
+90 195 l
+140 170 m
+140 195 l
+190 170 m
+190 195 l
+240 170 m
+240 195 l
+320 170 m
+320 195 l
+400 170 m
+400 195 l
+S
+BT
+/F1 10 Tf
+45 150 Td
+(21) Tj
+50 0 Td
+(1015) Tj
+50 0 Td
+(404) Tj
+50 0 Td
+(118) Tj
+50 0 Td
+(11\0578\0572026) Tj
+80 0 Td
+(16\0578\0572026) Tj
+80 0 Td
+(Cirug\303\255a programada) Tj
+ET
+40 145 520 25 re
+90 145 m
+90 170 l
+140 145 m
+140 170 l
+190 145 m
+190 170 l
+240 145 m
+240 170 l
+320 145 m
+320 170 l
+400 145 m
+400 170 l
+S
+BT
+/F1 10 Tf
+45 125 Td
+(22) Tj
+50 0 Td
+(1030) Tj
+50 0 Td
+(305) Tj
+50 0 Td
+(115) Tj
+50 0 Td
+(18\0579\0572026) Tj
+80 0 Td
+(2\05710\0572026) Tj
+80 0 Td
+(Fractura de f\303\251mur) Tj
+ET
+40 120 520 25 re
+90 120 m
+90 145 l
+140 120 m
+140 145 l
+190 120 m
+190 145 l
+240 120 m
+240 145 l
+320 120 m
+320 145 l
+400 120 m
+400 145 l
+S
+BT
+/F1 10 Tf
+45 100 Td
+(23) Tj
+50 0 Td
+(1003) Tj
+50 0 Td
+(106) Tj
+50 0 Td
+(121) Tj
+50 0 Td
+(10\0576\0572026) Tj
+80 0 Td
+(17\0576\0572026) Tj
+80 0 Td
+(Diabetes descompensada) Tj
+ET
+40 95 520 25 re
+90 95 m
+90 120 l
+140 95 m
+140 120 l
+190 95 m
+190 120 l
+240 95 m
+240 120 l
+320 95 m
+320 120 l
+400 95 m
+400 120 l
+S
+BT
+/F1 10 Tf
+45 75 Td
+(24) Tj
+50 0 Td
+(1017) Tj
+50 0 Td
+(307) Tj
+50 0 Td
+(105) Tj
+50 0 Td
+(1\0576\0572026) Tj
+80 0 Td
+(11\0576\0572026) Tj
+80 0 Td
+(Infarto agudo) Tj
+ET
+40 70 520 25 re
+90 70 m
+90 95 l
+140 70 m
+140 95 l
+190 70 m
+190 95 l
+240 70 m
+240 95 l
+320 70 m
+320 95 l
+400 70 m
+400 95 l
+S
+BT
+/F1 10 Tf
+45 50 Td
+(25) Tj
+50 0 Td
+(1050) Tj
+50 0 Td
+(305) Tj
+50 0 Td
+(126) Tj
+50 0 Td
+(17\0577\0572026) Tj
+80 0 Td
+(20\0577\0572026) Tj
+80 0 Td
+(Observaci\303\263n postoperatoria) Tj
+ET
+40 45 520 25 re
+90 45 m
+90 70 l
+140 45 m
+140 70 l
+190 45 m
+190 70 l
+240 45 m
+240 70 l
+320 45 m
+320 70 l
+400 45 m
+400 70 l
+S
+BT
+/F1 10 Tf
+47 733 Td
+(Total de registros: 31) Tj
+ET
+
+endstream
+endobj
+6 0 obj
+8365
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 10 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 11 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 2) Tj
+ET
+BT
+/F1 10 Tf
+45 750 Td
+(26) Tj
+50 0 Td
+(1010) Tj
+50 0 Td
+(205) Tj
+50 0 Td
+(124) Tj
+50 0 Td
+(18\0578\0572026) Tj
+80 0 Td
+(24\0578\0572026) Tj
+80 0 Td
+(Neumon\303\255a) Tj
+ET
+40 745 520 25 re
+90 745 m
+90 770 l
+140 745 m
+140 770 l
+190 745 m
+190 770 l
+240 745 m
+240 770 l
+320 745 m
+320 770 l
+400 745 m
+400 770 l
+S
+BT
+/F1 10 Tf
+45 725 Td
+(27) Tj
+50 0 Td
+(1003) Tj
+50 0 Td
+(303) Tj
+50 0 Td
+(124) Tj
+50 0 Td
+(6\0577\0572026) Tj
+80 0 Td
+(12\0577\0572026) Tj
+80 0 Td
+(Neumon\303\255a) Tj
+ET
+40 720 520 25 re
+90 720 m
+90 745 l
+140 720 m
+140 745 l
+190 720 m
+190 745 l
+240 720 m
+240 745 l
+320 720 m
+320 745 l
+400 720 m
+400 745 l
+S
+BT
+/F1 10 Tf
+45 700 Td
+(28) Tj
+50 0 Td
+(1001) Tj
+50 0 Td
+(304) Tj
+50 0 Td
+(128) Tj
+50 0 Td
+(14\0579\0572026) Tj
+80 0 Td
+(21\0579\0572026) Tj
+80 0 Td
+(Infecci\303\263n urinaria complicada) Tj
+ET
+40 695 520 25 re
+90 695 m
+90 720 l
+140 695 m
+140 720 l
+190 695 m
+190 720 l
+240 695 m
+240 720 l
+320 695 m
+320 720 l
+400 695 m
+400 720 l
+S
+BT
+/F1 10 Tf
+45 675 Td
+(29) Tj
+50 0 Td
+(1011) Tj
+50 0 Td
+(301) Tj
+50 0 Td
+(124) Tj
+50 0 Td
+(6\0576\0572026) Tj
+80 0 Td
+(13\0576\0572026) Tj
+80 0 Td
+(Diabetes descompensada) Tj
+ET
+40 670 520 25 re
+90 670 m
+90 695 l
+140 670 m
+140 695 l
+190 670 m
+190 695 l
+240 670 m
+240 695 l
+320 670 m
+320 695 l
+400 670 m
+400 695 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(30) Tj
+50 0 Td
+(1010) Tj
+50 0 Td
+(101) Tj
+50 0 Td
+(106) Tj
+50 0 Td
+(17\0576\0572026) Tj
+80 0 Td
+(29\0576\0572026) Tj
+80 0 Td
+(Gastroenteritis aguda) Tj
+ET
+40 645 520 25 re
+90 645 m
+90 670 l
+140 645 m
+140 670 l
+190 645 m
+190 670 l
+240 645 m
+240 670 l
+320 645 m
+320 670 l
+400 645 m
+400 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(31) Tj
+50 0 Td
+(1001) Tj
+50 0 Td
+(204) Tj
+50 0 Td
+(127) Tj
+50 0 Td
+(12\0576\0572026) Tj
+80 0 Td
+(18\0576\0572026) Tj
+80 0 Td
+(Infarto agudo) Tj
+ET
+40 620 520 25 re
+90 620 m
+90 645 l
+140 620 m
+140 645 l
+190 620 m
+190 645 l
+240 620 m
+240 645 l
+320 620 m
+320 645 l
+400 620 m
+400 645 l
+S
+BT
+/F1 10 Tf
+45 600 Td
+(32) Tj
+50 0 Td
+(1010) Tj
+50 0 Td
+(304) Tj
+50 0 Td
+(120) Tj
+50 0 Td
+(5\0577\0572026) Tj
+80 0 Td
+(8\0577\0572026) Tj
+80 0 Td
+(Cirug\303\255a programada) Tj
+ET
+40 595 520 25 re
+90 595 m
+90 620 l
+140 595 m
+140 620 l
+190 595 m
+190 620 l
+240 595 m
+240 620 l
+320 595 m
+320 620 l
+400 595 m
+400 620 l
+S
+
+endstream
+endobj
+11 0 obj
+2259
+endobj
+xref
+0 12
+0000000000 65535 f
+0000000015 00000 n
+0000000064 00000 n
+0000000129 00000 n
+0000000190 00000 n
+0000000386 00000 n
+0000008805 00000 n
+0000008825 00000 n
+0000008923 00000 n
+0000009026 00000 n
+0000009213 00000 n
+0000011528 00000 n
+trailer
+<<
+/Root 1 0 R
+/Info 3 0 R
+/Size 12
+>>
+startxref
+11549
+%%EOF

@@ -1,0 +1,593 @@
+%PDF-1.3
+%·¾­ª
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [ 4 0 R 9 0 R ]
+/Count 2
+>>
+endobj
+3 0 obj
+<<
+/Producer (Haru Free PDF Library 2.4.6)
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 5 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+/F2 8 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 6 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 1) Tj
+ET
+BT
+/F2 22 Tf
+137 810 Td
+(Sistema de Gestion Hospitalaria) Tj
+/F2 16 Tf
+-90 -29 Td
+(Listado De Todas Las Especialidades) Tj
+/F1 10 Tf
+0 -23 Td
+(Fecha de emision del reporte: Fri Nov 13 17:30:02 2026\012) Tj
+290 3 Td
+(Empleados del mes:) Tj
+0 -14 Td
+(Ian Gabriel Castro Esquivel) Tj
+0 -14 Td
+(Maria Paula Monge Naranjo) Tj
+-290 -23 Td
+(Jefe del hospital: Ivannia Cerdas Quesada) Tj
+0 -14 Td
+(Jefe asistente: Isaac Van der Bom) Tj
+ET
+40 685 520 150 re
+40 800 m
+560 800 l
+40 775 m
+560 775 l
+40 750 m
+330 750 l
+330 725 m
+330 775 l
+40 725 m
+560 725 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(Id) Tj
+50 0 Td
+(Nombre) Tj
+140 0 Td
+(Descripcion) Tj
+ET
+40 645 520 25 re
+90 645 m
+90 670 l
+230 645 m
+230 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(1) Tj
+50 0 Td
+(Cardiolog\303\255a) Tj
+140 0 Td
+(Enfermedades del coraz\303\263n y sistema circulatorio) Tj
+ET
+40 620 520 25 re
+90 620 m
+90 645 l
+230 620 m
+230 645 l
+S
+BT
+/F1 10 Tf
+45 600 Td
+(2) Tj
+50 0 Td
+(Pediatr\303\255a) Tj
+140 0 Td
+(Atenci\303\263n m\303\251dica de ni\303\261os y adolescentes) Tj
+ET
+40 595 520 25 re
+90 595 m
+90 620 l
+230 595 m
+230 620 l
+S
+BT
+/F1 10 Tf
+45 575 Td
+(3) Tj
+50 0 Td
+(Medicina General) Tj
+140 0 Td
+(Atenci\303\263n primaria y control general) Tj
+ET
+40 570 520 25 re
+90 570 m
+90 595 l
+230 570 m
+230 595 l
+S
+BT
+/F1 10 Tf
+45 550 Td
+(4) Tj
+50 0 Td
+(Dermatolog\303\255a) Tj
+140 0 Td
+(Enfermedades de la piel, pelo y u\303\261as) Tj
+ET
+40 545 520 25 re
+90 545 m
+90 570 l
+230 545 m
+230 570 l
+S
+BT
+/F1 10 Tf
+45 525 Td
+(5) Tj
+50 0 Td
+(Neurolog\303\255a) Tj
+140 0 Td
+(Enfermedades del sistema nervioso) Tj
+ET
+40 520 520 25 re
+90 520 m
+90 545 l
+230 520 m
+230 545 l
+S
+BT
+/F1 10 Tf
+45 500 Td
+(6) Tj
+50 0 Td
+(Ortopedia) Tj
+140 0 Td
+(Huesos, m\303\272sculos y articulaciones) Tj
+ET
+40 495 520 25 re
+90 495 m
+90 520 l
+230 495 m
+230 520 l
+S
+BT
+/F1 10 Tf
+45 475 Td
+(7) Tj
+50 0 Td
+(Ginecolog\303\255a) Tj
+140 0 Td
+(Salud reproductiva femenina) Tj
+ET
+40 470 520 25 re
+90 470 m
+90 495 l
+230 470 m
+230 495 l
+S
+BT
+/F1 10 Tf
+45 450 Td
+(8) Tj
+50 0 Td
+(Oftalmolog\303\255a) Tj
+140 0 Td
+(Enfermedades de los ojos) Tj
+ET
+40 445 520 25 re
+90 445 m
+90 470 l
+230 445 m
+230 470 l
+S
+BT
+/F1 10 Tf
+45 425 Td
+(9) Tj
+50 0 Td
+(Urolog\303\255a) Tj
+140 0 Td
+(Enfermedades del sistema urinario y genital masculino) Tj
+ET
+40 420 520 25 re
+90 420 m
+90 445 l
+230 420 m
+230 445 l
+S
+BT
+/F1 10 Tf
+45 400 Td
+(10) Tj
+50 0 Td
+(Endocrinolog\303\255a) Tj
+140 0 Td
+(Trastornos hormonales y del metabolismo) Tj
+ET
+40 395 520 25 re
+90 395 m
+90 420 l
+230 395 m
+230 420 l
+S
+BT
+/F1 10 Tf
+45 375 Td
+(11) Tj
+50 0 Td
+(Gastroenterolog\303\255a) Tj
+140 0 Td
+(Enfermedades del aparato digestivo) Tj
+ET
+40 370 520 25 re
+90 370 m
+90 395 l
+230 370 m
+230 395 l
+S
+BT
+/F1 10 Tf
+45 350 Td
+(12) Tj
+50 0 Td
+(Neumolog\303\255a) Tj
+140 0 Td
+(Enfermedades de los pulmones y v\303\255as respiratorias) Tj
+ET
+40 345 520 25 re
+90 345 m
+90 370 l
+230 345 m
+230 370 l
+S
+BT
+/F1 10 Tf
+45 325 Td
+(13) Tj
+50 0 Td
+(Psiquiatr\303\255a) Tj
+140 0 Td
+(Diagn\303\263stico y tratamiento de trastornos mentales) Tj
+ET
+40 320 520 25 re
+90 320 m
+90 345 l
+230 320 m
+230 345 l
+S
+BT
+/F1 10 Tf
+45 300 Td
+(14) Tj
+50 0 Td
+(Oncolog\303\255a) Tj
+140 0 Td
+(Diagn\303\263stico y tratamiento del c\303\241ncer) Tj
+ET
+40 295 520 25 re
+90 295 m
+90 320 l
+230 295 m
+230 320 l
+S
+BT
+/F1 10 Tf
+45 275 Td
+(15) Tj
+50 0 Td
+(Otorrinolaringolog\303\255a) Tj
+140 0 Td
+(Enfermedades de o\303\255do, nariz y garganta) Tj
+ET
+40 270 520 25 re
+90 270 m
+90 295 l
+230 270 m
+230 295 l
+S
+BT
+/F1 10 Tf
+45 250 Td
+(16) Tj
+50 0 Td
+(Nefrolog\303\255a) Tj
+140 0 Td
+(Enfermedades de los ri\303\261ones) Tj
+ET
+40 245 520 25 re
+90 245 m
+90 270 l
+230 245 m
+230 270 l
+S
+BT
+/F1 10 Tf
+45 225 Td
+(17) Tj
+50 0 Td
+(Reumatolog\303\255a) Tj
+140 0 Td
+(Enfermedades de las articulaciones y autoinmunes) Tj
+ET
+40 220 520 25 re
+90 220 m
+90 245 l
+230 220 m
+230 245 l
+S
+BT
+/F1 10 Tf
+45 200 Td
+(18) Tj
+50 0 Td
+(Hematolog\303\255a) Tj
+140 0 Td
+(Enfermedades de la sangre y los \303\263rganos hematopoy\303\251ticos) Tj
+ET
+40 195 520 25 re
+90 195 m
+90 220 l
+230 195 m
+230 220 l
+S
+BT
+/F1 10 Tf
+45 175 Td
+(19) Tj
+50 0 Td
+(Cirug\303\255a General) Tj
+140 0 Td
+(Procedimientos quir\303\272rgicos del abdomen y tejidos blandos) Tj
+ET
+40 170 520 25 re
+90 170 m
+90 195 l
+230 170 m
+230 195 l
+S
+BT
+/F1 10 Tf
+45 150 Td
+(20) Tj
+50 0 Td
+(Traumatolog\303\255a) Tj
+140 0 Td
+(Lesiones del sistema musculoesquel\303\251tico) Tj
+ET
+40 145 520 25 re
+90 145 m
+90 170 l
+230 145 m
+230 170 l
+S
+BT
+/F1 10 Tf
+45 125 Td
+(21) Tj
+50 0 Td
+(Anestesiolog\303\255a) Tj
+140 0 Td
+(Manejo de la anestesia y el dolor perioperatorio) Tj
+ET
+40 120 520 25 re
+90 120 m
+90 145 l
+230 120 m
+230 145 l
+S
+BT
+/F1 10 Tf
+45 100 Td
+(22) Tj
+50 0 Td
+(Radiolog\303\255a) Tj
+140 0 Td
+(Diagn\303\263stico por im\303\241genes m\303\251dicas) Tj
+ET
+40 95 520 25 re
+90 95 m
+90 120 l
+230 95 m
+230 120 l
+S
+BT
+/F1 10 Tf
+45 75 Td
+(23) Tj
+50 0 Td
+(Geriatr\303\255a) Tj
+140 0 Td
+(Atenci\303\263n m\303\251dica de personas adultas mayores) Tj
+ET
+40 70 520 25 re
+90 70 m
+90 95 l
+230 70 m
+230 95 l
+S
+BT
+/F1 10 Tf
+45 50 Td
+(24) Tj
+50 0 Td
+(Infectolog\303\255a) Tj
+140 0 Td
+(Enfermedades infecciosas y tropicales) Tj
+ET
+40 45 520 25 re
+90 45 m
+90 70 l
+230 45 m
+230 70 l
+S
+BT
+/F1 10 Tf
+47 733 Td
+(Total de registros: 28) Tj
+ET
+
+endstream
+endobj
+6 0 obj
+5194
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 10 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 11 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 2) Tj
+ET
+BT
+/F1 10 Tf
+45 750 Td
+(25) Tj
+50 0 Td
+(Medicina Interna) Tj
+140 0 Td
+(Atenci\303\263n integral de enfermedades del adulto) Tj
+ET
+40 745 520 25 re
+90 745 m
+90 770 l
+230 745 m
+230 770 l
+S
+BT
+/F1 10 Tf
+45 725 Td
+(26) Tj
+50 0 Td
+(Nutrici\303\263n) Tj
+140 0 Td
+(Evaluaci\303\263n y tratamiento nutricional) Tj
+ET
+40 720 520 25 re
+90 720 m
+90 745 l
+230 720 m
+230 745 l
+S
+BT
+/F1 10 Tf
+45 700 Td
+(27) Tj
+50 0 Td
+(Odontolog\303\255a) Tj
+140 0 Td
+(Salud dental y de la boca) Tj
+ET
+40 695 520 25 re
+90 695 m
+90 720 l
+230 695 m
+230 720 l
+S
+BT
+/F1 10 Tf
+45 675 Td
+(28) Tj
+50 0 Td
+(Urgencias) Tj
+140 0 Td
+(Atenci\303\263n inmediata de emergencias m\303\251dicas) Tj
+ET
+40 670 520 25 re
+90 670 m
+90 695 l
+230 670 m
+230 695 l
+S
+
+endstream
+endobj
+11 0 obj
+764
+endobj
+xref
+0 12
+0000000000 65535 f
+0000000015 00000 n
+0000000064 00000 n
+0000000129 00000 n
+0000000190 00000 n
+0000000386 00000 n
+0000005634 00000 n
+0000005654 00000 n
+0000005752 00000 n
+0000005855 00000 n
+0000006042 00000 n
+0000006862 00000 n
+trailer
+<<
+/Root 1 0 R
+/Info 3 0 R
+/Size 12
+>>
+startxref
+6882
+%%EOF

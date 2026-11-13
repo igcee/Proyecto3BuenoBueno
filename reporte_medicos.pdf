@@ -1,0 +1,871 @@
+%PDF-1.3
+%·¾­ª
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [ 4 0 R 9 0 R ]
+/Count 2
+>>
+endobj
+3 0 obj
+<<
+/Producer (Haru Free PDF Library 2.4.6)
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 5 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+/F2 8 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 6 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 1) Tj
+ET
+BT
+/F2 22 Tf
+137 810 Td
+(Sistema de Gestion Hospitalaria) Tj
+/F2 16 Tf
+-90 -29 Td
+(Listado De Todos Los Medicos) Tj
+/F1 10 Tf
+0 -23 Td
+(Fecha de emision del reporte: Fri Nov 13 17:30:21 2026\012) Tj
+290 3 Td
+(Empleados del mes:) Tj
+0 -14 Td
+(Ian Gabriel Castro Esquivel) Tj
+0 -14 Td
+(Maria Paula Monge Naranjo) Tj
+-290 -23 Td
+(Jefe del hospital: Ivannia Cerdas Quesada) Tj
+0 -14 Td
+(Jefe asistente: Isaac Van der Bom) Tj
+ET
+40 685 520 150 re
+40 800 m
+560 800 l
+40 775 m
+560 775 l
+40 750 m
+330 750 l
+330 725 m
+330 775 l
+40 725 m
+560 725 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(Id) Tj
+60 0 Td
+(Nombre) Tj
+140 0 Td
+(Telefono) Tj
+90 0 Td
+(Correo) Tj
+150 0 Td
+(Id Especialidad) Tj
+ET
+40 645 520 25 re
+100 645 m
+100 670 l
+240 645 m
+240 670 l
+330 645 m
+330 670 l
+480 645 m
+480 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(101) Tj
+60 0 Td
+(Dra. Carlos Mora Jim\303\251nez) Tj
+140 0 Td
+(506-3828-3286) Tj
+90 0 Td
+(carlos.mora95@hospital.cr) Tj
+150 0 Td
+(1) Tj
+ET
+40 620 520 25 re
+100 620 m
+100 645 l
+240 620 m
+240 645 l
+330 620 m
+330 645 l
+480 620 m
+480 645 l
+S
+BT
+/F1 10 Tf
+45 600 Td
+(102) Tj
+60 0 Td
+(Dr. Carmen Quesada G\303\263mez) Tj
+140 0 Td
+(506-6837-7912) Tj
+90 0 Td
+(carmen.quesada5@hospital.cr) Tj
+150 0 Td
+(2) Tj
+ET
+40 595 520 25 re
+100 595 m
+100 620 l
+240 595 m
+240 620 l
+330 595 m
+330 620 l
+480 595 m
+480 620 l
+S
+BT
+/F1 10 Tf
+45 575 Td
+(103) Tj
+60 0 Td
+(Dr. Pedro Jim\303\251nez Salas) Tj
+140 0 Td
+(506-6931-1434) Tj
+90 0 Td
+(pedro.jimenez72@hospital.cr) Tj
+150 0 Td
+(3) Tj
+ET
+40 570 520 25 re
+100 570 m
+100 595 l
+240 570 m
+240 595 l
+330 570 m
+330 595 l
+480 570 m
+480 595 l
+S
+BT
+/F1 10 Tf
+45 550 Td
+(104) Tj
+60 0 Td
+(Dr. Gabriel Quesada Rojas) Tj
+140 0 Td
+(506-3805-8359) Tj
+90 0 Td
+(gabriel.quesada76@hospital.cr) Tj
+150 0 Td
+(4) Tj
+ET
+40 545 520 25 re
+100 545 m
+100 570 l
+240 545 m
+240 570 l
+330 545 m
+330 570 l
+480 545 m
+480 570 l
+S
+BT
+/F1 10 Tf
+45 525 Td
+(105) Tj
+60 0 Td
+(Dr. Carlos Mart\303\255nez Rojas) Tj
+140 0 Td
+(506-4787-5552) Tj
+90 0 Td
+(carlos.martinez20@hospital.cr) Tj
+150 0 Td
+(5) Tj
+ET
+40 520 520 25 re
+100 520 m
+100 545 l
+240 520 m
+240 545 l
+330 520 m
+330 545 l
+480 520 m
+480 545 l
+S
+BT
+/F1 10 Tf
+45 500 Td
+(106) Tj
+60 0 Td
+(Dr. Esteban Ram\303\255rez Fern\303\241ndez) Tj
+140 0 Td
+(506-2759-7224) Tj
+90 0 Td
+(esteban.ramirez13@hospital.cr) Tj
+150 0 Td
+(6) Tj
+ET
+40 495 520 25 re
+100 495 m
+100 520 l
+240 495 m
+240 520 l
+330 495 m
+330 520 l
+480 495 m
+480 520 l
+S
+BT
+/F1 10 Tf
+45 475 Td
+(107) Tj
+60 0 Td
+(Dr. Camila Brenes Mora) Tj
+140 0 Td
+(506-8611-1711) Tj
+90 0 Td
+(camila.brenes94@hospital.cr) Tj
+150 0 Td
+(7) Tj
+ET
+40 470 520 25 re
+100 470 m
+100 495 l
+240 470 m
+240 495 l
+330 470 m
+330 495 l
+480 470 m
+480 495 l
+S
+BT
+/F1 10 Tf
+45 450 Td
+(108) Tj
+60 0 Td
+(Dr. Jos\303\251 Solano G\303\263mez) Tj
+140 0 Td
+(506-6522-5803) Tj
+90 0 Td
+(jose.solano81@hospital.cr) Tj
+150 0 Td
+(8) Tj
+ET
+40 445 520 25 re
+100 445 m
+100 470 l
+240 445 m
+240 470 l
+330 445 m
+330 470 l
+480 445 m
+480 470 l
+S
+BT
+/F1 10 Tf
+45 425 Td
+(109) Tj
+60 0 Td
+(Dra. Camila Mena Vargas) Tj
+140 0 Td
+(506-7771-2139) Tj
+90 0 Td
+(camila.mena6@hospital.cr) Tj
+150 0 Td
+(1) Tj
+ET
+40 420 520 25 re
+100 420 m
+100 445 l
+240 420 m
+240 445 l
+330 420 m
+330 445 l
+480 420 m
+480 445 l
+S
+BT
+/F1 10 Tf
+45 400 Td
+(110) Tj
+60 0 Td
+(Dra. Esteban Castro G\303\263mez) Tj
+140 0 Td
+(506-9006-4814) Tj
+90 0 Td
+(esteban.castro13@hospital.cr) Tj
+150 0 Td
+(2) Tj
+ET
+40 395 520 25 re
+100 395 m
+100 420 l
+240 395 m
+240 420 l
+330 395 m
+330 420 l
+480 395 m
+480 420 l
+S
+BT
+/F1 10 Tf
+45 375 Td
+(111) Tj
+60 0 Td
+(Dra. Rebeca Calder\303\263n Mart\303\255nez) Tj
+140 0 Td
+(506-7091-7891) Tj
+90 0 Td
+(rebeca.calderon29@hospital.cr) Tj
+150 0 Td
+(3) Tj
+ET
+40 370 520 25 re
+100 370 m
+100 395 l
+240 370 m
+240 395 l
+330 370 m
+330 395 l
+480 370 m
+480 395 l
+S
+BT
+/F1 10 Tf
+45 350 Td
+(112) Tj
+60 0 Td
+(Dr. Javier Acu\303\261a Uma\303\261a) Tj
+140 0 Td
+(506-2020-2322) Tj
+90 0 Td
+(javier.acuna57@hospital.cr) Tj
+150 0 Td
+(4) Tj
+ET
+40 345 520 25 re
+100 345 m
+100 370 l
+240 345 m
+240 370 l
+330 345 m
+330 370 l
+480 345 m
+480 370 l
+S
+BT
+/F1 10 Tf
+45 325 Td
+(113) Tj
+60 0 Td
+(Dra. Isabel Z\303\272\303\261iga Solano) Tj
+140 0 Td
+(506-7565-6148) Tj
+90 0 Td
+(isabel.zuniga88@hospital.cr) Tj
+150 0 Td
+(5) Tj
+ET
+40 320 520 25 re
+100 320 m
+100 345 l
+240 320 m
+240 345 l
+330 320 m
+330 345 l
+480 320 m
+480 345 l
+S
+BT
+/F1 10 Tf
+45 300 Td
+(114) Tj
+60 0 Td
+(Dr. Daniel Jim\303\251nez Campos) Tj
+140 0 Td
+(506-6407-5786) Tj
+90 0 Td
+(daniel.jimenez12@hospital.cr) Tj
+150 0 Td
+(6) Tj
+ET
+40 295 520 25 re
+100 295 m
+100 320 l
+240 295 m
+240 320 l
+330 295 m
+330 320 l
+480 295 m
+480 320 l
+S
+BT
+/F1 10 Tf
+45 275 Td
+(115) Tj
+60 0 Td
+(Dra. Daniela Soto Chaves) Tj
+140 0 Td
+(506-7823-7043) Tj
+90 0 Td
+(daniela.soto4@hospital.cr) Tj
+150 0 Td
+(7) Tj
+ET
+40 270 520 25 re
+100 270 m
+100 295 l
+240 270 m
+240 295 l
+330 270 m
+330 295 l
+480 270 m
+480 295 l
+S
+BT
+/F1 10 Tf
+45 250 Td
+(116) Tj
+60 0 Td
+(Dra. Gabriela L\303\263pez S\303\241nchez) Tj
+140 0 Td
+(506-6083-2907) Tj
+90 0 Td
+(gabriela.lopez75@hospital.cr) Tj
+150 0 Td
+(18) Tj
+ET
+40 245 520 25 re
+100 245 m
+100 270 l
+240 245 m
+240 270 l
+330 245 m
+330 270 l
+480 245 m
+480 270 l
+S
+BT
+/F1 10 Tf
+45 225 Td
+(117) Tj
+60 0 Td
+(Dra. Patricia Acu\303\261a S\303\241nchez) Tj
+140 0 Td
+(506-8917-7880) Tj
+90 0 Td
+(patricia.acuna68@hospital.cr) Tj
+150 0 Td
+(9) Tj
+ET
+40 220 520 25 re
+100 220 m
+100 245 l
+240 220 m
+240 245 l
+330 220 m
+330 245 l
+480 220 m
+480 245 l
+S
+BT
+/F1 10 Tf
+45 200 Td
+(118) Tj
+60 0 Td
+(Dr. Sergio Calder\303\263n Madrigal) Tj
+140 0 Td
+(506-3839-3113) Tj
+90 0 Td
+(sergio.calderon4@hospital.cr) Tj
+150 0 Td
+(19) Tj
+ET
+40 195 520 25 re
+100 195 m
+100 220 l
+240 195 m
+240 220 l
+330 195 m
+330 220 l
+480 195 m
+480 220 l
+S
+BT
+/F1 10 Tf
+45 175 Td
+(119) Tj
+60 0 Td
+(Dr. Mauricio Madrigal Mart\303\255nez) Tj
+140 0 Td
+(506-5517-8701) Tj
+90 0 Td
+(mauricio.madrigal92@hospital.cr) Tj
+150 0 Td
+(20) Tj
+ET
+40 170 520 25 re
+100 170 m
+100 195 l
+240 170 m
+240 195 l
+330 170 m
+330 195 l
+480 170 m
+480 195 l
+S
+BT
+/F1 10 Tf
+45 150 Td
+(120) Tj
+60 0 Td
+(Dra. Valeria Brenes Villalobos) Tj
+140 0 Td
+(506-7853-9939) Tj
+90 0 Td
+(valeria.brenes87@hospital.cr) Tj
+150 0 Td
+(16) Tj
+ET
+40 145 520 25 re
+100 145 m
+100 170 l
+240 145 m
+240 170 l
+330 145 m
+330 170 l
+480 145 m
+480 170 l
+S
+BT
+/F1 10 Tf
+45 125 Td
+(121) Tj
+60 0 Td
+(Dra. Natalia Chaves Picado) Tj
+140 0 Td
+(506-7720-8846) Tj
+90 0 Td
+(natalia.chaves83@hospital.cr) Tj
+150 0 Td
+(17) Tj
+ET
+40 120 520 25 re
+100 120 m
+100 145 l
+240 120 m
+240 145 l
+330 120 m
+330 145 l
+480 120 m
+480 145 l
+S
+BT
+/F1 10 Tf
+45 100 Td
+(122) Tj
+60 0 Td
+(Dr. Alejandro Hern\303\241ndez G\303\263mez) Tj
+140 0 Td
+(506-4203-1151) Tj
+90 0 Td
+(alejandro.hernandez38@hospital.cr) Tj
+150 0 Td
+(27) Tj
+ET
+40 95 520 25 re
+100 95 m
+100 120 l
+240 95 m
+240 120 l
+330 95 m
+330 120 l
+480 95 m
+480 120 l
+S
+BT
+/F1 10 Tf
+45 75 Td
+(123) Tj
+60 0 Td
+(Dra. Ver\303\263nica Villegas Villalobos) Tj
+140 0 Td
+(506-4948-4274) Tj
+90 0 Td
+(veronica.villegas67@hospital.cr) Tj
+150 0 Td
+(16) Tj
+ET
+40 70 520 25 re
+100 70 m
+100 95 l
+240 70 m
+240 95 l
+330 70 m
+330 95 l
+480 70 m
+480 95 l
+S
+BT
+/F1 10 Tf
+45 50 Td
+(124) Tj
+60 0 Td
+(Dra. Karla Villalobos Calder\303\263n) Tj
+140 0 Td
+(506-6072-8114) Tj
+90 0 Td
+(karla.villalobos99@hospital.cr) Tj
+150 0 Td
+(27) Tj
+ET
+40 45 520 25 re
+100 45 m
+100 70 l
+240 45 m
+240 70 l
+330 45 m
+330 70 l
+480 45 m
+480 70 l
+S
+BT
+/F1 10 Tf
+47 733 Td
+(Total de registros: 30) Tj
+ET
+
+endstream
+endobj
+6 0 obj
+7276
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 10 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 11 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 2) Tj
+ET
+BT
+/F1 10 Tf
+45 750 Td
+(125) Tj
+60 0 Td
+(Dr. Pedro Cordero Vega) Tj
+140 0 Td
+(506-2805-8183) Tj
+90 0 Td
+(pedro.cordero59@hospital.cr) Tj
+150 0 Td
+(26) Tj
+ET
+40 745 520 25 re
+100 745 m
+100 770 l
+240 745 m
+240 770 l
+330 745 m
+330 770 l
+480 745 m
+480 770 l
+S
+BT
+/F1 10 Tf
+45 725 Td
+(126) Tj
+60 0 Td
+(Dr. Daniel Ram\303\255rez Z\303\272\303\261iga) Tj
+140 0 Td
+(506-8901-8850) Tj
+90 0 Td
+(daniel.ramirez24@hospital.cr) Tj
+150 0 Td
+(14) Tj
+ET
+40 720 520 25 re
+100 720 m
+100 745 l
+240 720 m
+240 745 l
+330 720 m
+330 745 l
+480 720 m
+480 745 l
+S
+BT
+/F1 10 Tf
+45 700 Td
+(127) Tj
+60 0 Td
+(Dr. \303\223scar Mena Acu\303\261a) Tj
+140 0 Td
+(506-3594-7738) Tj
+90 0 Td
+(oscar.mena48@hospital.cr) Tj
+150 0 Td
+(4) Tj
+ET
+40 695 520 25 re
+100 695 m
+100 720 l
+240 695 m
+240 720 l
+330 695 m
+330 720 l
+480 695 m
+480 720 l
+S
+BT
+/F1 10 Tf
+45 675 Td
+(128) Tj
+60 0 Td
+(Dra. Paola L\303\263pez Solano) Tj
+140 0 Td
+(506-6477-2360) Tj
+90 0 Td
+(paola.lopez58@hospital.cr) Tj
+150 0 Td
+(19) Tj
+ET
+40 670 520 25 re
+100 670 m
+100 695 l
+240 670 m
+240 695 l
+330 670 m
+330 695 l
+480 670 m
+480 695 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(129) Tj
+60 0 Td
+(Dr. Fernando Rojas Brenes) Tj
+140 0 Td
+(506-8159-9953) Tj
+90 0 Td
+(fernando.rojas80@hospital.cr) Tj
+150 0 Td
+(2) Tj
+ET
+40 645 520 25 re
+100 645 m
+100 670 l
+240 645 m
+240 670 l
+330 645 m
+330 670 l
+480 645 m
+480 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(130) Tj
+60 0 Td
+(Dr. Hugo N\303\272\303\261ez Salas) Tj
+140 0 Td
+(506-7444-9060) Tj
+90 0 Td
+(hugo.nunez1@hospital.cr) Tj
+150 0 Td
+(11) Tj
+ET
+40 620 520 25 re
+100 620 m
+100 645 l
+240 620 m
+240 645 l
+330 620 m
+330 645 l
+480 620 m
+480 645 l
+S
+
+endstream
+endobj
+11 0 obj
+1637
+endobj
+xref
+0 12
+0000000000 65535 f
+0000000015 00000 n
+0000000064 00000 n
+0000000129 00000 n
+0000000190 00000 n
+0000000386 00000 n
+0000007716 00000 n
+0000007736 00000 n
+0000007834 00000 n
+0000007937 00000 n
+0000008124 00000 n
+0000009817 00000 n
+trailer
+<<
+/Root 1 0 R
+/Info 3 0 R
+/Size 12
+>>
+startxref
+9838
+%%EOF

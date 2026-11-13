@@ -52,7 +52,7 @@ BT
 (Listado De Todos Los Paises) Tj
 /F1 10 Tf
 0 -23 Td
-(Fecha de emision del reporte: Fri Nov 13 15:57:19 2026\012) Tj
+(Fecha de emision del reporte: Fri Nov 13 17:29:57 2026\012) Tj
 290 3 Td
 (Empleados del mes:) Tj
 0 -14 Td
@@ -112,9 +112,9 @@ S
 BT
 /F1 10 Tf
 45 575 Td
-(39) Tj
+(34) Tj
 150 0 Td
-(Italia) Tj
+(Espa\303\261a) Tj
 ET
 40 570 520 25 re
 190 570 m
@@ -123,9 +123,9 @@ S
 BT
 /F1 10 Tf
 45 550 Td
-(44) Tj
+(39) Tj
 150 0 Td
-(Reino Unido) Tj
+(Italia) Tj
 ET
 40 545 520 25 re
 190 545 m
@@ -134,9 +134,9 @@ S
 BT
 /F1 10 Tf
 45 525 Td
-(49) Tj
+(44) Tj
 150 0 Td
-(Alemania) Tj
+(Reino Unido) Tj
 ET
 40 520 520 25 re
 190 520 m
@@ -145,9 +145,9 @@ S
 BT
 /F1 10 Tf
 45 500 Td
-(51) Tj
+(49) Tj
 150 0 Td
-(Per\303\272) Tj
+(Alemania) Tj
 ET
 40 495 520 25 re
 190 495 m
@@ -156,9 +156,9 @@ S
 BT
 /F1 10 Tf
 45 475 Td
-(52) Tj
+(51) Tj
 150 0 Td
-(M\303\251xico) Tj
+(Per\303\272) Tj
 ET
 40 470 520 25 re
 190 470 m
@@ -167,9 +167,9 @@ S
 BT
 /F1 10 Tf
 45 450 Td
-(53) Tj
+(52) Tj
 150 0 Td
-(Cuba) Tj
+(M\303\251xico) Tj
 ET
 40 445 520 25 re
 190 445 m
@@ -178,9 +178,9 @@ S
 BT
 /F1 10 Tf
 45 425 Td
-(54) Tj
+(53) Tj
 150 0 Td
-(Argentina) Tj
+(Cuba) Tj
 ET
 40 420 520 25 re
 190 420 m
@@ -189,9 +189,9 @@ S
 BT
 /F1 10 Tf
 45 400 Td
-(55) Tj
+(54) Tj
 150 0 Td
-(Brasil) Tj
+(Argentina) Tj
 ET
 40 395 520 25 re
 190 395 m
@@ -200,9 +200,9 @@ S
 BT
 /F1 10 Tf
 45 375 Td
-(56) Tj
+(55) Tj
 150 0 Td
-(Chile) Tj
+(Brasil) Tj
 ET
 40 370 520 25 re
 190 370 m
@@ -211,9 +211,9 @@ S
 BT
 /F1 10 Tf
 45 350 Td
-(57) Tj
+(56) Tj
 150 0 Td
-(Colombia) Tj
+(Chile) Tj
 ET
 40 345 520 25 re
 190 345 m
@@ -222,9 +222,9 @@ S
 BT
 /F1 10 Tf
 45 325 Td
-(58) Tj
+(57) Tj
 150 0 Td
-(Venezuela) Tj
+(Colombia) Tj
 ET
 40 320 520 25 re
 190 320 m
@@ -233,9 +233,9 @@ S
 BT
 /F1 10 Tf
 45 300 Td
-(61) Tj
+(58) Tj
 150 0 Td
-(Australia) Tj
+(Venezuela) Tj
 ET
 40 295 520 25 re
 190 295 m
@@ -244,9 +244,9 @@ S
 BT
 /F1 10 Tf
 45 275 Td
-(81) Tj
+(61) Tj
 150 0 Td
-(Jap\303\263n) Tj
+(Australia) Tj
 ET
 40 270 520 25 re
 190 270 m
@@ -255,9 +255,9 @@ S
 BT
 /F1 10 Tf
 45 250 Td
-(82) Tj
+(81) Tj
 150 0 Td
-(Corea del Sur) Tj
+(Jap\303\263n) Tj
 ET
 40 245 520 25 re
 190 245 m
@@ -266,9 +266,9 @@ S
 BT
 /F1 10 Tf
 45 225 Td
-(86) Tj
+(82) Tj
 150 0 Td
-(China) Tj
+(Corea del Sur) Tj
 ET
 40 220 520 25 re
 190 220 m
@@ -277,9 +277,9 @@ S
 BT
 /F1 10 Tf
 45 200 Td
-(91) Tj
+(86) Tj
 150 0 Td
-(India) Tj
+(China) Tj
 ET
 40 195 520 25 re
 190 195 m
@@ -288,9 +288,9 @@ S
 BT
 /F1 10 Tf
 45 175 Td
-(351) Tj
+(91) Tj
 150 0 Td
-(Portugal) Tj
+(India) Tj
 ET
 40 170 520 25 re
 190 170 m
@@ -299,9 +299,9 @@ S
 BT
 /F1 10 Tf
 45 150 Td
-(502) Tj
+(351) Tj
 150 0 Td
-(Guatemala) Tj
+(Portugal) Tj
 ET
 40 145 520 25 re
 190 145 m
@@ -310,9 +310,9 @@ S
 BT
 /F1 10 Tf
 45 125 Td
-(503) Tj
+(502) Tj
 150 0 Td
-(El Salvador) Tj
+(Guatemala) Tj
 ET
 40 120 520 25 re
 190 120 m
@@ -321,9 +321,9 @@ S
 BT
 /F1 10 Tf
 45 100 Td
-(504) Tj
+(503) Tj
 150 0 Td
-(Honduras) Tj
+(El Salvador) Tj
 ET
 40 95 520 25 re
 190 95 m
@@ -332,9 +332,9 @@ S
 BT
 /F1 10 Tf
 45 75 Td
-(505) Tj
+(504) Tj
 150 0 Td
-(Nicaragua) Tj
+(Honduras) Tj
 ET
 40 70 520 25 re
 190 70 m
@@ -343,9 +343,9 @@ S
 BT
 /F1 10 Tf
 45 50 Td
-(506) Tj
+(505) Tj
 150 0 Td
-(Costa Rica) Tj
+(Nicaragua) Tj
 ET
 40 45 520 25 re
 190 45 m
@@ -360,7 +360,7 @@ ET
 endstream
 endobj
 6 0 obj
-3068
+3070
 endobj
 7 0 obj
 <<
@@ -405,9 +405,9 @@ ET
 BT
 /F1 10 Tf
 45 750 Td
-(507) Tj
+(506) Tj
 150 0 Td
-(Panam\303\241) Tj
+(Costa Rica) Tj
 ET
 40 745 520 25 re
 190 745 m
@@ -416,9 +416,9 @@ S
 BT
 /F1 10 Tf
 45 725 Td
-(591) Tj
+(507) Tj
 150 0 Td
-(Bolivia) Tj
+(Panam\303\241) Tj
 ET
 40 720 520 25 re
 190 720 m
@@ -427,9 +427,9 @@ S
 BT
 /F1 10 Tf
 45 700 Td
-(593) Tj
+(591) Tj
 150 0 Td
-(Ecuador) Tj
+(Bolivia) Tj
 ET
 40 695 520 25 re
 190 695 m
@@ -438,9 +438,9 @@ S
 BT
 /F1 10 Tf
 45 675 Td
-(595) Tj
+(593) Tj
 150 0 Td
-(Paraguay) Tj
+(Ecuador) Tj
 ET
 40 670 520 25 re
 190 670 m
@@ -449,9 +449,9 @@ S
 BT
 /F1 10 Tf
 45 650 Td
-(598) Tj
+(595) Tj
 150 0 Td
-(Uruguay) Tj
+(Paraguay) Tj
 ET
 40 645 520 25 re
 190 645 m
@@ -460,9 +460,9 @@ S
 BT
 /F1 10 Tf
 45 625 Td
-(6767) Tj
+(598) Tj
 150 0 Td
-(camarondormido) Tj
+(Uruguay) Tj
 ET
 40 620 520 25 re
 190 620 m
@@ -472,7 +472,7 @@ S
 endstream
 endobj
 11 0 obj
-642
+637
 endobj
 xref
 0 12
@@ -482,12 +482,12 @@ xref
 0000000129 00000 n
 0000000190 00000 n
 0000000386 00000 n
-0000003508 00000 n
-0000003528 00000 n
-0000003626 00000 n
-0000003729 00000 n
-0000003916 00000 n
-0000004614 00000 n
+0000003510 00000 n
+0000003530 00000 n
+0000003628 00000 n
+0000003731 00000 n
+0000003918 00000 n
+0000004611 00000 n
 trailer
 <<
 /Root 1 0 R
@@ -495,5 +495,5 @@ trailer
 /Size 12
 >>
 startxref
-4634
+4631
 %%EOF

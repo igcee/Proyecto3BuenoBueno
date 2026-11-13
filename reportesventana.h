@@ -21,7 +21,7 @@ namespace CppCLRWinFormsProject {
 	using namespace System;
 	using namespace System::Windows::Forms;
 	using namespace System::Drawing;
-
+	/*
 	public ref class FormReportePais : public System::Windows::Forms::Form {
 
 	private:
@@ -59,4 +59,10 @@ namespace CppCLRWinFormsProject {
 			this->Close();
 		}
 	};
+	*/
+
+
+
+
+
 }
