@@ -297,7 +297,7 @@ void reportes::ReporteHospitalizacionesPorMedico(ArbolHospitalizaciones& hospita
     string archivo = "reporte_hospitalizaciones_de_medico.pdf";
     r.generarEncabezado(titulo);
     int anchos[] = { 50, 50, 50, 50, 80, 80, 160 };
-    string textos[] = { "Id hosp", "Id pac", "Id hab", "Id med", "Ingreso", "Salida", "Motivo"};
+    string textos[] = { "Id med", "Id pac", "Id hab", "Id hosp", "Ingreso", "Salida", "Motivo"};
     r.escribirFilaDinamica(7, textos, anchos);
     hospitalizaciones.InordenReportesHospDeMedico(hospitalizaciones.raiz, r, anchos, idMedico);
     r.guardarYTerminar(archivo);

@@ -475,13 +475,13 @@ void ConstruirReloj() {
 	reloj->Tick += gcnew EventHandler(this, &Form1::Reloj_Tick);
 
 	DateTime ahora = DateTime::Now;
-	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
 	reloj->Start();
 }
 
 
 void Reloj_Tick(System::Object^ sender, System::EventArgs^ e) {
 	DateTime ahora = DateTime::Now;
+	lblFechaHora->Text = ahora.ToString(L"dd'/'MM'/'yyyy") + L"     " + ahora.ToString(L"hh:mm:ss tt");
 }
 
 
@@ -611,12 +611,10 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 		consolabuena->Escribir(mensajeConsola);
 		MessageBox::Show(L"Reporte de todos los paises generado en el archivo reporte_paises.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	/*
 	else if (rep == L"Ciudades de un pais") {
-		FormEliminarCiudad^ ventana = gcnew FormEliminarCiudad(arbolilloPais, arbolilloCiudad, arbolilloPac, arbolilloCita, arbolilloHosp, consolabuena);
+		FormReporteCiudadesDePais^ ventana = gcnew FormReporteCiudadesDePais(arbolilloPais, arbolilloCiudad, consolabuena);
 		ventana->ShowDialog();
 	}
-	*/
 	else if (rep == L"Pacientes") {
 		CapturaSalida cap;
 		reportes rep2;
@@ -659,7 +657,7 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show(L"Reporte de todas las hospitalizaciones generado en el archivo reporte_hospitalizaciones.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	else if (rep == L"Hospitalizacion de un medico") {
-		FormEliminarHospitalizacion^ ventana = gcnew FormEliminarHospitalizacion(arbolilloHosp, arbolilloPac, arbolilloHab, consolabuena);
+		FormReporteHospDeMedico^ ventana = gcnew FormReporteHospDeMedico(arbolilloHosp, arbolilloMed, consolabuena);
 		ventana->ShowDialog();
 	}
 	

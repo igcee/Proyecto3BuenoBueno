@@ -1,3 +1,35 @@
 ﻿  CppCLR_WinFormsProject.cpp
+  reportes.cpp
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(114,50): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(114,41): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(120,70): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(120,58): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(120,53): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(120,39): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(127,54): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(127,40): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(128,58): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\reportes.cpp(128,40): warning C4244: 'argument': conversion from 'int' to 'HPDF_REAL', possible loss of data
+  (compiling source file '/Proyecto3/reportes.cpp')
+  
+  Generating Code...
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Proyecto3.vcxproj -> C:\Users\PC\source\repos\tec\Proyecto3Bueno\x64\Debug\Proyecto3.exe

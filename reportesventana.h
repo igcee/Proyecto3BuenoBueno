@@ -61,7 +61,142 @@ namespace CppCLRWinFormsProject {
 	};
 	*/
 
+	public ref class FormReporteCiudadesDePais : public System::Windows::Forms::Form {
 
+	private:
+		TextBox^ txtCodPais;
+		ArbolPais* arbolilloPais;
+		ArbolCiudad* arbolilloCiudad;
+		Consola^ consolaRep;
+
+	public:
+		FormReporteCiudadesDePais(ArbolPais* arbolP, ArbolCiudad* arbolC, Consola^ consola) {
+			arbolilloPais = arbolP;
+			arbolilloCiudad = arbolC;
+			consolaRep = consola;
+
+			this->Text = L"Reporte de ciudades de un pais";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// codpais
+			Label^ lblCod = gcnew Label();
+			lblCod->Text = L"Codigo de pais: ";
+			lblCod->Location = System::Drawing::Point(30, 30);
+			lblCod->AutoSize = true;
+			txtCodPais = gcnew TextBox();
+			txtCodPais->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnGenerar = gcnew Button();
+			btnGenerar->Text = L"Generar reporte";
+			btnGenerar->Size = System::Drawing::Size(120, 30);
+			btnGenerar->Location = System::Drawing::Point(80, 100);
+			btnGenerar->Click += gcnew System::EventHandler(this, &FormReporteCiudadesDePais::Generar_Click);
+
+			this->Controls->Add(lblCod);
+			this->Controls->Add(txtCodPais);
+			this->Controls->Add(btnGenerar);
+		}
+
+	private:
+		System::Void Generar_Click(System::Object^ sender, System::EventArgs^ e) {
+
+			if (txtCodPais->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string codPaisstr = msclr::interop::marshal_as<string>(txtCodPais->Text);
+			int codPaisint = stoi(codPaisstr);
+
+			if (arbolilloPais->Buscarvalor(codPaisint) == nullptr) {
+				MessageBox::Show(L"No existe ningun pais con el codigo " + codPaisint, L"Pais no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			else {
+				CapturaSalida cap;
+				reportes rep2;
+				rep2.ReporteTodasCiudadesDePais(*arbolilloCiudad, *arbolilloPais, codPaisint);
+				String^ mensajeConsola = aNet(cap.Terminar());
+				consolaRep->Escribir(mensajeConsola);
+
+				MessageBox::Show(L"Reporte de ciudades del pais generado en el archivo reporte_ciudades_de_pais.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				this->Close();
+			}
+
+		}
+	};
+
+
+	public ref class FormReporteHospDeMedico : public System::Windows::Forms::Form {
+
+	private:
+		TextBox^ txtIdMedico;
+		ArbolHospitalizaciones* arbolilloHosp;
+		ArbolMedicos* arbolilloMed;
+		Consola^ consolaRep;
+
+	public:
+		FormReporteHospDeMedico(ArbolHospitalizaciones* arbolH, ArbolMedicos* arbolM, Consola^ consola) {
+			arbolilloHosp = arbolH;
+			arbolilloMed = arbolM;
+			consolaRep = consola;
+
+			this->Text = L"Reporte de hospitalizaciones de un medico";
+			this->Size = System::Drawing::Size(300, 200);
+			this->StartPosition = FormStartPosition::CenterParent;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+
+			// idmed
+			Label^ lblId = gcnew Label();
+			lblId->Text = L"Id del medico: ";
+			lblId->Location = System::Drawing::Point(30, 30);
+			lblId->AutoSize = true;
+			txtIdMedico = gcnew TextBox();
+			txtIdMedico->Location = System::Drawing::Point(30, 50);
+
+			Button^ btnGenerar = gcnew Button();
+			btnGenerar->Text = L"Generar reporte";
+			btnGenerar->Size = System::Drawing::Size(120, 30);
+			btnGenerar->Location = System::Drawing::Point(80, 100);
+			btnGenerar->Click += gcnew System::EventHandler(this, &FormReporteHospDeMedico::Generar_Click);
+
+			this->Controls->Add(lblId);
+			this->Controls->Add(txtIdMedico);
+			this->Controls->Add(btnGenerar);
+		}
+
+	private:
+		System::Void Generar_Click(System::Object^ sender, System::EventArgs^ e) {
+
+			if (txtIdMedico->Text == "") {
+				MessageBox::Show(L"Por favor llene todos los campos.", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			string idMedstr = msclr::interop::marshal_as<string>(txtIdMedico->Text);
+			int idMedint = stoi(idMedstr);
+
+			if (arbolilloMed->Buscarvalor(idMedint) == nullptr) {
+				MessageBox::Show(L"No existe ningun medico con el id " + idMedint, L"Medico no encontrado", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			else {
+				CapturaSalida cap;
+				reportes rep2;
+				rep2.ReporteHospitalizacionesPorMedico(*arbolilloHosp, *arbolilloMed, idMedint);
+				String^ mensajeConsola = aNet(cap.Terminar());
+				consolaRep->Escribir(mensajeConsola);
+
+			}
+
+			MessageBox::Show(L"Reporte de hospitalizaciones del medico generado en el archivo reporte_hospitalizaciones_de_medico.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->Close();
+		}
+	};
 
 
 

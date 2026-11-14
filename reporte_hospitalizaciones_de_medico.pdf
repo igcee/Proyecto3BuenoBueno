@@ -1,0 +1,187 @@
+%PDF-1.3
+%·¾­ª
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [ 4 0 R ]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Producer (Haru Free PDF Library 2.4.6)
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 595.276 841.89001 ]
+/Contents 5 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 7 0 R
+/F2 8 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 6 0 R
+>>
+stream
+BT
+/F1 12 Tf
+480 20 Td
+(Numero de pagina: 1) Tj
+ET
+BT
+/F2 22 Tf
+137 810 Td
+(Sistema de Gestion Hospitalaria) Tj
+/F2 16 Tf
+-90 -29 Td
+(Listado De Hospitalizaciones De Medico Id 101) Tj
+/F1 10 Tf
+0 -23 Td
+(Fecha de emision del reporte: Fri Nov 13 20:50:25 2026\012) Tj
+290 3 Td
+(Empleados del mes:) Tj
+0 -14 Td
+(Ian Gabriel Castro Esquivel) Tj
+0 -14 Td
+(Maria Paula Monge Naranjo) Tj
+-290 -23 Td
+(Jefe del hospital: Ivannia Cerdas Quesada) Tj
+0 -14 Td
+(Jefe asistente: Isaac Van der Bom) Tj
+ET
+40 685 520 150 re
+40 800 m
+560 800 l
+40 775 m
+560 775 l
+40 750 m
+330 750 l
+330 725 m
+330 775 l
+40 725 m
+560 725 l
+S
+BT
+/F1 10 Tf
+45 650 Td
+(Id hosp) Tj
+50 0 Td
+(Id pac) Tj
+50 0 Td
+(Id hab) Tj
+50 0 Td
+(Id med) Tj
+50 0 Td
+(Ingreso) Tj
+80 0 Td
+(Salida) Tj
+80 0 Td
+(Motivo) Tj
+ET
+40 645 520 25 re
+90 645 m
+90 670 l
+140 645 m
+140 670 l
+190 645 m
+190 670 l
+240 645 m
+240 670 l
+320 645 m
+320 670 l
+400 645 m
+400 670 l
+S
+BT
+/F1 10 Tf
+45 625 Td
+(101) Tj
+50 0 Td
+(1015) Tj
+50 0 Td
+(404) Tj
+50 0 Td
+(13) Tj
+50 0 Td
+(1\05710\0572026) Tj
+80 0 Td
+(0) Tj
+80 0 Td
+(Neumon\303\255a) Tj
+ET
+40 620 520 25 re
+90 620 m
+90 645 l
+140 620 m
+140 645 l
+190 620 m
+190 645 l
+240 620 m
+240 645 l
+320 620 m
+320 645 l
+400 620 m
+400 645 l
+S
+BT
+/F1 10 Tf
+47 733 Td
+(Total de registros: 1) Tj
+ET
+
+endstream
+endobj
+6 0 obj
+1254
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+xref
+0 9
+0000000000 65535 f
+0000000015 00000 n
+0000000064 00000 n
+0000000123 00000 n
+0000000184 00000 n
+0000000380 00000 n
+0000001688 00000 n
+0000001708 00000 n
+0000001806 00000 n
+trailer
+<<
+/Root 1 0 R
+/Info 3 0 R
+/Size 9
+>>
+startxref
+1909
+%%EOF
