@@ -623,7 +623,6 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 		consolabuena->Escribir(mensajeConsola);
 		MessageBox::Show(L"Reporte de todos los pacientes generado en el archivo reporte_pacientes.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	
 	else if (rep == L"Especialidades") {
 		CapturaSalida cap;
 		reportes rep2;
@@ -660,7 +659,6 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormReporteHospDeMedico^ ventana = gcnew FormReporteHospDeMedico(arbolilloHosp, arbolilloMed, consolabuena);
 		ventana->ShowDialog();
 	}
-	
 	else if (rep == L"Medicos") {
 		CapturaSalida cap;
 		reportes rep2;
@@ -669,52 +667,29 @@ void Reporte_Click(System::Object^ sender, System::EventArgs^ e) {
 		consolabuena->Escribir(mensajeConsola);
 		MessageBox::Show(L"Reporte de todos los medicos generado en el archivo reporte_medicos.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	/*
-	else if (rep == L"Medicos de una especialidad") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
+	//reportes q piden un dato antes todos usan la misma ventan
+	else if (rep == L"Medicos de una especialidad" || rep == L"Citas por fecha" || rep == L"Citas por especialidad" ||
+		rep == L"Citas de un medico" || rep == L"Pacientes de un pais" || rep == L"Pacientes de una ciudad" ||
+		rep == L"Citas de un paciente") {
+		FormReporteFiltro^ ventana = gcnew FormReporteFiltro(rep, arbolilloPac, arbolilloMed, arbolilloEsp, arbolilloCita, arbolilloPais, arbolilloCiudad, consolabuena);
 		ventana->ShowDialog();
 	}
-
-	else if (rep == L"Citas por fecha") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
-	else if (rep == L"Citas por especialidad") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
-	else if (rep == L"Citas de un medico") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
-	else if (rep == L"Pacientes de un pais") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
-	else if (rep == L"Pacientes de una ciudad") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
-	else if (rep == L"Citas de un paciente") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
-	}
-
 	else if (rep == L"Diagnosticos") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
+		CapturaSalida cap;
+		reportes rep2;
+		rep2.ReporteTodosDiagnosticos(*arbolilloDiag);
+		String^ mensajeConsola = aNet(cap.Terminar());
+		consolabuena->Escribir(mensajeConsola);
+		MessageBox::Show(L"Reporte de todos los diagnosticos generado en el archivo reporte_diagnosticos.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-
 	else if (rep == L"Tratamientos") {
-		FormEliminarTratamiento^ ventana = gcnew FormEliminarTratamiento(arbolilloTrata, consolabuena);
-		ventana->ShowDialog();
+		CapturaSalida cap;
+		reportes rep2;
+		rep2.ReporteTodosTratamientos(*arbolilloTrata);
+		String^ mensajeConsola = aNet(cap.Terminar());
+		consolabuena->Escribir(mensajeConsola);
+		MessageBox::Show(L"Reporte de todos los tratamientos generado en el archivo reporte_tratamientos.pdf", L"Reporte Generado", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	*/
 	else {
 		MessageBox::Show(L"kashdasasdashjda", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}

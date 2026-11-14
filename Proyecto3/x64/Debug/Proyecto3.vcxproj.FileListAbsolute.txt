@@ -19,3 +19,10 @@ C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxpro
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.Form1.resources
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.GenerateResource.cache
 C:\Users\PC\source\repos\tec\Proyecto3Bueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.Up2Date
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\x64\Debug\hpdf.dll
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\x64\Debug\libpng16d.dll
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\x64\Debug\zd.dll
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.AssemblyReference.cache
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\Proyecto3\x64\Debug\Proyecto3.Form1.resources
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.GenerateResource.cache
+C:\Users\Paula Monge Naranjo\source\repos\Proyecto3BuenoBueno\Proyecto3\x64\Debug\Proyecto3.vcxproj.Up2Date
